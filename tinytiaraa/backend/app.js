@@ -9,26 +9,31 @@ const path = require("path")
 
 
 const app = express()
-if (process.env.NODE_ENV !== "PRODUCTION") {
-    require("dotenv").config({
-        path: "backend/config/.env"
-    })
-}
+
 
 app.use(express.json());
 app.use(cookieParser());
+
+
 app.use(cors({
-    origin:  'https://tiny-tiaraa.vercel.app/',
+    origin: 'https://tiny-tiaraa.vercel.app',
     credentials: true
 }));
 
-app.use("/", express.static(path.join(__dirname,"./uploads")))
-app.use("/test", (req,res) => {
+
+app.use("/test", (req, res) => {
     res.send("hello world")
 
 })
 
+app.use("/uploads", express.static(path.join(__dirname, "./uploads")))
 app.use(bodyParser.urlencoded({ extended: true }));
+
+if (process.env.NODE_ENV !== "PRODUCTION") {
+    require("dotenv").config({
+        path: "config/.env"
+    })
+}
 
 //routes
 
@@ -59,9 +64,9 @@ app.use("/api/v2/product", product)
 app.use("/api/v2/event", event)
 app.use("/api/v2/coupon", coupon)
 // app.use("/api/v2/payment" ,payment)
-app.use("/api/v2/order" ,order)
-app.use("/api/v2/conversation" ,conversation)
-app.use("/api/v2/message" ,message)
+app.use("/api/v2/order", order)
+app.use("/api/v2/conversation", conversation)
+app.use("/api/v2/message", message)
 app.use('/api/v2/referral', referralRoutes);
 
 
