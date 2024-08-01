@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "Tiny-Tiaraa",
+    "name": "Tiny-Tiaraa-Backend",
     "builds": [
         {
             "src": "server.js",
@@ -9,7 +9,7 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
+            "src": "/api/(.*)",
             "dest": "/server.js"
         }
     ]
