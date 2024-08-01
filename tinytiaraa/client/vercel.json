@@ -1,12 +1,6 @@
 {
     "version": 2,
     "name": "Tiny-Tiaraa frontend",
-    "builds": [
-        {
-            "src": "app.jsx",
-            "use": "@vercel/node"
-        }
-    ],
     "routes": [
         {
             "src": "/(.*)",
