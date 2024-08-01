@@ -9,26 +9,33 @@ const path = require("path")
 
 
 const app = express()
+app.use(express.json());
+app.use(cookieParser());
+
+
+
+app.use(cors({
+    origin: 'https://tiny-tiaraa.vercel.app',
+    credentials: true
+}));
+
+app.use("/", (req, res) => {
+    res.send("hello world")
+
+})
+app.use("/test", (req, res) => {
+    res.send("hello world")
+
+})
+
+app.use("/", express.static(path.join(__dirname, "./uploads")))
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+
 if (process.env.NODE_ENV !== "PRODUCTION") {
     require("dotenv").config({
         path: "config/.env"
     })
 }
-
-app.use(express.json());
-app.use(cookieParser());
-app.use(cors({
-    origin:  'https://tiny-tiaraa.vercel.app/',
-    credentials: true
-}));
-
-app.use("/uploads", express.static(path.join(__dirname,"./uploads")))
-app.use("/test", (req,res) => {
-    res.send("hello world")
-
-})
-
-app.use(bodyParser.urlencoded({ extended: true }));
 
 //routes
 
