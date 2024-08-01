@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: ['https://tiny-tiaraa.vercel.app/'],
+    origin: 'https://tiny-tiaraa.vercel.app/',
     credentials: true
 }));
 
