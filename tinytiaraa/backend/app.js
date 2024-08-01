@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 app.use("/", express.static(path.join(__dirname,"./uploads")))
-app.use("/test", (req,res) => {
+app.use("/", (req,res) => {
     res.send("hello world")
 
 })
