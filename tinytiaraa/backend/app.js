@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
 const cors = require('cors')
 const Razorpay = require("razorpay");
-
+const path = require("path")
 
 
 
@@ -22,8 +22,8 @@ app.use(cors({
     credentials: true
 }));
 
-app.use("/", express.static("uploads"))
-app.use("/", (req,res) => {
+app.use("/", express.static(path.join(__dirname,"./uploads")))
+app.use("/test", (req,res) => {
     res.send("hello world")
 
 })
