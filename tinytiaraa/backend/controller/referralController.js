@@ -366,7 +366,7 @@ exports.getUserReferralBalance = catchAsyncErrors(async (req, res, next) => {
 
 exports.deductReferralPoints = catchAsyncErrors(async (req, res, next) => {
     const { userId, points } = req.body;
-    
+
     console.log('Received userId:', userId); // Debugging line
     console.log('Received points:', points); // Debugging line
 
@@ -473,7 +473,7 @@ exports.getReferralById = catchAsyncErrors(async (req, res, next) => {
             .populate('referrer', 'name email')
             .populate('referredUsers', 'name email') // Populate referred user details
             .lean(); // Convert to plain JavaScript object for manipulation
-        
+
         if (!referral) {
             return res.status(404).json({
                 success: false,
@@ -505,7 +505,7 @@ exports.getUserReferralBalanceById = catchAsyncErrors(async (req, res, next) => 
     });
 });
 // exports.deductReferralPoints = async (req, res, next) => {
-    
+
 //     const { userId, points } = req.body;
 
 //     if (!userId || points === undefined) {
@@ -537,3 +537,14 @@ exports.getUserReferralBalanceById = catchAsyncErrors(async (req, res, next) => 
 //         return next(new ErrorHandler('Failed to deduct referral points', 500));
 //     }
 // };
+exports.getUserReferralCode = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+    if (!user) {
+        return next(new ErrorHandler('User not found', 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        referralCode: user.referralCode,  // Ensure 'referralCode' field exists in your User model
+    });
+});
