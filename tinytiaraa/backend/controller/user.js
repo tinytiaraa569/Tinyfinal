@@ -40,7 +40,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
             name: name,
             email: email,
             password: password,
-            // avatar: fileUrl,
+            avatar: fileUrl,
         }
         const activationToken = createActivationToken(user)
         const activationUrl = `https://tiny-tiaraa.vercel.app/activation/${activationToken}`
