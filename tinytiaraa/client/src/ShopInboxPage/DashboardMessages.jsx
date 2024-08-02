@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { format } from 'timeago.js'
 import socketIO from "socket.io-client";
-const ENDPOINT = "http://localhost:4000/";
+const ENDPOINT = "https://tinychatsocket.onrender.com/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 function DashboardMessages() {

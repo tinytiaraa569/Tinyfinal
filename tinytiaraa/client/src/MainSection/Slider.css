@@ -2,104 +2,127 @@
     width: 100%;
     height: 80vh;
     position: relative;
-}
-
-.slidersec img {
+  }
+  
+  .slidersec img {
     width: 100%;
     height: 100%;
-    
-}
-.slidersec .slidercontent{
+     /* This ensures the image fills the area without distortion */
+     object-fit: fill;
+  }
+  
+  .slidercontent {
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(45deg ,rgba(0, 0, 0, 0.313),rgba(0, 0, 0, 0.432) ,rgba(0, 0, 0, 0.361));
+    background-image: linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.313),
+      rgba(0, 0, 0, 0.432),
+      rgba(0, 0, 0, 0.361)
+    );
     position: absolute;
     top: 0;
-}
-
-.slidersec .slidercontent .slidercontentadjust{
-    width: 80%;
-    position: absolute;
-    top: 30%;
-    left: 5%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5%;
+  }
+  
+  .slidercontentadjust {
+    max-width: 600px;
+    color: white;
     font-family: "Poppins", sans-serif;
-
-}
-.slidersec .slidercontent .slidercontentadjust h1{
-    font-size: 80px;
-    color: white;
+  }
+  
+  .slidercontentadjust h1 {
+    font-size: 4vw; /* Responsive font size */
     font-weight: 600;
-}
-.slidersec .slidercontent .slidercontentadjust p{
-    width: 70%;
-    font-size: 20px;
-    color: white;
+  }
+  
+  .slidercontentadjust p {
+    font-size: 1.5vw;
     letter-spacing: 1px;
-
-
-}
-.slidersec .slidercontent .slidercontentadjust button{
+    margin-top: 1rem;
+  }
+  
+  .slidercontentadjust button {
     margin: 8px 0;
-   padding: 15px 25px;
-   background-color: black;
-   color: white;
-   border: none;
-   border-radius: 20px;
-   font-size: 20px;
-   letter-spacing: 2px;
-
-
-}
-.slick-prev {
-
-    left: 10px;
-}
-@media (max-width:969px) {
+    padding: 15px 25px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.5vw;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .slidercontentadjust button:hover {
+    background-color: #333; /* Slightly lighter color on hover */
+  }
+  
+  @media (max-width: 969px) {
+    .slidercontentadjust h1 {
+      font-size: 6vw;
+    }
+    .slidercontentadjust p {
+      font-size: 2.5vw;
+    }
+    .slidercontentadjust button {
+      font-size: 2vw;
+    }
+  }
+  
+  @media (max-width: 769px) {
+    .slidercontentadjust h1 {
+      font-size: 8vw;
+    }
+    .slidercontentadjust p {
+      font-size: 3vw;
+    }
+    .slidercontentadjust button {
+      font-size: 2.5vw;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .slidersec {
+      height: 60vh;
+    }
     .slidersec img {
-        object-fit: fill;
+      height: 60vh;
     }
-    .slidersec .slidercontent .slidercontentadjust{
-        top: 25%;
-        left: 5%;
-        font-family: "Poppins", sans-serif;
+    .slidercontentadjust h1 {
+      font-size: 10vw;
     }
-    .slidersec .slidercontent .slidercontentadjust h1{
-        font-size: 60px;
-        
+    .slidercontentadjust p {
+      font-size: 3.5vw;
     }
-
-}
-
-@media (max-width:769px) {
+    .slidercontentadjust button {
+      font-size: 3vw;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .slidersec {
+      height: 50vh;
+    }
     .slidersec img {
-        object-fit: fill;
+      height: 50vh;
     }
-    .slidersec .slidercontent .slidercontentadjust{
-        top: 20%;
-        left: 5%;
-        font-family: "Poppins", sans-serif;
+    .slidercontentadjust h1 {
+      font-size: 12vw;
     }
-    .slidersec .slidercontent .slidercontentadjust h1{
-        font-size: 45px;
-        
+    .slidercontentadjust p {
+      font-size: 4vw;
     }
-
-}
-@media (max-width:600px) {
-    
-    .slidersec .slidercontent .slidercontentadjust{
-        top: 20%;
-        left: 5%;
-        font-family: "Poppins", sans-serif;
+    .slidercontentadjust button {
+      font-size: 3.5vw;
     }
-    .slidersec .slidercontent .slidercontentadjust h1{
-        font-size: 35px;
-        
-    }
-
-}
-
-
+  }
+  
 
 .Categories h1 {
     padding: 20px 0;

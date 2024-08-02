@@ -9,7 +9,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineArrowRight, AiOutlineSend } from 'react-icons/ai';
 import { TfiGallery } from 'react-icons/tfi';
 import styles from '@/Styles/styles';
-const ENDPOINT = "http://localhost:4000/";
+const ENDPOINT = "https://tinychatsocket.onrender.com/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 function UserInbox() {

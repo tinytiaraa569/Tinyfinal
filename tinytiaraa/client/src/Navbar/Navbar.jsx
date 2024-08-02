@@ -21,7 +21,7 @@ function Navbar() {
     const [bars, setbars] = useState(false)
     const [active, setActive] = useState(false);
     const { cart } = useSelector((state) => state.cart)
-    const {wishlist} =useSelector((state) => state.wishlist)
+    const { wishlist } = useSelector((state) => state.wishlist)
 
 
     console.log(cart)
@@ -97,7 +97,7 @@ function Navbar() {
         <>
             <div className='Navbarmain'>
                 <div className='banner'>
-                    <p>Get ₹500 Off On Your First Order Of ₹5000 Or More! Use Coupon Code: FIRSTORDER</p>
+                    <p>Get ₹500 Off On Your First Order Of ₹5000 Or More! Use Coupon Code: Welcome500</p>
 
                 </div>
 
@@ -235,9 +235,9 @@ function Navbar() {
 
                             >
                                 <Badge badgeContent={wishlist && wishlist.length} color="primary">
-                                <AiOutlineHeart size={28} />
+                                    <AiOutlineHeart size={28} />
                                 </Badge>
-                                
+
                             </div>
                         </div>
 
@@ -273,8 +273,8 @@ function Navbar() {
                             navigate("/cart")
                             setbars(false)
                         }}>
-                            <Badge  badgeContent={cart && cart.length} color="primary" badgeContentClassName="custom-badge-content">
-                            <i className="fa-solid fa-cart-shopping"></i>
+                            <Badge badgeContent={cart && cart.length} color="primary" badgeContentClassName="custom-badge-content">
+                                <i className="fa-solid fa-cart-shopping"></i>
                             </Badge>
 
 

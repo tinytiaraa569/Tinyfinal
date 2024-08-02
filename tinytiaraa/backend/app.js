@@ -26,7 +26,7 @@ app.use("/test", (req, res) => {
 
 })
 
-app.use("/uploads", express.static(path.join(__dirname, "./uploads")))
+app.use("/", express.static(path.join(__dirname, "./uploads")))
 app.use(bodyParser.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV !== "PRODUCTION") {
