@@ -20,7 +20,11 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
 
         if (userEmail) {
             const filename = req.file.filename
+<<<<<<< HEAD
             const filePath = `uploads/${filename}`
+=======
+            const filePath = `https://tiny-tiaraa.vercel.app/uploads/${filename}`
+>>>>>>> 87a511e9162b703eaa627c502adb44615fc4dd45
             fs.unlink(filePath, (err) => {
                 if (err) {
                     console.log(err)
