@@ -1,7 +1,7 @@
 .ttclub{
-    margin: 20px 0;
+    /* margin: 20px 0; */
     width: 100%;
-    height: 70vh;
+    height: 80vh;
     font-family: "Poppins", sans-serif;
     text-align: center;
     background-color: #fff;
@@ -13,7 +13,7 @@
 .ttclubmain{
     overflow: hidden;
     width: 100%;
-    height: 70vh;
+    height: 80vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.322),rgba(0, 0, 0, 0.279),rgba(0, 0, 0, 0.284));
     position: absolute;
     top: 50%;
@@ -24,7 +24,10 @@
     align-items: center;
 }
 .ttclubmainadjust{
+    padding: 20px 50px;
+    background-color: #38373786;
     color: white;
+    border-radius: 20px;
 }
 
 .ttclub h1{
@@ -33,7 +36,7 @@
 }
 .ttclub video{
     width: 100%;
-    height: 70vh;
+    height: 80vh;
     object-fit: cover;
 }
 

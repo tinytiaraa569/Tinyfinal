@@ -70,6 +70,7 @@ import ReferPage from './Refer/ReferPage';
 import { captureReferralCode } from './Refer/captureReferralCode';
 import ShopAllReferral from './ShopAllReferral/ShopAllReferral';
 import ScrollReveal from "scrollreveal";
+import Navbar1 from './Navbar1/Navbar1';
 
 
 
@@ -202,7 +203,7 @@ function App() {
 
 
 
-      {!shouldHideNavbar && <Navbar />}
+      {!shouldHideNavbar && <Navbar1 />}
 
 
 

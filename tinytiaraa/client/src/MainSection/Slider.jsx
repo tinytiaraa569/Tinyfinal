@@ -3,9 +3,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Slider.css'
-import slider1 from './slider1.png'
+import slider1 from './sliderimages/slider1.png'
 // import slider2 from './slider2.png'
 // import slider3 from './slider3.png'
+import slider4 from './sliderimages/slider4.png'
+import slider5 from './sliderimages/slider5.jpg'
+import slider6 from './sliderimages/slider6.png'
+import slider7 from './sliderimages/slider7.png'
+ 
+
+
 
 
 
@@ -82,7 +89,7 @@ function SliderSection() {
         </div>
 
         <div className='slidersec'>
-          <img src="https://lirp.cdn-website.com/48f148a6/dms3rep/multi/opt/13-1920w.png" alt="" />
+          <img src={slider6} alt="" />
           {/* <div className="slidercontent">
             <div className='slidercontentadjust'>
 
@@ -95,7 +102,7 @@ function SliderSection() {
         </div>
 
         <div className='slidersec'>
-          <img src={slider1} alt="" className='object-fill' />
+          <img src={slider7} alt="" className='object-fill' />
           {/* <div className="slidercontent">
             <div className='slidercontentadjust'>
 
@@ -107,8 +114,8 @@ function SliderSection() {
           {/* </div> */}
 
         </div>
-        {/* <div className='slidersec'>
-        <img src={slider3} alt="" className='object-fill'/>
+        <div className='slidersec'>
+        <img src={slider4} alt="" className='object-fill'/>
 
           {/* <div className="slidercontent">
             <div className='slidercontentadjust'>
@@ -120,9 +127,9 @@ function SliderSection() {
 
           </div> */}
 
-        {/* </div> */}
+         </div>
         <div className='slidersec'>
-          <img src="https://lirp.cdn-website.com/48f148a6/dms3rep/multi/opt/Desktop+-+7-1920w.jpg" alt="" />
+          <img src={slider5} alt="" />
           {/* <div className="slidercontent">
             <div className='slidercontentadjust'>
 

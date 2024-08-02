@@ -27,7 +27,12 @@
         /* Adjust font size for smaller screens */
     }
 }
-
+@media (max-width: 1080px) {
+    .contactsec1section {
+        height: 70vh;
+        background-size: 100% 70vh;
+    }
+}
 @media (max-width: 850px) {
     .contactsec1con h1 {
         font-size: 6vw;
@@ -39,6 +44,10 @@
     .contactsec1con h1 {
         font-size: 7vw;
         /* Adjust font size for even smaller screens */
+    }
+    .contactsec1section {
+        height: 65vh;
+        background-size: 100% 65vh;
     }
 }
 

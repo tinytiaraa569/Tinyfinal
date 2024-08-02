@@ -1,6 +1,7 @@
 import React from 'react'
 import './Shipping.css'
 import { useNavigate } from 'react-router-dom'
+import shipping from './shipping.png'
 
 function Shippingpage() {
   const navigate = useNavigate()
@@ -11,7 +12,7 @@ function Shippingpage() {
 
       <div className="shippingcard">
         <div className="shippingimg">
-            <img src="https://lirp.cdn-website.com/48f148a6/dms3rep/multi/opt/TT+Deliver+Box-1920w.png" alt="" />
+            <img src={shipping} alt="" />
         </div>
         <div className="shippingcontent">
             <div className="shooingadjust">

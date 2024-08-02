@@ -9,6 +9,7 @@
     top: 0;
     z-index: 999;
 }
+
 .Navbar {
 
     padding: 8px 18px;
@@ -115,13 +116,14 @@
     top: 20%;
     left: 5%;
 } */
-.icons  .fa-cart-shopping{
+.icons .fa-cart-shopping {
     font-size: 27px;
 
 }
-.icons .serach input::placeholder{
+
+.icons .serach input::placeholder {
     /* padding: 0 25px; */
-    
+
 }
 
 .serach input {
@@ -130,6 +132,7 @@
     padding: 8px 20px; */
     font-family: "Poppins", sans-serif;
 }
+
 .serach input:focus {
     /* padding: 8px 20px; */
     /* box-shadow: 0px 2px 5px white; */
@@ -140,7 +143,8 @@
     background-color: #fdaf7e;
     text-align: center;
 }
-.Navbar .menu .active{
+
+.Navbar .menu .active {
     font-weight: 500;
     color: rgba(27, 184, 229, 1);
     /* border-bottom: 2px solid rgba(27, 184, 229, 1) ; */
@@ -151,19 +155,23 @@
     font-weight: 600;
     font-size: 16px;
 }
-.avtarprofile{
+
+.avtarprofile {
     font-family: "Poppins", sans-serif;
 
     font-size: 18px;
 }
-.menucontainerbox{
+
+.menucontainerbox {
     padding: 2px 10px;
     width: 160px;
 }
-.menuitemsstyle{
+
+.menuitemsstyle {
     cursor: pointer;
 }
-.menuitemsstyle a{
+
+.menuitemsstyle a {
     color: black;
     font-family: "Poppins", sans-serif;
     text-decoration: none;
@@ -171,58 +179,69 @@
 
 }
 
-.Navbar .productnavmaincategory{
+.Navbar .productnavmaincategory {
     width: 160px;
     position: absolute;
     top: 80%;
     background-color: #ffffff;
     color: black;
 }
-.Navbar .productnavmaincategory a{
+
+.Navbar .productnavmaincategory a {
     padding: 0;
     font-size: 15px;
 }
+
 .Navbar .productnavmaincategory li {
     padding: 8px 10px;
 }
-.productnavmaincategory{
-    display: none;
-}
-.parenthover:hover .productnavmaincategory{
-    display: block;
-}
-.subcatchild{
+
+.productnavmaincategory {
     display: none;
 }
 
-.subcatmain:hover .subcatchild{
+.parenthover:hover .productnavmaincategory {
     display: block;
 }
-.mobile-nav{
+
+.subcatchild {
     display: none;
 }
+
+.subcatmain:hover .subcatchild {
+    display: block;
+}
+
+.mobile-nav {
+    display: none;
+}
+
 
 @media (max-width:1300px) {
     .Navbar .logo img {
         width: 150px;
     }
+
     .Navbar .menu a {
         font-size: 16px;
-    }  
-    
+    }
+
 }
 
 
 @media (max-width:950px) {
-    .Navbarmain{
+    .Navbarmain {
         display: none;
     }
-    .mobile-nav{
+
+    .mobile-nav {
         display: block;
     }
-    .icons .serach{
-      display: none;
+
+    .icons .serach {
+        display: none;
     }
+
     .mobileresp {
         display: block;
     }
@@ -252,7 +271,7 @@
         left: 0%;
     }
 
-    
+
     .banner p {
         font-family: "Poppins", sans-serif;
         font-weight: 600;
@@ -271,6 +290,12 @@
 
     .serach input:focus {
         box-shadow: 0px 2px 5px white;
+    }
+
+    .chngcat{
+        position: absolute;
+        top: 100% !important;
+        left: 20% !important;
     }
 
     .banner {
