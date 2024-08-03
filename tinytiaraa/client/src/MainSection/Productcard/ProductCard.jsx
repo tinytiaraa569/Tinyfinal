@@ -85,7 +85,7 @@ function ProductCard({ data }) {
     // const caption = `Check out this amazing product: ${product.name}!`;
 
     console.log(product,"share data")
-    const url = `https://www.instagram.com/?url=https://www.tinytiaraa.com/product/Quality-Craftmanship-with-Q-Gold-Alphabet-Kids-Pendant`;
+    const url = `https://www.instagram.com/?url=https://tiny-tiaraa.vercel.app/product/${product_name}`;
     window.open(url, '_blank');
   };
   
@@ -105,7 +105,7 @@ function ProductCard({ data }) {
           </Link>
         </div>
         <Link href="">
-          <h4 className='pb-1 font-[500] text-center'>{data.name.length > 70 ? data.name.slice(0, 70) + "..." : data.name}</h4>
+          <h4 className='pb-1 font-[500]  text-center'>{data.name.length > 70 ? data.name.slice(0, 70) + "..." : data.name}</h4>
         </Link>
         <p className={`${styles.skuid}`}>{data.skuid}</p>
 
@@ -124,7 +124,7 @@ function ProductCard({ data }) {
           {/* <span className="font-[400] text-[14px] text-[#151816] font-Poppins">{data?.sold_out} Sold</span> */}
         </div>
         <div>
-          <div className='flex justify-center' onClick={()=>{navigate(`/product/${product_name}`)}}>
+          <div className='flex justify-center mb-2' onClick={()=>{navigate(`/product/${product_name}`)}}>
             <button className={`${styles.cart_button} ${styles.cart_button_text}`}>Buy Now</button>
 
           </div>

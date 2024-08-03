@@ -156,12 +156,12 @@ function Navbar1() {
                                 <i className="fa-solid fa-bars"></i>
                         }
                     </div>
-                    <div className='w-[45%]'>
+                    <div className='w-[45%] '>
                         <ul className='menu'>
                             <li><NavLink to="/" activeClassName="active">Home</NavLink></li>
                             <li><NavLink to="/about" activeClassName="active">Our Store</NavLink></li>
-
-                            <li className=' parenthover' ><NavLink to="/shop" activeClassName="active">Shop</NavLink>
+                            <span className=' parenthover' >
+                            <li ><NavLink to="/shop" activeClassName="active">Shop</NavLink>
 
                                 <div className='shopdrop shadow-sm`'>
                                     <div className='flex gap-5'>
@@ -248,6 +248,7 @@ function Navbar1() {
                                 </div>
 
                             </li>
+                            </span>
                             <li><NavLink to="/personalised-prosperity" activeClassName="active">Customization</NavLink></li>
                             <li><NavLink to="/contacts" activeClassName="active">Contact Us</NavLink></li>
                         </ul>
@@ -256,7 +257,7 @@ function Navbar1() {
 
 
                         <div>
-                            <div className="logo">
+                            <div className="logo py-1" onClick={()=>navigate("/")}>
                                 <img src="https://lirp.cdn-website.com/48f148a6/dms3rep/multi/opt/Tiny+Tiaraa_C5-1920w.png" alt="" />
                             </div>
                         </div>

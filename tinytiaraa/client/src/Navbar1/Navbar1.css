@@ -53,7 +53,7 @@
 }
 
 .navbar1 {
-    padding: 8px 18px;
+    padding: 5px 18px;
     color: black;
     background-color: #fff;
     display: flex;
@@ -119,19 +119,21 @@
 }
 
 .parenthover {
-    /* position: relative; */
+    overflow: hidden;
+    height: 65px;
+    display: flex;
+    align-items: center; /* Ensure the parent is hoverable */
 }
 
 .shopdrop {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    left: 0;
-    top: 100%;
+    position: absolute; /* Position relative to the parent */
+    top: 93%; /* Position right below the parent */
+    left: 0; /* Align with the left of the parent */
+    width: 100vw; /* Full width of the viewport */
     background-color: #fff;
     color: black;
     z-index: 999;
-    display: none;
+    display: none; /* Hide by default */
     border-top: 1px solid rgb(192, 192, 192);
     padding: 10px 20px;
     border-radius: 0 0 8px 8px;

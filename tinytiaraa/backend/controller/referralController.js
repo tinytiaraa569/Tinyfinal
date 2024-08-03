@@ -540,3 +540,27 @@ exports.getUserReferralBalanceById = catchAsyncErrors(async (req, res, next) => 
 //         return next(new ErrorHandler('Failed to deduct referral points', 500));
 //     }
 // };
+exports.getUserReferralCode = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.user._id); // or req.userId if using JWT
+
+    if (!user) {
+        return res.status(404).json({
+            success: false,
+            message: 'User not found',
+        });
+    }
+
+    const referral = await Referral.findOne({ referrer: user._id });
+
+    if (!referral) {
+        return res.status(404).json({
+            success: false,
+            message: 'Referral code not found',
+        });
+    }
+
+    res.status(200).json({
+        success: true,
+        referralCode: referral.referralCode,
+    });
+});
