@@ -20,40 +20,6 @@ function Signup() {
         window.scrollTo(0, 0)
     }, [])
     
-
-    const navigate = useNavigate()
-
-    const handleSubmit = (e) => {
-
-        e.preventDefault()
-
-        const config = {
-            headers: {
-                "Content-Type": "multipart/form-data"
-            }
-        }
-        const newForm = new FormData();
-        newForm.append("file", avatar);
-        newForm.append("name", name);
-        newForm.append("email", email);
-        newForm.append("password", password);
-
-
-        axios.post(`${server}/user/create-user`, newForm, config)
-        .then((res) => {
-            toast.success(res.data.message)
-            setName("")
-            setEmail("")
-            setPassword("")
-            setAvatar()
-
-        }).catch((error) => {
-            console.log(error)
-            toast.error(error.response.data.message)
-        })
-
-    }
-
     const handleFileInputChange = (e) => {
         const reader = new FileReader();
     
@@ -65,6 +31,27 @@ function Signup() {
     
         reader.readAsDataURL(e.target.files[0]);
       };
+
+    const navigate = useNavigate()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        axios
+          .post(`${server}/user/create-user`, { name, email, password, avatar })
+          .then((res) => {
+            toast.success(res.data.message);
+            setName("");
+            setEmail("");
+            setPassword("");
+            setAvatar();
+          })
+          .catch((error) => {
+            toast.error(error.response.data.message);
+          });
+      };
+
+    
 
 
     return (
