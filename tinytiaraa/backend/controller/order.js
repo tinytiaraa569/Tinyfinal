@@ -166,7 +166,7 @@ const Welcome = require("@react-email/components").default;
 //             </div>
 
 //             <div style="clear: both;">
-//                 <p>Dear ${user.name},</p>
+//                 <p>Dear ${shippingAddress.name},</p>
 //                 <p>We have received your Tiny Tiaraa order! Thank you for your purchase.</p>
 //             </div>
 
@@ -220,7 +220,7 @@ const Welcome = require("@react-email/components").default;
 //                 <div class="shippingaddress">
 //                     <h3>Shiping Address </h3>
 //                     <div style="padding-top: 10px;">
-//                         <p>${user.name}</p>
+//                         <p>${shippingAddress.name}</p>
 //                         <p>Email: ${shippingAddress.email}</p>
 //                         <p>${shippingAddress.address1}</p>
 //                         <p>${shippingAddress.address2}</p>
