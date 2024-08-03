@@ -1,24 +1,22 @@
-import React from 'react'
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import './Slider.css'
-import slider1 from './sliderimages/slider1.png'
-// import slider2 from './slider2.png'
-// import slider3 from './slider3.png'
-import slider4 from './sliderimages/slider4.png'
-import slider5 from './sliderimages/slider5.jpg'
-import slider6 from './sliderimages/slider6.png'
-import slider7 from './sliderimages/slider7.png'
-import firstimg from './sliderimages/first.png'
-import secondimg from './sliderimages/second.png'
-import thirdimg from './sliderimages/third.png'
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import './Slider.css';
 
-
-
+import slider1 from './sliderimages/slider1.png';
+// import slider2 from './slider2.png';
+// import slider3 from './slider3.png';
+import slider4 from './sliderimages/slider4.png';
+import slider5 from './sliderimages/slider5.jpg';
+import slider6 from './sliderimages/slider6.png';
+import slider7 from './sliderimages/slider7.png';
+import firstimg from './sliderimages/first.png';
+import secondimg from './sliderimages/second.png';
+import thirdimg from './sliderimages/third.png';
 
 function SliderSection() {
-  var settings = {
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -26,9 +24,8 @@ function SliderSection() {
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 2000, // Slightly slower autoplay speed for better visibility
     swipeToSlide: true,
-    // fade: true,
     responsive: [
       {
         breakpoint: 969,
@@ -36,8 +33,8 @@ function SliderSection() {
           slidesToShow: 1,
           slidesToScroll: 1,
           dots: true,
-          arrows: false
-        }
+          arrows: false,
+        },
       },
       {
         breakpoint: 769,
@@ -45,8 +42,8 @@ function SliderSection() {
           slidesToShow: 1,
           slidesToScroll: 1,
           dots: true,
-          arrows: false
-        }
+          arrows: false,
+        },
       },
       {
         breakpoint: 500,
@@ -54,59 +51,39 @@ function SliderSection() {
           slidesToShow: 1,
           slidesToScroll: 1,
           dots: true,
-          arrows: false
-        }
-      }
-    ]
+          arrows: false,
+        },
+      },
+    ],
   };
+
   return (
     <>
-      <Slider {...settings} >
-        <div className='slidersec'>
-          <img src={firstimg} alt="" />
-
-
+      <Slider {...settings}>
+        <div className="slidersec">
+          <img src={firstimg} alt="First Slide" />
         </div>
 
-        <div className='slidersec'>
-          <img src={thirdimg} alt="" />
+        <div className="slidersec">
+          <img src={thirdimg} alt="Third Slide" />
         </div>
-        <div className='slidersec'>
-          <img src={secondimg} alt="" />
-        </div>
-
-        <div className='slidersec'>
-          <img src={slider6} alt="" />
-
+        <div className="slidersec">
+          <img src={secondimg} alt="Second Slide" />
         </div>
 
-        <div className='slidersec'>
-          <img src={slider7} alt="" />
-
-
+        <div className="slidersec">
+          <img src={slider6} alt="Slider Six" />
         </div>
-        <div className='slidersec'>
-          <img src={slider4} alt="" />
 
-
-
+        <div className="slidersec">
+          <img src={slider7} alt="Slider Seven" />
         </div>
-        {/* <div className='slidersec'> */}
-        {/* <img src={slider5} alt="" /> */}
-        {/* <div className="slidercontent">
-            <div className='slidercontentadjust'>
-
-              <h1>Kids Gold Jewellery</h1>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores hic eum sit quos veniam! Culpa dignissimos rerum assumenda sequi placeat aperiam ducimus dolores ipsa dolor, vel maiores magnam deserunt repellat.</p>
-              <button>Shop Now</button>
-            </div>
-          </div> */}
-
-        {/* </div> */}
+        <div className="slidersec">
+          <img src={slider4} alt="Slider Four" />
+        </div>
       </Slider>
-
     </>
-  )
+  );
 }
 
-export default SliderSection
+export default SliderSection;
