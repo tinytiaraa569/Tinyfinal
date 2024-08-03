@@ -1,51 +1,72 @@
-import React from 'react'
+import React from 'react';
+import { FaUserPlus, FaLink, FaShareAlt, FaGift } from 'react-icons/fa';
 import './Safety.css'
-import highquality from './images/highquality.svg'
-import trydoll from './images/trydoll.png'
-import safe from './images/safe.svg'
-import allocasion from './images/allocasion.svg'
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
+const Safety = () => {
+  const { isAuthenticated, user, loading } = useSelector((state) => state.user)
+  const navigate = useNavigate()
+  
 
-function Safety() {
   return (
-    <div className='safety'>
-      <h1 className='text-[22px] font-[600]'>We Provide Safe and Unique Jewellery</h1>
-      <div className="safetymain">
-        <div className="saftycard">
-          <img style={{ width: 200, height: 200 }} src={highquality} alt="" />
-          <h3>High-Quality Materials</h3>
-          <p>Our jewellery is made from the highest quality gold and diamonds, ensuring that your child's jewellery will last for years to come.</p>
-        </div>
-        <div className="saftycard">
-          <img style={{ width: 200, height: 200 }} src={trydoll} alt="" />
-          <div className="saftycardcon">
-
-            <h3>Unique Designs</h3>
-            <p>Our jewellery is designed to be both elegant and playful, perfect for kids and infants. Each piece is unique, making it a special gift for your child.</p>
-          </div>
-        </div>
-        <div className="saftycard">
-          <img style={{ width: 200, height: 200 }} src={safe} alt="" />
-          <div className="saftycardcon">
-
-            <h3>Safe for Kids</h3>
-            <p>Our jewellery is designed with safety in mind, with features such as screw-back earrings and adjustable bracelets to ensure a secure fit.</p>
+    <div className="safetbg flex flex-col items-center p-10 rounded-lg shadow-xl text-black">
+      <h2 className="text-4xl font-extrabold mb-12 ">Referral Program</h2>
+      <div className="flex flex-wrap justify-center w-full max-w-7xl">
+        {/* Step 1: Sign Up */}
+        <div className="flex flex-col items-center w-full sm:w-1/2 lg:w-1/4 p-4 cursor-pointer" onClick={()=>{ isAuthenticated ? navigate("/referrals") : navigate("/sign-up")}}>
+          <div className="w-full h-full bg-white text-indigo-700 p-8 rounded-lg shadow-lg hover:shadow-2xl transform transition duration-300 hover:scale-105">
+            <div className="w-20 h-20 flex items-center justify-center bg-indigo-500 text-white rounded-full mb-6 mx-auto">
+              <FaUserPlus size={40} />
+            </div>
+            <h3 className="text-2xl font-semibold text-center">Sign Up</h3>
+            <p className="text-center text-gray-700 mt-4">
+              Create an account on our platform to get started.
+            </p>
           </div>
         </div>
 
-        <div className="saftycard">
-          <img style={{ width: 200, height: 200 }} src={allocasion} alt="" />
-          <div className="saftycardcon">
-
-            <h3>Perfect for All Occasions</h3>
-            <p>Whether it's a special occasion or just a day out with the family, our jewellery is the perfect addition to any outfit. With a range of designs and styles to choose from, there's something for every child.</p>
+        {/* Step 2: Generate Link */}
+        <div className="flex flex-col items-center w-full sm:w-1/2 lg:w-1/4 p-4 cursor-pointer">
+          <div className="w-full h-full bg-white text-indigo-700 p-8 rounded-lg shadow-lg hover:shadow-2xl transform transition duration-300 hover:scale-105">
+            <div className="w-20 h-20 flex items-center justify-center bg-indigo-500 text-white rounded-full mb-6 mx-auto">
+              <FaLink size={40} />
+            </div>
+            <h3 className="text-2xl font-semibold text-center">Generate Link</h3>
+            <p className="text-center text-gray-700 mt-4">
+              Generate your unique referral link from your dashboard.
+            </p>
           </div>
         </div>
 
+        {/* Step 3: Share */}
+        <div className="flex flex-col items-center w-full sm:w-1/2 lg:w-1/4 p-4 cursor-pointer">
+          <div className="w-full h-full bg-white text-indigo-700 p-8 rounded-lg shadow-lg hover:shadow-2xl transform transition duration-300 hover:scale-105">
+            <div className="w-20 h-20 flex items-center justify-center bg-indigo-500 text-white rounded-full mb-6 mx-auto">
+              <FaShareAlt size={40} />
+            </div>
+            <h3 className="text-2xl font-semibold text-center">Share</h3>
+            <p className="text-center text-gray-700 mt-4">
+              Share your referral link with your friends and family.
+            </p>
+          </div>
+        </div>
 
+        {/* Step 4: Get Reward */}
+        <div className="flex flex-col items-center w-full sm:w-1/2 lg:w-1/4 p-4 cursor-pointer">
+          <div className="w-full h-full bg-white text-indigo-700 p-8 rounded-lg shadow-lg hover:shadow-2xl transform transition duration-300 hover:scale-105">
+            <div className="w-20 h-20 flex items-center justify-center bg-indigo-500 text-white rounded-full mb-6 mx-auto">
+              <FaGift size={40} />
+            </div>
+            <h3 className="text-2xl font-semibold text-center">Get Reward</h3>
+            <p className="text-center text-gray-700 mt-4">
+              Earn ₹200 for each successful order placed through your link.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Safety
+export default Safety;

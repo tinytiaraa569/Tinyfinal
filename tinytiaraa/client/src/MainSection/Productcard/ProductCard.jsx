@@ -84,7 +84,7 @@ function ProductCard({ data }) {
   const shareOnInstagram = (product) => {
     // const caption = `Check out this amazing product: ${product.name}!`;
 
-    // console.log(caption)
+    console.log(product,"share data")
     const url = `https://www.instagram.com/?url=https://www.tinytiaraa.com/product/Quality-Craftmanship-with-Q-Gold-Alphabet-Kids-Pendant`;
     window.open(url, '_blank');
   };
@@ -94,7 +94,7 @@ function ProductCard({ data }) {
     <div className='parentsinglecrd'>
 
 
-      <div className="parentproductcard w-full h-[370px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden " onMouseLeave={handleMouseLeave}>
+      <div className="parentproductcard w-full h-[370px] pb-4 bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden " onMouseLeave={handleMouseLeave}>
         <div className="flex justify-end "></div>
 
         <div className='w-full h-[170px] overflow-hidden'>
@@ -173,15 +173,15 @@ function ProductCard({ data }) {
 
             {showShareIcons && (
               <div className="share-icons absolute top-28 right-0 mt-4 flex gap-[4px] p-2  rounded-md z-10">
-                <FacebookShareButton url={"https://www.tinytiaraa.com/product/Quality-Craftmanship-with-Q-Gold-Alphabet-Kids-Pendant"} onClick={closeShareIcons} >
+                <FacebookShareButton url={`https://tiny-tiaraa.vercel.app/product/${product_name}`} onClick={closeShareIcons} >
                   <FacebookIcon size={32} round={true} />
                 </FacebookShareButton>
 
-                <WhatsappShareButton url={`http://localhost:5173/product/${product_name}`} onClick={closeShareIcons} >
+                <WhatsappShareButton url={`https://tiny-tiaraa.vercel.app/product/${product_name}`} onClick={closeShareIcons} >
                   <WhatsappIcon size={32} round={true} />
                 </WhatsappShareButton>
 
-                <EmailShareButton url={"https://www.tinytiaraa.com/product/Quality-Craftmanship-with-Q-Gold-Alphabet-Kids-Pendant"} onClick={closeShareIcons} >
+                <EmailShareButton url={`https://tiny-tiaraa.vercel.app/product/${product_name}`} onClick={closeShareIcons} >
                   <EmailIcon size={32} round={true} />
                 </EmailShareButton>
 

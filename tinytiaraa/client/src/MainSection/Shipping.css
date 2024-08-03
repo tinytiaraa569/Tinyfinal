@@ -21,7 +21,7 @@
 .shippingcard{
     margin: 10px 0;
     width: 100%;
-    height: 80vh;
+    height: 70vh;
     display: flex;
     background-color: rgb(243, 242, 242);
 }
@@ -33,7 +33,8 @@
     width: 100%;
     height: 99%;
     border-radius: 12px;
-    box-shadow: 4px 2px 8px black;
+    object-fit: fill;
+    box-shadow: 4px 2px 8px rgba(0, 0, 0, 0.527);
 }
 .shippingcard .shippingcontent{
     font-family: "Poppins", sans-serif;

@@ -6,21 +6,24 @@ import { useNavigate } from 'react-router-dom'
 
 function LoginPage() {
   const { isAuthenticated } = useSelector((state) => state.user)
-  
+
   const navigate = useNavigate()
   // useEffect(()=>{
   //   if(isAuthenticated === true){
   //     navigate("/")
   //   }
   // },[])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className='loginpage'>
       {
         isAuthenticated ?
-        (navigate("/"))
-        :
-        <Login />
+          (navigate("/"))
+          :
+          <Login />
 
       }
     </div>

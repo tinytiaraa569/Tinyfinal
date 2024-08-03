@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import LoginPage from '../Component/LoginPage'
 import styles from '../Styles/styles'
@@ -8,22 +8,27 @@ import { server } from '../server'
 import { toast } from 'react-toastify'
 
 function Login() {
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [visible, setVisible] = useState(false)
     const navigate = useNavigate()
 
-    const handleSubmit = async (e) =>{
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await axios.post(`${server}/user/login-user`,{
+        await axios.post(`${server}/user/login-user`, {
             email,
             password
-        },{withCredentials:true}).then((res)=>{
+        }, { withCredentials: true }).then((res) => {
             toast.success("Login success!")
             navigate("/")
 
-        }).catch((error)=>{
+        }).catch((error) => {
             console.log(error)
             toast.error(error.message)
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { RxAvatar } from 'react-icons/rx'
 import LoginPage from '../Component/LoginPage'
@@ -15,6 +15,11 @@ function Signup() {
     const [password, setPassword] = useState("")
     const [visible, setVisible] = useState(false)
     const [avatar, setAvatar] = useState(null)
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+    
 
     const navigate = useNavigate()
 

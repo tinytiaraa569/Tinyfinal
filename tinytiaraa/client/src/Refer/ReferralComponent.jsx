@@ -9,36 +9,7 @@ const ReferralComponent = () => {
     const [error, setError] = useState('');
 
 
-
-    useEffect(() => {
-        // Fetch the referral code for the logged-in user
-        const fetchReferralCode = async () => {
-            try {
-                const response = await axios.get('https://tinytiaraa.vercel.app/api/v2/referral/user/referral-code', { withCredentials: true });
-                const { referralCode } = response.data;
-
-                console.log(response.data,"Code generated")
-
-                if (referralCode) {
-                    // Generate the referral link
-                    const newReferralLink = `https://tiny-tiaraa.vercel.app/?referral=${referralCode}`;
-
-                    // Save to localStorage
-                    localStorage.setItem('referralCode', referralCode);
-                    localStorage.setItem('referralLink', newReferralLink);
-
-                    // Update the state
-                    setReferralCode(referralCode);
-                    setReferralLink(newReferralLink);
-                }
-            } catch (error) {
-                console.error('Error fetching referral code:', error);
-                // Handle error, e.g., show a message to the user
-            }
-        };
-
-        fetchReferralCode();
-    }, []);
+    
 
     useEffect(() => {
         // Retrieve the referral code and link from localStorage if they exist

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { isAuthenticated, isSeller } = require('../middleware/auth');
-const { generateReferralCode, handleReferral, validateReferralCode, getReferrals, updateReferralBalances, getUserReferralBalance, deductReferralPoints, deductUserPoints, getAllReferrals, getReferralById, getUserReferralBalanceById, getUserReferralCode } = require('./referralController');
+const { generateReferralCode, handleReferral, validateReferralCode, getReferrals, updateReferralBalances, getUserReferralBalance, deductReferralPoints, deductUserPoints, getAllReferrals, getReferralById, getUserReferralBalanceById } = require('./referralController');
 const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 
 router.post('/generate-referral-code', isAuthenticated, generateReferralCode);
@@ -18,7 +18,6 @@ router.get('/all-referrals', isSeller, getAllReferrals);
 router.get('/referral/:id', isSeller, getReferralById);
 router.get('/referral-balance/:userId', getUserReferralBalanceById);
 
-router.get('/user/referral-code', isAuthenticated, getUserReferralCode);
 
 
 

@@ -10,6 +10,9 @@ exports.generateReferralCode = catchAsyncErrors(async (req, res, next) => {
     if (!user) return next(new ErrorHandler('User not found', 404));
 
     const referralCode = `REF-${user._id.toString().slice(-6).toUpperCase()}`;
+    // Update the user with the generated referral code
+    // user.referralCode = referralCode;
+    // await user.save();
 
     // Create a new referral entry
     const newReferral = await Referral.create({
@@ -537,14 +540,3 @@ exports.getUserReferralBalanceById = catchAsyncErrors(async (req, res, next) => 
 //         return next(new ErrorHandler('Failed to deduct referral points', 500));
 //     }
 // };
-exports.getUserReferralCode = catchAsyncErrors(async (req, res, next) => {
-    const user = await User.findById(req.user.id);
-    if (!user) {
-        return next(new ErrorHandler('User not found', 404));
-    }
-
-    res.status(200).json({
-        success: true,
-        referralCode: user.referralCode,  // Ensure 'referralCode' field exists in your User model
-    });
-});
