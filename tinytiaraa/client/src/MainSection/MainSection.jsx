@@ -18,7 +18,7 @@ function MainSection() {
       <Categories />
       <Shippingpage />
       <WhyPage />
-      <MorePage />
+      {/* <MorePage /> */}
       <Customise />
       <NewArrivals />
       <Safety />

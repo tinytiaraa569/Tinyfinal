@@ -14,12 +14,13 @@ import { useSelector } from 'react-redux';
 import Badge from '@mui/material/Badge';
 
 import { AiOutlineHeart } from 'react-icons/ai';
-import { CgProfile } from 'react-icons/cg';
+import { CgProfile, CgSearch } from 'react-icons/cg';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { RxCross1 } from 'react-icons/rx';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import DropDown from '@/Navbar/DropDown';
 import { backend_url } from '@/server';
+import { LuUserCircle2 } from 'react-icons/lu';
 
 
 function Navbar1() {
@@ -96,9 +97,9 @@ function Navbar1() {
         setbars(false);
     };
 
-    const openclosewhislist =() =>{
+    const openclosewhislist = () => {
         setOpen(false);
-         setOpenWishlist(true)
+        setOpenWishlist(true)
     }
     return (
         <>
@@ -161,93 +162,93 @@ function Navbar1() {
                             <li><NavLink to="/" activeClassName="active">Home</NavLink></li>
                             <li><NavLink to="/about" activeClassName="active">Our Store</NavLink></li>
                             <span className=' parenthover' >
-                            <li ><NavLink to="/shop" activeClassName="active">Shop</NavLink>
+                                <li ><NavLink to="/shop" activeClassName="active">Shop</NavLink>
 
-                                <div className='shopdrop shadow-sm`'>
-                                    <div className='flex gap-5'>
+                                    <div className='shopdrop shadow-sm`'>
+                                        <div className='flex gap-5'>
 
-                                        <div className='navshopimg mt-5 ml-10'>
-                                            <img src={navimg} alt="" className='shadow' />
-                                        </div>
+                                            <div className='navshopimg mt-5 ml-10'>
+                                                <img src={navimg} alt="" className='shadow' />
+                                            </div>
 
-                                        <div className='mt-5 '>
-                                            <div className='borderright'>
+                                            <div className='mt-5 '>
+                                                <div className='borderright'>
+                                                    <div className='mb-2'>
+                                                        <h3 className='font-[500]'>Collection</h3>
+                                                    </div>
+
+                                                    <h6 className='pb-2 collectionnav1'>Baby (0-3 Yrs)</h6>
+                                                    <h6 className='pb-2 collectionnav1'>Kids (3-10 Yrs)</h6>
+                                                    <h6 className='pb-2 collectionnav1'>Teens</h6>
+                                                    <h6 className='pb-2 collectionnav1'>Mom & Me</h6>
+                                                    <h6 className='pb-2 collectionnav1'>Customization</h6>
+                                                    <h6 className='pb-2 collectionnav1'>Gifts</h6>
+                                                    <h6 className='pb-2 collectionnav1'>Gallery </h6>
+                                                    <h6 className='pb-2 collectionnav1'>Media</h6>
+
+
+
+                                                </div>
+
+
+                                            </div>
+                                            <div className='mt-5 ml-4'>
                                                 <div className='mb-2'>
-                                                    <h3 className='font-[500]'>Collection</h3>
+                                                    <h3 className='font-[500]'>By Age </h3>
                                                 </div>
 
                                                 <h6 className='pb-2 collectionnav1'>Baby (0-3 Yrs)</h6>
                                                 <h6 className='pb-2 collectionnav1'>Kids (3-10 Yrs)</h6>
                                                 <h6 className='pb-2 collectionnav1'>Teens</h6>
-                                                <h6 className='pb-2 collectionnav1'>Mom & Me</h6>
-                                                <h6 className='pb-2 collectionnav1'>Customization</h6>
-                                                <h6 className='pb-2 collectionnav1'>Gifts</h6>
-                                                <h6 className='pb-2 collectionnav1'>Gallery </h6>
-                                                <h6 className='pb-2 collectionnav1'>Media</h6>
-
+                                                <h6 className='pb-2 collectionnav1'>Mom & Me <span className='text-[red]'> | New</span></h6>
 
 
                                             </div>
 
-
-                                        </div>
-                                        <div className='mt-5 ml-4'>
-                                            <div className='mb-2'>
-                                                <h3 className='font-[500]'>By Age </h3>
-                                            </div>
-
-                                            <h6 className='pb-2 collectionnav1'>Baby (0-3 Yrs)</h6>
-                                            <h6 className='pb-2 collectionnav1'>Kids (3-10 Yrs)</h6>
-                                            <h6 className='pb-2 collectionnav1'>Teens</h6>
-                                            <h6 className='pb-2 collectionnav1'>Mom & Me <span className='text-[red]'> | New</span></h6>
-
-
-                                        </div>
-
-                                        <div className='mt-5 ml-7'>
-                                            <div className='mb-2 '>
-                                                <h3 className='font-[500]'>By Category</h3>
-                                            </div>
-                                            <div>
-                                                {
-                                                    categoriesData && categoriesData.map((i, index) => {
-                                                        // console.log(i.subcategories)
-                                                        return (
-                                                            <>
-                                                                <div key={index} className={`subcatmain ${styles.noramlFlex} relative`} onClick={() => { submitHandle(i) }}>
-                                                                    <img src={i.image_Url} alt="" style={{ width: "35px", height: "45px", objectFit: "contain", userSelect: "none" }} />
-                                                                    <h3 className='m-1 cursor-pointer select-none font-Poppins hover:text-[#1BB8E5]'>{i.title}</h3>
+                                            <div className='mt-5 ml-7'>
+                                                <div className='mb-2 '>
+                                                    <h3 className='font-[500]'>By Category</h3>
+                                                </div>
+                                                <div>
+                                                    {
+                                                        categoriesData && categoriesData.map((i, index) => {
+                                                            // console.log(i.subcategories)
+                                                            return (
+                                                                <>
+                                                                    <div key={index} className={`subcatmain ${styles.noramlFlex} relative`} onClick={() => { submitHandle(i) }}>
+                                                                        <img src={i.image_Url} alt="" style={{ width: "35px", height: "45px", objectFit: "contain", userSelect: "none" }} />
+                                                                        <h3 className='m-1 cursor-pointer select-none font-Poppins hover:text-[#1BB8E5]'>{i.title}</h3>
 
 
-                                                                    <div className={`subcatchild top-3 left-[100%]  pb-4 w-[250px] bg-[#fff] absolute z-30 rounded-b-md shadow-sm`}>
-                                                                        {
-                                                                            i.subcategories.map((val) => {
-                                                                                return (
-                                                                                    <div>
-                                                                                        <h3 className='m-3 cursor-pointer select-none font-Poppins hover:text-[#1BB8E5]'>{val.name}</h3>
-                                                                                    </div>
-                                                                                )
+                                                                        <div className={`subcatchild top-3 left-[100%]  pb-4 w-[250px] bg-[#fff] absolute z-30 rounded-b-md shadow-sm`}>
+                                                                            {
+                                                                                i.subcategories.map((val) => {
+                                                                                    return (
+                                                                                        <div>
+                                                                                            <h3 className='m-3 cursor-pointer select-none font-Poppins hover:text-[#1BB8E5]'>{val.name}</h3>
+                                                                                        </div>
+                                                                                    )
 
-                                                                            })
-                                                                        }
+                                                                                })
+                                                                            }
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                            </>
-                                                        )
+                                                                </>
+                                                            )
 
-                                                    })
-                                                }
+                                                        })
+                                                    }
+                                                </div>
+
+
                                             </div>
-
-
                                         </div>
+
                                     </div>
 
-                                </div>
-
-                            </li>
+                                </li>
                             </span>
                             <li><NavLink to="/personalised-prosperity" activeClassName="active">Customization</NavLink></li>
                             <li><NavLink to="/contacts" activeClassName="active">Contact Us</NavLink></li>
@@ -257,16 +258,20 @@ function Navbar1() {
 
 
                         <div>
-                            <div className="logo py-1" onClick={()=>navigate("/")}>
+                            <div className="logo py-1" onClick={() => navigate("/")}>
                                 <img src="https://lirp.cdn-website.com/48f148a6/dms3rep/multi/opt/Tiny+Tiaraa_C5-1920w.png" alt="" />
                             </div>
                         </div>
 
 
                         <div className='flex gap-[10px] items-center'>
-                            <div>
-                                <FaSearch size={23} className='iconnav' />
+                            <div className={`${styles.noramlFlex}`}>
+                                <div className="relative cursor-pointer mr-[2px]">
+                                    {/* <FaSearch size={23} className='iconnav' /> */}
+                                    <CgSearch size={28} className='mt-1' />
+                                </div>
                             </div>
+
 
                             {/* wishlist */}
                             <div className={`${styles.noramlFlex}`}>
@@ -300,7 +305,8 @@ function Navbar1() {
                                         isAuthenticated ?
                                             (
                                                 <Link to="/profile">
-                                                    <CgProfile size={30} />
+                                                    {/* <CgProfile size={30} /> */}
+                                                    <LuUserCircle2 size={28}/>
 
                                                     {/* <img className='w-[35px] h-[35px] rounded-full' src={`${backend_url}${user.avatar}`} alt="" /> */}
                                                 </Link>
@@ -308,7 +314,9 @@ function Navbar1() {
                                             :
                                             (
                                                 <Link to="/login">
-                                                    <CgProfile size={30} />
+                                                    <LuUserCircle2 size={28}/>
+
+                                                    {/* <CgProfile size={30} /> */}
                                                 </Link>)
                                     }
 
@@ -388,7 +396,7 @@ function Navbar1() {
 
 
 
-                                        <div className="mt-5 ml-5 mr-[15px]" onClick={()=>openclosewhislist()}>
+                                        <div className="mt-5 ml-5 mr-[15px]" onClick={() => openclosewhislist()}>
                                             <Badge badgeContent={wishlist && wishlist.length} color="primary">
                                                 <AiOutlineHeart size={30} />
                                             </Badge>

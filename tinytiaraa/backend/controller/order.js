@@ -562,7 +562,7 @@ router.post(
             1: "Rose Gold",
             2: "White Gold",
         };
-        const backend_url = "http://localhost:8000/"
+        const backend_url = "https://tinytiaraa.vercel.app/"
 
         const htmlContent = `
                 <html>
@@ -696,7 +696,7 @@ router.post(
                     </div>
         
                     <div style="clear: both;">
-                        <p>Dear ${user.name},</p>
+                        <p>Dear ${shippingAddress.name},</p>
                         <p>We have received your Tiny Tiaraa order! Thank you for your purchase.</p>
                     </div>
         
@@ -750,7 +750,7 @@ router.post(
                         <div class="shippingaddress">
                             <h3>Shiping Address </h3>
                             <div style="padding-top: 10px;">
-                                <p>${user.name}</p>
+                                <p>${shippingAddress.name}</p>
                                 <p>Email: ${shippingAddress.email}</p>
                                 <p>${shippingAddress.address1}</p>
                                 <p>${shippingAddress.address2}</p>
@@ -865,7 +865,7 @@ router.post(
 
             try {
                 await sendOrder({
-                    email: user.email,
+                    email: user ? user.email : shippingAddress.email,
                     subject: "Order Confirmation mail",
                     html: htmlContent
 
