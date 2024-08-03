@@ -280,7 +280,7 @@ function ProductDetails({ data }) {
                         <div className='w-full py-5'>
                             <div className='flex w-full 800px:flex flex-col sm:flex-row'>
                                 <div className="w-full 800px:w-[50%] mr-5">
-                                
+
                                     {select !== null && (
                                         selectedColor === 0 && data.MetalColor.YellowGoldclr ? (
                                             <img
@@ -763,64 +763,71 @@ const ProductDetailsInfo = ({ data }) => {
 
 
 
-                        <div className=" w-full mt-3 moreinfoproduct bg-white rounded-lg shadow-sm ">
-                            <div className="moreinfosec py-[20px] flex justify-center gap-10 800px:gap-2">
-                                <div className='flex flex-col justify-center text-center'>
-                                    <span className='flex justify-center '>
-                                        <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#e8ffda", borderRadius: "50%" }}>
+                        <div className="w-full mt-3 moreinfoproduct bg-white rounded-lg shadow-sm">
+                            <div className="moreinfosec py-[20px] flex flex-wrap justify-center gap-4 md:gap-10">
+                                <div className="flex flex-col justify-center items-center text-center w-1/2 md:w-auto">
+                                    <span className="flex justify-center">
+                                        <span
+                                            className="w-[50px] h-[50px] flex justify-center items-center"
+                                            style={{ backgroundColor: '#e8ffda', borderRadius: '50%' }}
+                                        >
                                             <MdOutlineVerified size={25} />
                                         </span>
                                     </span>
-                                    <span className='font-Poppins text-[1rem] '>
+                                    <span className="font-Poppins text-[1rem]">
                                         100% Certified
                                     </span>
                                 </div>
 
-                                <div className='text-center'>
-                                    <span className='flex justify-center '>
-                                        <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#dbecff", borderRadius: "50%" }}>
-
+                                <div className="flex flex-col justify-center items-center text-center w-1/2 md:w-auto">
+                                    <span className="flex justify-center">
+                                        <span
+                                            className="w-[50px] h-[50px] flex justify-center items-center"
+                                            style={{ backgroundColor: '#dbecff', borderRadius: '50%' }}
+                                        >
                                             <RiRefund2Line size={25} />
                                         </span>
-
                                     </span>
-                                    <span className='font-Poppins text-[1rem] 800px:text-center'>
+                                    <span className="font-Poppins text-[1rem]">
                                         7 Days Money-Back
                                     </span>
                                 </div>
 
-
-
-                                <div className='text-center'>
-                                    <span className='flex justify-center '>
-                                        <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#fff9ca", borderRadius: "50%" }}>
-
+                                <div className="flex flex-col justify-center items-center text-center w-1/2 md:w-auto">
+                                    <span className="flex justify-center">
+                                        <span
+                                            className="w-[50px] h-[50px] flex justify-center items-center"
+                                            style={{ backgroundColor: '#fff9ca', borderRadius: '50%' }}
+                                        >
                                             <RiExchangeFundsLine size={25} />
                                         </span>
-
                                     </span>
-                                    <span className=' font-Poppins text-[1rem] '>
+                                    <span className="font-Poppins text-[1rem]">
                                         Lifetime Exchange
                                     </span>
                                 </div>
 
-
-
-                                <div className='text-center'>
-                                    <span className='flex justify-center items-center'>
-                                        <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#ffe1e3", borderRadius: "50%" }}>
-
+                                <div className="flex flex-col justify-center items-center text-center w-1/2 md:w-auto">
+                                    <span className="flex justify-center items-center">
+                                        <span
+                                            className="w-[50px] h-[50px] flex justify-center items-center"
+                                            style={{ backgroundColor: '#ffe1e3', borderRadius: '50%' }}
+                                        >
                                             <CiCalendarDate size={25} />
                                         </span>
                                     </span>
-                                    <span className='font-Poppins text-[1rem] '>
+                                    <span className="font-Poppins text-[1rem]">
                                         One Year Warranty
                                     </span>
                                 </div>
-
-
                             </div>
-                            <p className='text-center text-[15px] font-[300] pb-4 font-Poppins text-[#333] mt-3'>Learn more on about our <Link className='text-[#4d9dbd]' to="/terms-and-conditions">TERMS & POLICIES</Link></p>
+
+                            <p className="text-center text-[15px] font-[300] pb-4 font-Poppins text-[#333] mt-3">
+                                Learn more about our{' '}
+                                <Link className="text-[#4d9dbd]" to="/terms-and-conditions">
+                                    TERMS & POLICIES
+                                </Link>
+                            </p>
                         </div>
 
                     </>
@@ -873,8 +880,8 @@ const ProductDetailsInfo = ({ data }) => {
 
         </div>
 
-        
-        
+
+
     )
 }
 export default ProductDetails

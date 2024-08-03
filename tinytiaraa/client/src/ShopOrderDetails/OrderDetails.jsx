@@ -149,6 +149,7 @@ function OrderDetails() {
             <div className="w-full flex justify-between items-center">
                 <div className='w-[60%] '>
                     <h4 className='pt-3 text-[20px] font-[600]'>Shipping Address</h4>
+                    <h4 className='pt-3 text-[18px] text-[#000b]'>{data?.shippingAddress.name}</h4>
                     <h4 className='pt-3 text-[18px] text-[#000b]'>{data?.shippingAddress.address1}</h4>
                     <h4 className='pt-1 text-[18px] text-[#000b]'>{data?.shippingAddress.address2}</h4>
                     <h4 className='pt-1 text-[18px] text-[#000b]'>{data?.shippingAddress.city}</h4>
