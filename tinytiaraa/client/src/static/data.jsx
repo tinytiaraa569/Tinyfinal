@@ -1,4 +1,6 @@
 // navigation Data
+import religiousimg from './religious.jpg'
+
 export const navItems = [
   {
     title: "Home",
@@ -280,7 +282,7 @@ export const categoriesData = [
     id: 7,
     title: "Religious Collections",
     subTitle: "",
-    bannerimg: "https://www.tanishq.co.in/on/demandware.static/-/Sites-Tanishq-product-catalog/default/dw65fd7088/images/hi-res/50D1D1VEM1S02_1.jpg",
+    bannerimg: religiousimg,
 
     image_Url: "https://d2j6dbq0eux0bg.cloudfront.net/images/90976509/4320761225.png",
     subcategories: [

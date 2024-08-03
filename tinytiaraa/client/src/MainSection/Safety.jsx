@@ -65,6 +65,10 @@ const Safety = () => {
           </div>
         </div>
       </div>
+
+      <div className='refbtn'>
+        <button>Join Us</button>
+      </div>
     </div>
   );
 };

@@ -17,8 +17,11 @@ function Shippingpage() {
         <div className="shippingcontent">
             <div className="shooingadjust">
             <h2>Fast, Reliable, and Hassle-Free Delivery Services</h2>
-            <p>Get your orders where they need to be at lightning speed. Our express service guarantees delivery within 48 Hours*(T&C).</p>
+            <p>Get your orders where they need to be at lightning speed. Our express service guarantees shipping within 48 Hours*(T&C).</p>
+            <div className='flex justify-center'>
             <button onClick={()=>{navigate("/shop")}}>Shop Now</button>
+
+            </div>
             </div>
 
         </div>

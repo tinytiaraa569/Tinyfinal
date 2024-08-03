@@ -2,3 +2,23 @@
   background-image:  url(referbg.jpg);
   background-size: 100% 50vh;
 } */
+.refbtn{
+  margin-top: 10px;
+}
+.refbtn button{
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  padding: 14px 25px;
+  background-color: #7b7df3;
+  border: none;
+  border-radius: 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.refbtn button:hover{
+  
+  background-color: rgb(72, 126, 206);
+ 
+
+}
