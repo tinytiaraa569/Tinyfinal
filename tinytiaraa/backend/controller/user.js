@@ -21,9 +21,9 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
         if (userEmail) {
             const filename = req.file.filename
 
-            const filePath = `https://tinytiaraa.vercel.app/uploads/${filename}`
+            const filePath = `uploads/${filename}`
 
-
+           
 
             fs.unlink(filePath, (err) => {
                 if (err) {
@@ -377,11 +377,11 @@ router.get(
 router.get("/user-details/:id", isAuthenticated, catchAsyncErrors(async (req, res, next) => {
     try {
         const user = await User.findById(req.params.id).select('name email');
-
+        
         if (!user) {
             return next(new ErrorHandler("User not found", 404));
         }
-
+        
         res.status(200).json({
             success: true,
             user,
