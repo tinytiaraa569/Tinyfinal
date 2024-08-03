@@ -13,7 +13,7 @@ const { isAuthenticated } = require('../middleware/auth')
 const cloudinary = require("cloudinary");
 
 
-router.post("/create-user", upload.single("file"), async (req, res, next) => {
+router.post("/create-user", async (req, res, next) => {
     try {
         const { name, email, password } = req.body;
 
