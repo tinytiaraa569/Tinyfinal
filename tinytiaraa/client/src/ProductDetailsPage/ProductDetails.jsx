@@ -605,439 +605,276 @@ const ProductDetailsInfo = ({ data }) => {
 
 
     return (
-        // <div className='bg-[#fafafa] mb-5 px-10 800px:px-2 py-2 rounded pb-5'>
-        //     <div className="w-full flex justify-between border-b pt-10 pb-2">
-        //         <div className="relative">
-        //             <h5 className={`${active === 1 ? "text-[#1BB8E5] font-[700]" : "text-[#000]"} text-[18px]  px-1 leading-5 cursor-pointer 800px:text-[20px] font-Poppins `} onClick={() => setActive(1)} >Product Details</h5>
-        //             {/* {
-        //             active === 1 ?
-        //              (
-        //                 <div className={`${styles.active_indicator}`} />
-        //             ) : null} */}
-        //         </div>
-        //         <div className="relative">
-        //             <h5 className={`${active === 2 ? "text-[#1BB8E5] font-[700]" : "text-[#000]"} text-[18px] px-1 leading-5 cursor-pointer 800px:text-[20px] font-Poppins`} onClick={() => setActive(2)}>Product Reviews</h5>
+        <div className='bg-[#fafafa] mb-5 px-10 800px:px-2 py-2 rounded pb-5'>
+            <div className="w-full flex justify-between border-b pt-10 pb-2">
+                <div className="relative">
+                    <h5 className={`${active === 1 ? "text-[#1BB8E5] font-[700]" : "text-[#000]"} text-[18px]  px-1 leading-5 cursor-pointer 800px:text-[20px] font-Poppins `} onClick={() => setActive(1)} >Product Details</h5>
+                    {/* {
+                    active === 1 ?
+                     (
+                        <div className={`${styles.active_indicator}`} />
+                    ) : null} */}
+                </div>
+                <div className="relative">
+                    <h5 className={`${active === 2 ? "text-[#1BB8E5] font-[700]" : "text-[#000]"} text-[18px] px-1 leading-5 cursor-pointer 800px:text-[20px] font-Poppins`} onClick={() => setActive(2)}>Product Reviews</h5>
 
-        //         </div>
+                </div>
 
-        //     </div>
-        //     {
-        //         active === 1 ?
-        //             <>
-        //                 <div className='mb-3'>
-        //                     <h1 className={`text-[20px] font-[600] font-Poppins text-[#333] pt-1`}>{data.name}</h1>
-        //                     <h3 className={`text-[#727386] text-left  text-[16px] font-Poppins pt-1`}>{data.skuid}</h3>
+            </div>
+            {
+                active === 1 ?
+                    <>
+                        <div className='mb-3'>
+                            <h1 className={`text-[20px] font-[600] font-Poppins text-[#333] pt-1`}>{data.name}</h1>
+                            <h3 className={`text-[#727386] text-left  text-[16px] font-Poppins pt-1`}>{data.skuid}</h3>
 
-        //                 </div>
+                        </div>
 
-        //                 {/* table section */}
+                        {/* table section */}
 
-        //                 <div className='flex flex-wrap  gap-5'>
+                        <div className='flex flex-wrap  gap-5'>
 
-        //                     <div className="bg-[#fff3e9] w-[320px] font-Poppins mb-3">
-        //                         <div className="t1sec px-[12.5px] py-[16px] gap-2 flex items-center">
-        //                             <span><AiOutlineGold /></span>
-        //                             <span className='font-[500]'>Gold</span>
-        //                         </div>
-        //                         <div className="tsec2 flex font-Poppins">
-        //                             <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
-        //                                 <div className='pb-[8px] font-[600] '>Weight</div>
-        //                                 <p className='text-[#4f3267] text-[14px]'> {data?.goldWeight ? data.goldWeight.weight : "0.80 gm"} </p>
-        //                             </div>
-        //                             <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
-        //                                 <div className='pb-[8px] font-[600] '>Purity</div>
-        //                                 <p className='text-[#4f3267] text-[14px]'>{data?.goldWeight ? data.goldWeight.purity : "18 kt"}</p>
-        //                             </div>
-        //                         </div>
-        //                     </div>
+                            <div className="bg-[#fff3e9] w-[320px] font-Poppins mb-3">
+                                <div className="t1sec px-[12.5px] py-[16px] gap-2 flex items-center">
+                                    <span><AiOutlineGold /></span>
+                                    <span className='font-[500]'>Gold</span>
+                                </div>
+                                <div className="tsec2 flex font-Poppins">
+                                    <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
+                                        <div className='pb-[8px] font-[600] '>Weight</div>
+                                        <p className='text-[#4f3267] text-[14px]'> {data?.goldWeight ? data.goldWeight.weight : "0.80 gm"} </p>
+                                    </div>
+                                    <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
+                                        <div className='pb-[8px] font-[600] '>Purity</div>
+                                        <p className='text-[#4f3267] text-[14px]'>{data?.goldWeight ? data.goldWeight.purity : "18 kt"}</p>
+                                    </div>
+                                </div>
+                            </div>
 
-        //                     <div className="bg-[#fff3e9] w-[320px] font-Poppins mb-3">
-        //                         <div className="t1sec px-[12.5px] py-[16px] gap-2 flex items-center">
-        //                             <span><IoDiamondOutline /></span>
-        //                             <span className='font-[500]'>Diamond</span>
-        //                         </div>
-        //                         <div className="tsec2 flex font-Poppins">
-        //                             <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
-        //                                 <div className='pb-[8px] font-[600] '>Weight</div>
-        //                                 <p className='text-[#4f3267] text-[14px]'>{data?.diamondWeight ? data.diamondWeight.weight : "0.02 Ct"} </p>
-        //                             </div>
-        //                             <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
-        //                                 <div className='pb-[8px] font-[600] '>Quality</div>
-        //                                 <p className='text-[#4f3267] text-[14px]'>{data?.diamondWeight ? data.diamondWeight.quality : " GH-VS"}</p>
-        //                             </div>
-        //                         </div>
-        //                     </div>
+                            <div className="bg-[#fff3e9] w-[320px] font-Poppins mb-3">
+                                <div className="t1sec px-[12.5px] py-[16px] gap-2 flex items-center">
+                                    <span><IoDiamondOutline /></span>
+                                    <span className='font-[500]'>Diamond</span>
+                                </div>
+                                <div className="tsec2 flex font-Poppins">
+                                    <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
+                                        <div className='pb-[8px] font-[600] '>Weight</div>
+                                        <p className='text-[#4f3267] text-[14px]'>{data?.diamondWeight ? data.diamondWeight.weight : "0.02 Ct"} </p>
+                                    </div>
+                                    <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
+                                        <div className='pb-[8px] font-[600] '>Quality</div>
+                                        <p className='text-[#4f3267] text-[14px]'>{data?.diamondWeight ? data.diamondWeight.quality : " GH-VS"}</p>
+                                    </div>
+                                </div>
+                            </div>
 
-        //                     <div className="bg-[#fff3e9] w-[320px] font-Poppins mb-3">
-        //                         <div className="t1sec px-[12.5px] py-[16px] gap-2 flex items-center">
-        //                             <span><RxDimensions /></span>
-        //                             <span className='font-[500]'>Dimension</span>
-        //                         </div>
-        //                         <div className="tsec2 flex font-Poppins">
-        //                             <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
-        //                                 <div className='pb-[8px] font-[600] '>Height</div>
-        //                                 <p className='text-[#4f3267] text-[14px]'> {data?.dimension ? data.dimension.height : "15.80 mm"}</p>
-        //                             </div>
-        //                             <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
-        //                                 <div className='pb-[8px] font-[600] '>Width</div>
-        //                                 <p className='text-[#4f3267] text-[14px]'>{data?.dimension ? data.dimension.width : "1.70 mm"} </p>
-        //                             </div>
-        //                         </div>
-        //                     </div>
+                            <div className="bg-[#fff3e9] w-[320px] font-Poppins mb-3">
+                                <div className="t1sec px-[12.5px] py-[16px] gap-2 flex items-center">
+                                    <span><RxDimensions /></span>
+                                    <span className='font-[500]'>Dimension</span>
+                                </div>
+                                <div className="tsec2 flex font-Poppins">
+                                    <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
+                                        <div className='pb-[8px] font-[600] '>Height</div>
+                                        <p className='text-[#4f3267] text-[14px]'> {data?.dimension ? data.dimension.height : "15.80 mm"}</p>
+                                    </div>
+                                    <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
+                                        <div className='pb-[8px] font-[600] '>Width</div>
+                                        <p className='text-[#4f3267] text-[14px]'>{data?.dimension ? data.dimension.width : "1.70 mm"} </p>
+                                    </div>
+                                </div>
+                            </div>
 
-        //                     <div className="bg-[#fff3e9] w-[320px] font-Poppins mb-3">
-        //                         <div className="t1sec px-[12.5px] py-[16px] gap-2 flex items-center">
-        //                             <span><GiHeartNecklace /></span>
-        //                             <span className='font-[500]'>Chain </span>
-        //                         </div>
-        //                         <div className="tsec2 flex font-Poppins">
-        //                             <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
-        //                                 <div className='pb-[8px] font-[600] '>Length</div>
-        //                                 <p className='text-[#4f3267] text-[14px]'>13 inch</p>
-        //                             </div>
-        //                             <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
-        //                                 <div className='pb-[8px] font-[600] '>Weight</div>
-        //                                 <p className='text-[#4f3267] text-[14px]'> 1gm </p>
-        //                             </div>
-        //                         </div>
-        //                     </div>
+                            <div className="bg-[#fff3e9] w-[320px] font-Poppins mb-3">
+                                <div className="t1sec px-[12.5px] py-[16px] gap-2 flex items-center">
+                                    <span><GiHeartNecklace /></span>
+                                    <span className='font-[500]'>Chain </span>
+                                </div>
+                                <div className="tsec2 flex font-Poppins">
+                                    <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
+                                        <div className='pb-[8px] font-[600] '>Length</div>
+                                        <p className='text-[#4f3267] text-[14px]'>13 inch</p>
+                                    </div>
+                                    <div className='w-[200px] bg-[#fff9f5] mr-[1.5px] px-[10px] py-[10px]'>
+                                        <div className='pb-[8px] font-[600] '>Weight</div>
+                                        <p className='text-[#4f3267] text-[14px]'> 1gm </p>
+                                    </div>
+                                </div>
+                            </div>
 
-        //                 </div>
-        //                 {/* table section */}
-
-
-
-
-        //                 <div className="bg-[#fff3e9] w-full font-Poppins mb-3">
-        //                     <Accordion >
-        //                         <AccordionSummary
-        //                             expandIcon={<ExpandMoreIcon />}
-        //                             aria-controls="panel1-content"
-        //                             id="panel1-header"
-        //                         >
-        //                             <div className="t1sec px-[12.5px] py-[16px] gap-2 flex items-center">
-        //                                 <span><MdFeaturedPlayList /></span>
-        //                                 <span className='font-[500]'>Features</span>
-        //                             </div>
-        //                         </AccordionSummary>
-        //                         <AccordionDetails className="bg-[#fff9f5]">
-        //                             <div className="tsec2 flex flex-col font-Poppins">
-        //                                 <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center '>
-        //                                     <div className='font-[500] '><GiMaterialsScience /></div>
-        //                                     <p className='text-[#4f3267] text-[15px]'> Hypoallergenic Material</p>
-        //                                 </div>
-        //                                 <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
-        //                                     <div className='font-[500] '><MdHealthAndSafety /></div>
-        //                                     <p className='text-[#4f3267] text-[15px]'>Quality and Safety First</p>
-        //                                 </div>
-        //                                 <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
-        //                                     <div className='font-[500] '><FaChild /></div>
-        //                                     <p className='text-[#4f3267] text-[15px]'>Age-Appropriate Styles</p>
-        //                                 </div>
-        //                                 <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
-        //                                     <div className='font-[500] '><GiHeartNecklace /></div>
-        //                                     <p className='text-[#4f3267] text-[15px]'>Everyday Use Jewellery</p>
-        //                                 </div>
-        //                                 <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
-        //                                     <div className='font-[500] '><TbBrandMinecraft /></div>
-        //                                     <p className='text-[#4f3267] text-[15px]'>Crafted with Love</p>
-        //                                 </div>
-        //                                 <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
-        //                                     <div className='font-[500] '><TbCertificate /></div>
-        //                                     <p className='text-[#4f3267] text-[14px]'>Natural Diamonds with SGL Certificate</p>
-        //                                 </div>
-        //                                 <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
-        //                                     <div className='font-[500] '><MdOutlineAppRegistration /></div>
-        //                                     <p className='text-[#4f3267] text-[15px]'>Design Registration No. 417519-003</p>
-        //                                 </div>
+                        </div>
+                        {/* table section */}
 
 
 
 
-        //                             </div>
-        //                         </AccordionDetails>
-        //                     </Accordion>
-
-
-        //                 </div>
-
-
-
-        //                 <div className=" w-full mt-3 moreinfoproduct bg-white rounded-lg shadow-sm ">
-        //                     <div className="moreinfosec py-[20px] flex justify-center gap-10 800px:gap-2">
-        //                         <div className='flex flex-col justify-center text-center'>
-        //                             <span className='flex justify-center '>
-        //                                 <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#e8ffda", borderRadius: "50%" }}>
-        //                                     <MdOutlineVerified size={25} />
-        //                                 </span>
-        //                             </span>
-        //                             <span className='font-Poppins text-[1rem] '>
-        //                                 100% Certified
-        //                             </span>
-        //                         </div>
-
-        //                         <div className='text-center'>
-        //                             <span className='flex justify-center '>
-        //                                 <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#dbecff", borderRadius: "50%" }}>
-
-        //                                     <RiRefund2Line size={25} />
-        //                                 </span>
-
-        //                             </span>
-        //                             <span className='font-Poppins text-[1rem] 800px:text-center'>
-        //                                 7 Days Money-Back
-        //                             </span>
-        //                         </div>
-
-
-
-        //                         <div className='text-center'>
-        //                             <span className='flex justify-center '>
-        //                                 <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#fff9ca", borderRadius: "50%" }}>
-
-        //                                     <RiExchangeFundsLine size={25} />
-        //                                 </span>
-
-        //                             </span>
-        //                             <span className=' font-Poppins text-[1rem] '>
-        //                                 Lifetime Exchange
-        //                             </span>
-        //                         </div>
-
-
-
-        //                         <div className='text-center'>
-        //                             <span className='flex justify-center items-center'>
-        //                                 <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#ffe1e3", borderRadius: "50%" }}>
-
-        //                                     <CiCalendarDate size={25} />
-        //                                 </span>
-        //                             </span>
-        //                             <span className='font-Poppins text-[1rem] '>
-        //                                 One Year Warranty
-        //                             </span>
-        //                         </div>
-
-
-        //                     </div>
-        //                     <p className='text-center text-[15px] font-[300] pb-4 font-Poppins text-[#333] mt-3'>Learn more on about our <Link className='text-[#4d9dbd]' to="/terms-and-conditions">TERMS & POLICIES</Link></p>
-        //                 </div>
-
-        //             </>
-        //             : null
-        //     }
-
-
-        //     {
-        //         active === 2
-        //             ?
-        //             <div className='w-full  min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll'>
-        //                 {
-        //                     data && data.reviews.map((item, index) => (
-        //                         <div key={index} className='w-full flex my-2'>
-        //                             <img src={`${backend_url}/${item.user.avatar}`} className='w-[60px] h-[60px] rounded-full' alt="" />
-
-        //                             <div className='pl-3'>
-        //                                 <h1 className='font-[500] capitalize'>{item.user.name}</h1>
-        //                                 <Ratings rating={data?.ratings} />
-        //                                 <div className='w-full flex mt-2 gap-4'>
-
-        //                                     <img src={review1img} alt="" className='w-[200px] h-[200px] border object-fill shadow rounded-[5px]' />
-        //                                     <img src={review2img} alt="" className='w-[200px] h-[200px] border object-fill shadow rounded-[5px]' />
-        //                                 </div>
-        //                                 <p className='w-[60%] mt-3'>{item.comment}</p>
-
-        //                             </div>
-
-
-        //                         </div>
-        //                     ))
-        //                 }
-
-        //                 <div className="w-full flex  justify-center">
-        //                     {
-        //                         data && data.reviews.length === 0 && (
-        //                             <h5>No Reviews have for this product</h5>
-        //                         )
-        //                     }
-
-
-        //                 </div>
-        //             </div>
-        //             :
-        //             null
-        //     }
+                        <div className="bg-[#fff3e9] w-full font-Poppins mb-3">
+                            <Accordion >
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1-content"
+                                    id="panel1-header"
+                                >
+                                    <div className="t1sec px-[12.5px] py-[16px] gap-2 flex items-center">
+                                        <span><MdFeaturedPlayList /></span>
+                                        <span className='font-[500]'>Features</span>
+                                    </div>
+                                </AccordionSummary>
+                                <AccordionDetails className="bg-[#fff9f5]">
+                                    <div className="tsec2 flex flex-col font-Poppins">
+                                        <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center '>
+                                            <div className='font-[500] '><GiMaterialsScience /></div>
+                                            <p className='text-[#4f3267] text-[15px]'> Hypoallergenic Material</p>
+                                        </div>
+                                        <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
+                                            <div className='font-[500] '><MdHealthAndSafety /></div>
+                                            <p className='text-[#4f3267] text-[15px]'>Quality and Safety First</p>
+                                        </div>
+                                        <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
+                                            <div className='font-[500] '><FaChild /></div>
+                                            <p className='text-[#4f3267] text-[15px]'>Age-Appropriate Styles</p>
+                                        </div>
+                                        <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
+                                            <div className='font-[500] '><GiHeartNecklace /></div>
+                                            <p className='text-[#4f3267] text-[15px]'>Everyday Use Jewellery</p>
+                                        </div>
+                                        <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
+                                            <div className='font-[500] '><TbBrandMinecraft /></div>
+                                            <p className='text-[#4f3267] text-[15px]'>Crafted with Love</p>
+                                        </div>
+                                        <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
+                                            <div className='font-[500] '><TbCertificate /></div>
+                                            <p className='text-[#4f3267] text-[14px]'>Natural Diamonds with SGL Certificate</p>
+                                        </div>
+                                        <div className='w-[320px] bg-[#fff9f5] mb-[1.5px] px-[10px] py-[10px] flex gap-[10px] items-center'>
+                                            <div className='font-[500] '><MdOutlineAppRegistration /></div>
+                                            <p className='text-[#4f3267] text-[15px]'>Design Registration No. 417519-003</p>
+                                        </div>
 
 
 
 
-        // </div>
+                                    </div>
+                                </AccordionDetails>
+                            </Accordion>
 
-        <div className='bg-[#fafafa] mb-5 px-4 sm:px-10 py-2 rounded pb-5'>
-        <div className="w-full flex justify-between border-b pt-10 pb-2">
-          <div className="relative">
-            <h5 className={`${active === 1 ? "text-[#1BB8E5] font-bold" : "text-[#000]"} text-[16px] sm:text-[18px] px-1 leading-5 cursor-pointer font-Poppins`} onClick={() => setActive(1)}>Product Details</h5>
-          </div>
-          <div className="relative">
-            <h5 className={`${active === 2 ? "text-[#1BB8E5] font-bold" : "text-[#000]"} text-[16px] sm:text-[18px] px-1 leading-5 cursor-pointer font-Poppins`} onClick={() => setActive(2)}>Product Reviews</h5>
-          </div>
+
+                        </div>
+
+
+
+                        <div className=" w-full mt-3 moreinfoproduct bg-white rounded-lg shadow-sm ">
+                            <div className="moreinfosec py-[20px] flex justify-center gap-10 800px:gap-2">
+                                <div className='flex flex-col justify-center text-center'>
+                                    <span className='flex justify-center '>
+                                        <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#e8ffda", borderRadius: "50%" }}>
+                                            <MdOutlineVerified size={25} />
+                                        </span>
+                                    </span>
+                                    <span className='font-Poppins text-[1rem] '>
+                                        100% Certified
+                                    </span>
+                                </div>
+
+                                <div className='text-center'>
+                                    <span className='flex justify-center '>
+                                        <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#dbecff", borderRadius: "50%" }}>
+
+                                            <RiRefund2Line size={25} />
+                                        </span>
+
+                                    </span>
+                                    <span className='font-Poppins text-[1rem] 800px:text-center'>
+                                        7 Days Money-Back
+                                    </span>
+                                </div>
+
+
+
+                                <div className='text-center'>
+                                    <span className='flex justify-center '>
+                                        <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#fff9ca", borderRadius: "50%" }}>
+
+                                            <RiExchangeFundsLine size={25} />
+                                        </span>
+
+                                    </span>
+                                    <span className=' font-Poppins text-[1rem] '>
+                                        Lifetime Exchange
+                                    </span>
+                                </div>
+
+
+
+                                <div className='text-center'>
+                                    <span className='flex justify-center items-center'>
+                                        <span className='w-[50px] h-[50px] flex justify-center items-center' style={{ backgroundColor: "#ffe1e3", borderRadius: "50%" }}>
+
+                                            <CiCalendarDate size={25} />
+                                        </span>
+                                    </span>
+                                    <span className='font-Poppins text-[1rem] '>
+                                        One Year Warranty
+                                    </span>
+                                </div>
+
+
+                            </div>
+                            <p className='text-center text-[15px] font-[300] pb-4 font-Poppins text-[#333] mt-3'>Learn more on about our <Link className='text-[#4d9dbd]' to="/terms-and-conditions">TERMS & POLICIES</Link></p>
+                        </div>
+
+                    </>
+                    : null
+            }
+
+
+            {
+                active === 2
+                    ?
+                    <div className='w-full  min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll'>
+                        {
+                            data && data.reviews.map((item, index) => (
+                                <div key={index} className='w-full flex my-2'>
+                                    <img src={`${backend_url}/${item.user.avatar}`} className='w-[60px] h-[60px] rounded-full' alt="" />
+
+                                    <div className='pl-3'>
+                                        <h1 className='font-[500] capitalize'>{item.user.name}</h1>
+                                        <Ratings rating={data?.ratings} />
+                                        <div className='w-full flex mt-2 gap-4'>
+
+                                            <img src={review1img} alt="" className='w-[200px] h-[200px] border object-fill shadow rounded-[5px]' />
+                                            <img src={review2img} alt="" className='w-[200px] h-[200px] border object-fill shadow rounded-[5px]' />
+                                        </div>
+                                        <p className='w-[60%] mt-3'>{item.comment}</p>
+
+                                    </div>
+
+
+                                </div>
+                            ))
+                        }
+
+                        <div className="w-full flex  justify-center">
+                            {
+                                data && data.reviews.length === 0 && (
+                                    <h5>No Reviews have for this product</h5>
+                                )
+                            }
+
+
+                        </div>
+                    </div>
+                    :
+                    null
+            }
+
+
+
+
         </div>
-        {
-          active === 1 &&
-          <>
-            <div className='mb-3'>
-              <h1 className='text-[18px] sm:text-[20px] font-semibold font-Poppins text-[#333] pt-1'>{data.name}</h1>
-              <h3 className='text-[#727386] text-left text-[14px] sm:text-[16px] font-Poppins pt-1'>{data.skuid}</h3>
-            </div>
-  
-            {/* Table Section */}
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>
-              <div className="bg-[#fff3e9] w-full font-Poppins mb-3">
-                <div className="t1sec px-4 py-4 flex items-center gap-2">
-                  <span><AiOutlineGold /></span>
-                  <span className='font-medium'>Gold</span>
-                </div>
-                <div className="tsec2 grid grid-cols-2 bg-[#fff9f5] gap-[1.5px]">
-                  <div className='px-4 py-4'>
-                    <div className='pb-2 font-semibold'>Weight</div>
-                    <p className='text-[#4f3267] text-[14px]'>{data?.goldWeight ? data.goldWeight.weight : "0.80 gm"}</p>
-                  </div>
-                  <div className='px-4 py-4'>
-                    <div className='pb-2 font-semibold'>Purity</div>
-                    <p className='text-[#4f3267] text-[14px]'>{data?.goldWeight ? data.goldWeight.purity : "18 kt"}</p>
-                  </div>
-                </div>
-              </div>
-  
-              <div className="bg-[#fff3e9] w-full font-Poppins mb-3">
-                <div className="t1sec px-4 py-4 flex items-center gap-2">
-                  <span><IoDiamondOutline /></span>
-                  <span className='font-medium'>Diamond</span>
-                </div>
-                <div className="tsec2 grid grid-cols-2 bg-[#fff9f5] gap-[1.5px]">
-                  <div className='px-4 py-4'>
-                    <div className='pb-2 font-semibold'>Weight</div>
-                    <p className='text-[#4f3267] text-[14px]'>{data?.diamondWeight ? data.diamondWeight.weight : "0.02 Ct"}</p>
-                  </div>
-                  <div className='px-4 py-4'>
-                    <div className='pb-2 font-semibold'>Quality</div>
-                    <p className='text-[#4f3267] text-[14px]'>{data?.diamondWeight ? data.diamondWeight.quality : " GH-VS"}</p>
-                  </div>
-                </div>
-              </div>
-  
-              <div className="bg-[#fff3e9] w-full font-Poppins mb-3">
-                <div className="t1sec px-4 py-4 flex items-center gap-2">
-                  <span><RxDimensions /></span>
-                  <span className='font-medium'>Dimension</span>
-                </div>
-                <div className="tsec2 grid grid-cols-2 bg-[#fff9f5] gap-[1.5px]">
-                  <div className='px-4 py-4'>
-                    <div className='pb-2 font-semibold'>Height</div>
-                    <p className='text-[#4f3267] text-[14px]'>{data?.dimension ? data.dimension.height : "15.80 mm"}</p>
-                  </div>
-                  <div className='px-4 py-4'>
-                    <div className='pb-2 font-semibold'>Width</div>
-                    <p className='text-[#4f3267] text-[14px]'>{data?.dimension ? data.dimension.width : "1.70 mm"}</p>
-                  </div>
-                </div>
-              </div>
-  
-              <div className="bg-[#fff3e9] w-full font-Poppins mb-3">
-                <div className="t1sec px-4 py-4 flex items-center gap-2">
-                  <span><GiHeartNecklace /></span>
-                  <span className='font-medium'>Chain</span>
-                </div>
-                <div className="tsec2 grid grid-cols-2 bg-[#fff9f5] gap-[1.5px]">
-                  <div className='px-4 py-4'>
-                    <div className='pb-2 font-semibold'>Length</div>
-                    <p className='text-[#4f3267] text-[14px]'>13 inch</p>
-                  </div>
-                  <div className='px-4 py-4'>
-                    <div className='pb-2 font-semibold'>Weight</div>
-                    <p className='text-[#4f3267] text-[14px]'>1gm</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* End of Table Section */}
-  
-            <div className="bg-[#fff3e9] w-full font-Poppins mb-3">
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1-content"
-                  id="panel1-header"
-                >
-                  <div className="t1sec px-4 py-4 flex items-center gap-2">
-                    <span><MdFeaturedPlayList /></span>
-                    <span className='font-medium'>Features</span>
-                  </div>
-                </AccordionSummary>
-                <AccordionDetails className="bg-[#fff9f5]">
-                  <div className="tsec2 flex flex-col font-Poppins">
-                    <div className='w-full mb-[1.5px] px-4 py-4 flex gap-2 items-center'>
-                      <div className='font-medium'><GiMaterialsScience /></div>
-                      <p className='text-[#4f3267] text-[15px]'>Hypoallergenic Material</p>
-                    </div>
-                    <div className='w-full mb-[1.5px] px-4 py-4 flex gap-2 items-center'>
-                      <div className='font-medium'><FaChild /></div>
-                      <p className='text-[#4f3267] text-[15px]'>Child Friendly</p>
-                    </div>
-                    <div className='w-full mb-[1.5px] px-4 py-4 flex gap-2 items-center'>
-                      <div className='font-medium'><MdOutlineVerified /></div>
-                      <p className='text-[#4f3267] text-[15px]'>Certified Jewelry</p>
-                    </div>
-                    <div className='w-full mb-[1.5px] px-4 py-4 flex gap-2 items-center'>
-                      <div className='font-medium'><TbCertificate /></div>
-                      <p className='text-[#4f3267] text-[15px]'>Quality Products</p>
-                    </div>
-                    <div className='w-full mb-[1.5px] px-4 py-4 flex gap-2 items-center'>
-                      <div className='font-medium'><TbBrandMinecraft /></div>
-                      <p className='text-[#4f3267] text-[15px]'>Exceptional Craftsmanship</p>
-                    </div>
-                    <div className='w-full mb-[1.5px] px-4 py-4 flex gap-2 items-center'>
-                      <div className='font-medium'><MdHealthAndSafety /></div>
-                      <p className='text-[#4f3267] text-[15px]'>Highest Safety Standards</p>
-                    </div>
-                    <div className='w-full mb-[1.5px] px-4 py-4 flex gap-2 items-center'>
-                      <div className='font-medium'><MdOutlineAppRegistration /></div>
-                      <p className='text-[#4f3267] text-[15px]'>Advanced Technology</p>
-                    </div>
-                  </div>
-                </AccordionDetails>
-              </Accordion>
-            </div>
-  
-            <div className="bg-[#fff3e9] w-full font-Poppins mb-3">
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2-content"
-                  id="panel2-header"
-                >
-                  <div className="t1sec px-4 py-4 flex items-center gap-2">
-                    <span><CiCalendarDate /></span>
-                    <span className='font-medium'>Policies</span>
-                  </div>
-                </AccordionSummary>
-                <AccordionDetails className="bg-[#fff9f5]">
-                  <div className="tsec2 flex flex-col font-Poppins">
-                    <div className='w-full mb-[1.5px] px-4 py-4 flex gap-2 items-center'>
-                      <div className='font-medium'><RiRefund2Line /></div>
-                      <p className='text-[#4f3267] text-[15px]'>30 Days Money Back</p>
-                    </div>
-                    <div className='w-full mb-[1.5px] px-4 py-4 flex gap-2 items-center'>
-                      <div className='font-medium'><RiExchangeFundsLine /></div>
-                      <p className='text-[#4f3267] text-[15px]'>30 Days Return</p>
-                    </div>
-                  </div>
-                </AccordionDetails>
-              </Accordion>
-            </div>
-          </>
-        }
-      </div>
+
+        
+        
     )
 }
 export default ProductDetails

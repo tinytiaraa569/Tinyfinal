@@ -565,6 +565,8 @@ function PaymentPage() {
             localStorage.setItem("latestOrder", JSON.stringify([]));
             localStorage.setItem("orderDetails", JSON.stringify(updatedOrder));
             navigate("/order/success");
+             window.location.reload()
+
 
             // Handle actions upon successful payment
         } catch (error) {
