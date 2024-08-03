@@ -104,7 +104,7 @@ function ProductCard({ data }) {
 
           </Link>
         </div>
-        <div className='w-full h-[120px] overflow-hidden '>
+        <div className='w-full h-[auto] overflow-hidden '>
 
           <Link href="">
             <h4 className='pb-1 font-[500]  text-center'>{data.name.length > 70 ? data.name.slice(0, 70) + "..." : data.name}</h4>
