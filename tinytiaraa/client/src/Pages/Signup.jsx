@@ -55,9 +55,16 @@ function Signup() {
     }
 
     const handleFileInputChange = (e) => {
-        const file = e.target.files[0]
-        setAvatar(file)
-    }
+        const reader = new FileReader();
+    
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            setAvatar(reader.result);
+          }
+        };
+    
+        reader.readAsDataURL(e.target.files[0]);
+      };
 
 
     return (
@@ -117,7 +124,7 @@ function Signup() {
                                 <span className='inline-block h-8 w-8 rounded-full overflow-hidden'>
                                     {
                                         avatar ?
-                                            <img src={URL.createObjectURL(avatar)} alt="avatar img" className='h-full w-full object-cover rounded-full' />
+                                            <img src={avatar} alt="avatar img" className='h-full w-full object-cover rounded-full' />
                                             :
                                             <RxAvatar className="h-8 w-8" />
                                     }
