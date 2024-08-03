@@ -10,7 +10,12 @@ import slider4 from './sliderimages/slider4.png'
 import slider5 from './sliderimages/slider5.jpg'
 import slider6 from './sliderimages/slider6.png'
 import slider7 from './sliderimages/slider7.png'
- 
+import firstimg from './sliderimages/first.png'
+import secondimg from './sliderimages/second.png'
+import thirdimg from './sliderimages/third.png'
+
+
+
 
 function SliderSection() {
   var settings = {
@@ -57,34 +62,38 @@ function SliderSection() {
   return (
     <>
       <Slider {...settings} >
-        {/* <div className='slidersec'>
-          <img src="https://lirp.cdn-website.com/48f148a6/dms3rep/multi/opt/10-1920w.png" alt="" />
-          
+        <div className='slidersec'>
+          <img src={firstimg} alt="" />
+
 
         </div>
+
         <div className='slidersec'>
-          <img src="https://lirp.cdn-website.com/48f148a6/dms3rep/multi/opt/11-1920w.png" alt="" />
-        </div> */}
+          <img src={thirdimg} alt="" />
+        </div>
+        <div className='slidersec'>
+          <img src={secondimg} alt="" />
+        </div>
 
         <div className='slidersec'>
           <img src={slider6} alt="" />
-         
-        </div>
-
-        <div className='slidersec'>
-          <img src={slider7} alt="" className='object-fill' />
-         
 
         </div>
-        <div className='slidersec'>
-        <img src={slider4} alt="" className='object-fill'/>
 
-         
-
-         </div>
         <div className='slidersec'>
-          <img src={slider5} alt="" />
-          {/* <div className="slidercontent">
+          <img src={slider7} alt="" />
+
+
+        </div>
+        <div className='slidersec'>
+          <img src={slider4} alt="" />
+
+
+
+        </div>
+        {/* <div className='slidersec'> */}
+        {/* <img src={slider5} alt="" /> */}
+        {/* <div className="slidercontent">
             <div className='slidercontentadjust'>
 
               <h1>Kids Gold Jewellery</h1>
@@ -93,7 +102,7 @@ function SliderSection() {
             </div>
           </div> */}
 
-        </div>
+        {/* </div> */}
       </Slider>
 
     </>

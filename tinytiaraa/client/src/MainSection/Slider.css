@@ -1,17 +1,17 @@
 .slidersec {
-    width: 100%;
-    height: 85vh;
-    position: relative;
-  }
-  
-  .slidersec img {
-    width: 100%;
-    height: 100%;
-     /* This ensures the image fills the area without distortion */
-     object-fit: fill;
-  }
-  
-  .slidercontent {
+  width: 100%;
+  height: 800px;
+  position: relative;
+}
+
+.slidersec img {
+  width: 100%;
+  height: 800px;
+  /* This ensures the image fills the area without distortion */
+  object-fit: fill;
+}
+
+/* .slidercontent {
     width: 100%;
     height: 100%;
     background-image: linear-gradient(
@@ -28,189 +28,249 @@
     justify-content: flex-start;
     padding-left: 5%;
   }
-  
-  .slidercontentadjust {
-    max-width: 600px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-  }
-  
+   */
+.slidercontentadjust {
+  max-width: 600px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.slidercontentadjust h1 {
+  font-size: 4vw;
+  /* Responsive font size */
+  font-weight: 600;
+}
+
+.slidercontentadjust p {
+  font-size: 1.5vw;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+}
+
+.slidercontentadjust button {
+  margin: 8px 0;
+  padding: 15px 25px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.5vw;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slidercontentadjust button:hover {
+  background-color: #333;
+  /* Slightly lighter color on hover */
+}
+
+@media (max-width: 969px) {
   .slidercontentadjust h1 {
-    font-size: 4vw; /* Responsive font size */
-    font-weight: 600;
+    font-size: 6vw;
   }
-  
+
   .slidercontentadjust p {
-    font-size: 1.5vw;
-    letter-spacing: 1px;
-    margin-top: 1rem;
+    font-size: 2.5vw;
   }
-  
+
   .slidercontentadjust button {
-    margin: 8px 0;
-    padding: 15px 25px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-size: 1.5vw;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 2vw;
   }
-  
-  .slidercontentadjust button:hover {
-    background-color: #333; /* Slightly lighter color on hover */
+
+  .slidersec {
+    width: 100%;
+    height: 650px;
+    position: relative;
   }
-  
-  @media (max-width: 969px) {
-    .slidercontentadjust h1 {
-      font-size: 6vw;
-    }
-    .slidercontentadjust p {
-      font-size: 2.5vw;
-    }
-    .slidercontentadjust button {
-      font-size: 2vw;
-    }
+
+  .slidersec img {
+    width: 100%;
+    height: 650px;
+    /* This ensures the image fills the area without distortion */
+    object-fit: fill;
+
   }
-  
-  @media (max-width: 769px) {
-    .slidercontentadjust h1 {
-      font-size: 8vw;
-    }
-    .slidercontentadjust p {
-      font-size: 3vw;
-    }
-    .slidercontentadjust button {
-      font-size: 2.5vw;
-    }
+}
+
+@media (max-width: 769px) {
+  .slidercontentadjust h1 {
+    font-size: 8vw;
   }
-  
-  @media (max-width: 500px) {
-    .slidersec {
-      height: 60vh;
-    }
-    .slidersec img {
-      height: 60vh;
-    }
-    .slidercontentadjust h1 {
-      font-size: 10vw;
-    }
-    .slidercontentadjust p {
-      font-size: 3.5vw;
-    }
-    .slidercontentadjust button {
-      font-size: 3vw;
-    }
+
+  .slidercontentadjust p {
+    font-size: 3vw;
   }
-  
-  @media (max-width: 400px) {
-    .slidersec {
-      height: 50vh;
-    }
-    .slidersec img {
-      height: 50vh;
-    }
-    .slidercontentadjust h1 {
-      font-size: 12vw;
-    }
-    .slidercontentadjust p {
-      font-size: 4vw;
-    }
-    .slidercontentadjust button {
-      font-size: 3.5vw;
-    }
+
+  .slidercontentadjust button {
+    font-size: 2.5vw;
   }
-  
+
+  .slidersec {
+    width: 100%;
+    height: 600px;
+    position: relative;
+  }
+
+  .slidersec img {
+    width: 100%;
+    height: 600px;
+    /* This ensures the image fills the area without distortion */
+    object-fit: fill;
+
+  }
+}
+
+@media (max-width: 500px) {
+  .slidersec {
+    width: 100vw;
+    height: 30vh;
+    overflow: hidden;
+  }
+
+  .slidersec img {
+    width: 100%;
+    height: 100%;
+    /* This ensures the image fills the area without distortion */
+    object-fit: contain;
+
+  }
+
+  .slidercontentadjust h1 {
+    font-size: 10vw;
+  }
+
+  .slidercontentadjust p {
+    font-size: 3.5vw;
+  }
+
+  .slidercontentadjust button {
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .slidersec {
+    width: 100%;
+    height: 400px;
+  }
+
+  .slidersec img {
+    width: 100vw;
+    height: 400px;
+    /* This ensures the image fills the area without distortion */
+    object-fit: contain;
+
+  }
+
+  .slidercontentadjust h1 {
+    font-size: 12vw;
+  }
+
+  .slidercontentadjust p {
+    font-size: 4vw;
+  }
+
+  .slidercontentadjust button {
+    font-size: 3.5vw;
+  }
+}
+
 
 .Categories h1 {
-    padding: 20px 0;
-    text-align: center;
-    font-family: "Poppins", sans-serif;
+  padding: 20px 0;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
 
 
 }
 
 .Categories .categoriescard {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    border-radius: 3px;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
 }
-.Categories .categoriessection{
-    padding: 10px 0 25px;
-    display: grid;
-    grid-template-columns: 22% 22% 22% 22%;
-    gap: 20px;
-    justify-content: center;
+
+.Categories .categoriessection {
+  padding: 10px 0 25px;
+  display: grid;
+  grid-template-columns: 22% 22% 22% 22%;
+  gap: 20px;
+  justify-content: center;
 
 }
-.Categories .categoriescard:hover img{
-    transform: scale(1.2);
+
+.Categories .categoriescard:hover img {
+  transform: scale(1.2);
 
 }
 
 .Categories .categoriesimg {
-    width: 100%;
-    height: 100%;
-    position: relative;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .Categories .categoriesimg img {
-    width: 100%;
-    height: 100%;
-    transition: all 1.2s;
+  width: 100%;
+  height: 100%;
+  transition: all 1.2s;
 }
 
 .Categories .categoriestext {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.27);
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.27);
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
 }
 
 .categoriestext h3 {
-    color: white;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
 }
-.categoriestext .adjust{
-    padding: 25px 15px;
+
+.categoriestext .adjust {
+  padding: 25px 15px;
 }
-.categoriestext button{
-    margin-top: 10px;
-    padding: 8px 15px;
-    background-color: aliceblue;
-    color: black;
-    border: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: "Poppins", sans-serif;
+
+.categoriestext button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: aliceblue;
+  color: black;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Poppins", sans-serif;
 }
-.Categories .categoriescard:hover .categoriestext button{
+
+.Categories .categoriescard:hover .categoriestext button {
   transition: all 0.5s;
   background-color: rgb(95, 95, 95);
   color: rgb(255, 255, 255);
- 
+
 }
 
 @media (max-width:969px) {
-    .Categories .categoriessection{   
-        grid-template-columns: repeat(3,30%);  
-    }
+  .Categories .categoriessection {
+    grid-template-columns: repeat(3, 30%);
+  }
 }
+
 @media (max-width:769px) {
-    .Categories .categoriessection{
-        grid-template-columns: repeat(2,40%);
-    }
+  .Categories .categoriessection {
+    grid-template-columns: repeat(2, 40%);
+  }
 }
+
 @media (max-width:469px) {
-    .Categories .categoriessection{   
-        grid-template-columns: repeat(1,70%);   
-    } 
+  .Categories .categoriessection {
+    grid-template-columns: repeat(1, 70%);
+  }
 }
