@@ -51,8 +51,8 @@
 }
 @media (max-width:700px) {
     .Aboutsection4 {
-        background-size: 100% 60vh;
-        height: 60vh;   
+        background-size: 100% 50vh;
+        height: 50vh;   
     }
     .aboutsection4con{
         left: 50%;
@@ -60,10 +60,51 @@
         transform: translate(-50%,-50%);
         padding: 10px 20px;
         width: 60%;
+      
     }
     .aboutsection4con p{
         font-weight: 600;
         font-size: 16px;
         padding: 10px 20px;
+    }
+}
+@media (max-width:550px) {
+    .Aboutsection4 {
+        background-size: 100% 45vh;
+        height: 45vh;   
+    }
+    .aboutsection4con{
+      
+        width: 80% !important;
+    }
+    .aboutsection4con p{
+        font-weight: 600;
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width:400px) {
+    .Aboutsection4 {
+        background-size: 100% 55vh;
+        height: 55vh;   
+    }
+    .aboutsection4con{
+      
+        width: 90% !important;
+    }
+    .aboutsection4con p{
+        font-weight: 500;
+        font-size: 15px;
+    }
+    .aboutsection4con button{
+        margin: 10px 20px;
+        padding: 8px 16px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        letter-spacing: 2px;
     }
 }
