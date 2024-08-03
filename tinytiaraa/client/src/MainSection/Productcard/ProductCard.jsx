@@ -84,17 +84,17 @@ function ProductCard({ data }) {
   const shareOnInstagram = (product) => {
     // const caption = `Check out this amazing product: ${product.name}!`;
 
-    console.log(product,"share data")
+    console.log(product, "share data")
     const url = `https://www.instagram.com/?url=https://tiny-tiaraa.vercel.app/product/${product_name}`;
     window.open(url, '_blank');
   };
-  
+
 
   return (
     <div className='parentsinglecrd'>
 
 
-      <div className="parentproductcard w-full h-[380px] pb-4 bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden " onMouseLeave={handleMouseLeave}>
+      <div className="parentproductcard w-full h-[390px] pb-4 bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden " onMouseLeave={handleMouseLeave}>
         <div className="flex justify-end "></div>
 
         <div className='w-full h-[170px] overflow-hidden'>
@@ -104,27 +104,31 @@ function ProductCard({ data }) {
 
           </Link>
         </div>
-        <Link href="">
-          <h4 className='pb-1 font-[500]  text-center'>{data.name.length > 70 ? data.name.slice(0, 70) + "..." : data.name}</h4>
-        </Link>
-        <p className={`${styles.skuid}`}>{data.skuid}</p>
+        <div className='w-full h-[190px] overflow-hidden '>
 
-        <div className="py-2 mt-2 flex items-center justify-between">
-          <div className="flex ">
-            <h5 className={`${styles.productDiscountPrice}`}>
-              ₹
-              {data.originalPrice === 0
-                ? data.originalPrice
-                : data.discountPrice}
-            </h5>
-            <h4 className={`${styles.price} line-through`}>
-              {data.originalPrice ? " ₹" + data.originalPrice : null}
-            </h4>
+          <Link href="">
+            <h4 className='pb-1 font-[500]  text-center'>{data.name.length > 70 ? data.name.slice(0, 70) + "..." : data.name}</h4>
+          </Link>
+          <p className={`${styles.skuid}`}>{data.skuid}</p>
+
+          <div className="py-2 mt-2 flex items-center justify-between">
+            <div className="flex ">
+              <h5 className={`${styles.productDiscountPrice}`}>
+                ₹
+                {data.originalPrice === 0
+                  ? data.originalPrice
+                  : data.discountPrice}
+              </h5>
+              <h4 className={`${styles.price} line-through`}>
+                {data.originalPrice ? " ₹" + data.originalPrice : null}
+              </h4>
+            </div>
+            {/* <span className="font-[400] text-[14px] text-[#151816] font-Poppins">{data?.sold_out} Sold</span> */}
           </div>
-          {/* <span className="font-[400] text-[14px] text-[#151816] font-Poppins">{data?.sold_out} Sold</span> */}
         </div>
+
         <div>
-          <div className='flex justify-center mb-2' onClick={()=>{navigate(`/product/${product_name}`)}}>
+          <div className='flex justify-center mb-2' onClick={() => { navigate(`/product/${product_name}`) }}>
             <button className={`${styles.cart_button} ${styles.cart_button_text}`}>Buy Now</button>
 
           </div>
@@ -185,9 +189,9 @@ function ProductCard({ data }) {
                   <EmailIcon size={32} round={true} />
                 </EmailShareButton>
 
-                <div onClick={()=>{shareOnInstagram(data)}}>
-                <i className="fa-brands fa-square-instagram instasty"  style={{ cursor: 'pointer' }}></i>
-                  
+                <div onClick={() => { shareOnInstagram(data) }}>
+                  <i className="fa-brands fa-square-instagram instasty" style={{ cursor: 'pointer' }}></i>
+
                 </div>
 
               </div>
