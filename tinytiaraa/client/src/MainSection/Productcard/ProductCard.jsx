@@ -94,7 +94,7 @@ function ProductCard({ data }) {
     <div className='parentsinglecrd'>
 
 
-      <div className="parentproductcard w-full h-[390px] pb-4 bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden " onMouseLeave={handleMouseLeave}>
+      <div className="parentproductcard w-full h-[375px] pb-4 bg-white rounded-lg shadow-sm p-3 relative cursor-pointer overflow-hidden " onMouseLeave={handleMouseLeave}>
         <div className="flex justify-end "></div>
 
         <div className='w-full h-[170px] overflow-hidden'>
@@ -104,7 +104,7 @@ function ProductCard({ data }) {
 
           </Link>
         </div>
-        <div className='w-full h-[190px] overflow-hidden '>
+        <div className='w-full h-[120px] overflow-hidden '>
 
           <Link href="">
             <h4 className='pb-1 font-[500]  text-center'>{data.name.length > 70 ? data.name.slice(0, 70) + "..." : data.name}</h4>
