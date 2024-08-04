@@ -184,9 +184,8 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
 
 
         const enamelColors = [];
-
-        // Iterate through enamelColors in the request body
         if (req.body.enamelColors && Array.isArray(req.body.enamelColors)) {
+            console.log('Processing enamelColors:', req.body.enamelColors);
             for (let i = 0; i < req.body.enamelColors.length; i++) {
                 const enamelColor = req.body.enamelColors[i];
                 const enamelColorName = enamelColor.enamelColorName;
@@ -197,9 +196,9 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
                     WhiteGoldclr: []
                 };
 
-                // Handle YellowGoldclr images
                 if (enamelColor.YellowGoldclr && Array.isArray(enamelColor.YellowGoldclr)) {
                     for (let j = 0; j < enamelColor.YellowGoldclr.length; j++) {
+                        console.log('Uploading YellowGoldclr image:', enamelColor.YellowGoldclr[j]);
                         const result = await cloudinary.v2.uploader.upload(enamelColor.YellowGoldclr[j], {
                             folder: `products/enamelColors/${enamelColorName}/YellowGoldclr`,
                         });
@@ -210,9 +209,9 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
                     }
                 }
 
-                // Handle RoseGoldclr images
                 if (enamelColor.RoseGoldclr && Array.isArray(enamelColor.RoseGoldclr)) {
                     for (let j = 0; j < enamelColor.RoseGoldclr.length; j++) {
+                        console.log('Uploading RoseGoldclr image:', enamelColor.RoseGoldclr[j]);
                         const result = await cloudinary.v2.uploader.upload(enamelColor.RoseGoldclr[j], {
                             folder: `products/enamelColors/${enamelColorName}/RoseGoldclr`,
                         });
@@ -223,9 +222,9 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
                     }
                 }
 
-                // Handle WhiteGoldclr images
                 if (enamelColor.WhiteGoldclr && Array.isArray(enamelColor.WhiteGoldclr)) {
                     for (let j = 0; j < enamelColor.WhiteGoldclr.length; j++) {
+                        console.log('Uploading WhiteGoldclr image:', enamelColor.WhiteGoldclr[j]);
                         const result = await cloudinary.v2.uploader.upload(enamelColor.WhiteGoldclr[j], {
                             folder: `products/enamelColors/${enamelColorName}/WhiteGoldclr`,
                         });
@@ -236,11 +235,12 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
                     }
                 }
 
-                // Add the enamel color to the array
                 enamelColors.push({
                     enamelColorName,
                     imagesByMetalColor,
                 });
+
+                console.log(enamelColors,"see the enamels color")
             }
         }
 
