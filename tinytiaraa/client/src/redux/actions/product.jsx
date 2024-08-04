@@ -25,7 +25,8 @@ export const createProduct = (
     goldWeight,
     diamondWeight,
     height,
-    width
+    width,
+    enamelColorsList
 
 ) => async (dispatch) => {
     try {
@@ -58,6 +59,7 @@ export const createProduct = (
             diamondWeight,
             height,
             width,
+            enamelColorsList,
             config
         )
 

@@ -153,7 +153,7 @@ const productSchema = new mongoose.Schema({
         {
             enamelColorName: {
                 type: String,
-                required: true,
+                
             },
             imagesByMetalColor: {
                 YellowGoldclr: [

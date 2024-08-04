@@ -480,9 +480,24 @@ function CreateProduct() {
         })
 
         enamelColorsList.forEach((color, index) => {
-            newForm.append(`enamelColors[${index}].enamelColorName`, color);
-            enamelColorImages[index].forEach((image) => {
-                newForm.append(`enamelColors[${index}].enamelColorImages`, image);
+            const colorName = color.enamelColorName;
+    
+            // Append enamel color name
+            newForm.append(`enamelColors[${index}].enamelColorName`, colorName);
+    
+            // Append YellowGoldclr images for this color
+            (color.YellowGoldclr || []).forEach((image, imgIndex) => {
+                newForm.set(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image);
+            });
+    
+            // Append RoseGoldclr images for this color
+            (color.RoseGoldclr || []).forEach((image, imgIndex) => {
+                newForm.set(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image);
+            });
+    
+            // Append WhiteGoldclr images for this color
+            (color.WhiteGoldclr || []).forEach((image, imgIndex) => {
+                newForm.set(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image);
             });
         });
 
@@ -539,7 +554,8 @@ function CreateProduct() {
             goldWeight,
             diamondWeight,
             height,
-            width
+            width,
+            enamelColorsList
 
         }))
 
