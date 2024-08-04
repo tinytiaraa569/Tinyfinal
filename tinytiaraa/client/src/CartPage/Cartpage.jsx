@@ -628,7 +628,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
         <div className="leftcardimg">
           <a className="image-container" href="">
             <img
-              src={`${backend_url}${data?.images[0]}`}
+              src={`${data?.images[0]?.url}`}
               width={166}
               height={166}
             />

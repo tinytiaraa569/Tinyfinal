@@ -92,7 +92,7 @@ const CartSingle = ({ data ,removeFromWishlistHandler ,addToCartHandler}) => {
 
       <div className='w-full flex  items-center'>
         <RxCross1 className='cursor-pointer' onClick={()=>removeFromWishlistHandler(data)}/>
-        <img src={`${backend_url}${data?.images[0]}`} alt="" className='w-[130px]  h-[140px] ml-2 self-center object-contain' />
+        <img src={`${data?.images[0]?.url}`} alt="" className='w-[130px]  h-[140px] ml-2 self-center object-contain' />
 
 
         <div className="w-[70%] pl-[5px] pr-[5px]0 font-Poppins">

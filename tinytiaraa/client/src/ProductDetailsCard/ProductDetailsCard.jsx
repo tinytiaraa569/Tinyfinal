@@ -78,7 +78,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                             onClick={() => setSelect(index)}
                         >
                             <img
-                                src={`${backend_url}${image}`}
+                                src={`${image?.url}`}
                                 alt=""
                                 className='h-[200px]'
                             />
@@ -145,32 +145,32 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                                     {select !== null && (
                                         selectedColor === 0 && data.MetalColor.YellowGoldclr ? (
                                             <img
-                                                src={`${backend_url}${data.MetalColor.YellowGoldclr[select]}`}
+                                                src={`${data.MetalColor.YellowGoldclr[select]?.url}`}
                                                 alt=""
                                                 className='w-[90%] h-[60vh] object-contain'
                                             />
                                         ) : selectedColor === 1 && data.MetalColor.RoseGoldclr ? (
                                             <img
-                                                src={`${backend_url}${data.MetalColor.RoseGoldclr[select]}`}
+                                                src={`${data.MetalColor.RoseGoldclr[select]?.url}`}
                                                 alt=""
                                                 className='w-[90%] h-[60vh] object-contain'
                                             />
                                         ) : selectedColor === 2 && data.MetalColor.WhiteGoldclr ? (
                                             <img
-                                                src={`${backend_url}${data.MetalColor.WhiteGoldclr[select]}`}
+                                                src={`${data.MetalColor.WhiteGoldclr[select]?.url}`}
                                                 alt=""
                                                 className='w-[90%] h-[60vh] object-contain'
                                             />
                                         ) : (
                                             data.images && data.images[select] ? (
                                                 <img
-                                                    src={`${backend_url}${data.images[select]}`}
+                                                    src={`${data.images[select]?.url}`}
                                                     alt=""
                                                     className='w-[90%] h-[60vh] object-contain'
                                                 />
                                             ) : (
                                                 <img
-                                                    src={`${backend_url}${data.images && data.images[0]}`} // Default to the first image if select is null or out of range
+                                                    src={`${data.images && data.images[0]?.url}`} // Default to the first image if select is null or out of range
                                                     alt=""
                                                     className='w-[90%] h-[60vh] object-contain'
                                                 />
