@@ -593,9 +593,9 @@ function CreateProduct() {
                                                                 onClick={() => handleDeleteWithChainImage(i)}
                                                             />
                                                             <img
-                                                                key={`withchain_image_${index}`}
+                                                                key={`withchain_image_${i}`}
                                                                 src={i}
-                                                                alt={`With Chain ${index}`}
+                                                                alt={`With Chain ${i}`}
                                                                 className='h-[70px] w-[70px] object-cover border-[#555] m-2'
                                                             />
                                                         </div>
