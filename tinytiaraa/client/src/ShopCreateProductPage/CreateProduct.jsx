@@ -497,6 +497,8 @@ function CreateProduct() {
             color.WhiteGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image));
         });
 
+       
+
 
         //    enamelColorImages.forEach((images, index) => {
         //     images.forEach((image) => {
@@ -559,9 +561,9 @@ function CreateProduct() {
 
 
 
-        console.log(enamelColorsList, "list of color to add")
-        console.log(enamelColorImages, "list of  to add")
-        console.log(enamelColor, "list of color to add")
+        console.log(enamelColorsList, "list of colorlsit to add")
+        console.log(enamelColorImages, "list of enael images to add")
+        console.log(enamelColor, "list of enamel color to add")
 
     }
 
