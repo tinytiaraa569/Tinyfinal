@@ -5,7 +5,29 @@ import { server } from "../../server"
 
 
 
-export const createProduct = (newForm) => async (dispatch) => {
+export const createProduct = (
+    name,
+    skuid,
+    description,
+    category,
+    subcategory,
+    tags,
+    originalPrice,
+    discountPrice,
+    stock,
+    shopId,
+    images,
+    withchainimages,
+    withchainoutimages,
+    YellowGoldclr,
+    RoseGoldclr,
+    WhiteGoldclr,
+    goldWeight,
+    diamondWeight,
+    height,
+    width
+
+) => async (dispatch) => {
     try {
         dispatch({
             type: "productCreateRequest"
@@ -16,7 +38,26 @@ export const createProduct = (newForm) => async (dispatch) => {
 
         const { data } = await axios.post(
             `${server}/product/create-product`,
-            newForm,
+            name,
+            skuid,
+            description,
+            category,
+            subcategory,
+            tags,
+            originalPrice,
+            discountPrice,
+            stock,
+            shopId,
+            images,
+            withchainimages,
+            withchainoutimages,
+            YellowGoldclr,
+            RoseGoldclr,
+            WhiteGoldclr,
+            goldWeight,
+            diamondWeight,
+            height,
+            width,
             config
         )
 
@@ -78,7 +119,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 
 
         const { data } = await axios.delete(
-            `${server}/product/delete-shop-product/${id}`,{withCredentials:true}
+            `${server}/product/delete-shop-product/${id}`, { withCredentials: true }
         )
 
         dispatch({
@@ -99,19 +140,19 @@ export const deleteProduct = (id) => async (dispatch) => {
 // get all products
 export const getAllProducts = () => async (dispatch) => {
     try {
-      dispatch({
-        type: "getAllProductsRequest",
-      });
-  
-      const { data } = await axios.get(`${server}/product/get-all-products`);
-      dispatch({
-        type: "getAllProductsSuccess",
-        payload: data.products,
-      });
+        dispatch({
+            type: "getAllProductsRequest",
+        });
+
+        const { data } = await axios.get(`${server}/product/get-all-products`);
+        dispatch({
+            type: "getAllProductsSuccess",
+            payload: data.products,
+        });
     } catch (error) {
-      dispatch({
-        type: "getAllProductsFailed",
-        payload: error.response.data.message,
-      });
+        dispatch({
+            type: "getAllProductsFailed",
+            payload: error.response.data.message,
+        });
     }
-  };
+};

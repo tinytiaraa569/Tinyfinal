@@ -16,6 +16,8 @@ import EnamelColorsList from './EnamelColorsList'
 
 function CreateProduct() {
     const { seller } = useSelector((state) => state.seller)
+
+    console.log(seller ,"seller information")
     const { success, error } = useSelector((state) => state.products)
 
 
@@ -397,13 +399,13 @@ function CreateProduct() {
 
 
         YellowGoldclr.forEach((image) => {
-            newForm.append("YellowGoldclr", image)
+            newForm.set("YellowGoldclr", image)
         })
         RoseGoldclr.forEach((image) => {
-            newForm.append("RoseGoldclr", image)
+            newForm.set("RoseGoldclr", image)
         })
         WhiteGoldclr.forEach((image) => {
-            newForm.append("WhiteGoldclr", image)
+            newForm.set("WhiteGoldclr", image)
         })
 
         enamelColorsList.forEach((color, index) => {
@@ -446,7 +448,29 @@ function CreateProduct() {
         newForm.append('dimension.width', width);
 
 
-        dispatch(createProduct(newForm))
+        dispatch(createProduct({
+            name,
+            skuid,
+            description,
+            category,
+            subcategory,
+            tags,
+            originalPrice,
+            discountPrice,
+            stock,
+            shopId:seller?._id,
+            images,
+            withchainimages,
+            withchainoutimages,
+            YellowGoldclr,
+            RoseGoldclr,
+            WhiteGoldclr,
+            goldWeight,
+            diamondWeight,
+            height,
+            width
+
+        }))
 
         // console.log(newForm)
 
