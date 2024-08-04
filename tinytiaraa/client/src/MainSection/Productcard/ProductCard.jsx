@@ -100,7 +100,7 @@ function ProductCard({ data }) {
         <div className='w-full h-[170px] overflow-hidden'>
           <Link to={`/product/${product_name}`}>
 
-            <img src={`${backend_url}${data.images && data.images[1]}`} alt="" className='parentproductimg w-full h-[170px] object-contain' />
+            <img src={`${data.images && data.images[1]?.url}`} alt="" className='parentproductimg w-full h-[170px] object-contain' />
 
           </Link>
         </div>
