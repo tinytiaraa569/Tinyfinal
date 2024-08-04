@@ -196,10 +196,11 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
                     WhiteGoldclr: []
                 };
 
-                if (enamelColor.YellowGoldclr && Array.isArray(enamelColor.YellowGoldclr)) {
-                    for (let j = 0; j < enamelColor.YellowGoldclr.length; j++) {
-                        console.log('Uploading YellowGoldclr image:', enamelColor.YellowGoldclr[j]);
-                        const result = await cloudinary.v2.uploader.upload(enamelColor.YellowGoldclr[j], {
+                
+                if (typeof req.body.enamelColorImages === "string") {
+                    for (let j = 0; j < req.body.enamelColorImages.length; j++) {
+                        console.log('Uploading YellowGoldclr image:', req.body.enamelColorImages[j]);
+                        const result = await cloudinary.v2.uploader.upload(req.body.enamelColorImages[j], {
                             folder: `products/enamelColorsList/${enamelColorName}/YellowGoldclr`,
                         });
                         imagesByMetalColor.YellowGoldclr.push({
