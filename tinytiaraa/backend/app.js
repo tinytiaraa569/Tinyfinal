@@ -13,6 +13,10 @@ const app = express()
 
 // app.use(express.json());
 app.use(express.json({ limit: '100mb' }));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9fcb04204fd27c98e1c39c4137483e07a864e613
 app.use(cookieParser());
 
 
