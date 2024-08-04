@@ -325,17 +325,19 @@ function CreateProduct() {
 
     // Handle adding a new enamel color
     const handleAddEnamelColor = () => {
-        if (enamelColor.trim()) {
+        const trimmedEnamelColor = enamelColor.trim();
+
+        if (trimmedEnamelColor && !enamelColorsList.some(color => color.enamelColorName === trimmedEnamelColor)) {
             setEnamelColorsList([
                 ...enamelColorsList,
                 {
-                    enamelColorName: enamelColor.trim(),
+                    enamelColorName: trimmedEnamelColor,
                     YellowGoldclr: [], // Initialize with empty arrays
                     RoseGoldclr: [],
                     WhiteGoldclr: []
                 }
             ]);
-            setEnamelColor('');
+            setEnamelColor(''); // Clear the input field after adding
         }
     };
 
@@ -345,7 +347,7 @@ function CreateProduct() {
         const removedColor = updatedColors[index].enamelColorName;
         updatedColors.splice(index, 1);
         setEnamelColorsList(updatedColors);
-    
+
         // Remove associated images
         const updatedImages = { ...enamelColorImages };
         delete updatedImages[removedColor];
@@ -1096,7 +1098,7 @@ function CreateProduct() {
                                             <ul className='list-disc list-inside'>
                                                 {enamelColorsList.map((color, index) => (
                                                     <li key={index} className='flex justify-between'>
-                                                        <span>{color}</span>
+                                                        <span>{color.enamelColorName}</span>
                                                         <IoMdClose
                                                             className='ml-2 text-red-600 cursor-pointer'
                                                             onClick={() => handleRemoveEnamelColor(index)}
@@ -1120,50 +1122,66 @@ function CreateProduct() {
                                         <Popover>
                                             <PopoverTrigger>
                                                 <li className='flex justify-between mt-2 cursor-pointer'>
-                                                    <span>{color}</span>
+                                                    <span>{color.enamelColorName}</span>
                                                     <IoMdClose
                                                         className='ml-2 text-red-600 cursor-pointer'
                                                         onClick={() => handleRemoveEnamelColor(index)}
                                                     />
                                                 </li>
                                             </PopoverTrigger>
-
                                             <PopoverContent className="w-[380px] bg-white relative left-[65%] top-10">
-                                                <div className="space-y-2 p-4">
-                                                    <h4 className="font-medium leading-none">Enamel Color: <span className='capitalize'>{color}</span></h4>
-                                                    <p className="text-sm text-muted-foreground">
-                                                        Add images for the selected enamel color and metal color.
-                                                    </p>
+                                                <div className="w-[100%] grid gap-4 bg-white p-4">
+                                                    <div className="space-y-2">
+                                                        <h4 className="font-medium leading-none">{color.enamelColorName} - Upload Images</h4>
+                                                        <p className="text-sm text-muted-foreground">
+                                                            Upload images for different metal colors.
+                                                        </p>
+                                                    </div>
 
-                                                    {metalColors.map((metalColor) => (
-                                                        <div key={metalColor} className='font-Poppins mt-4 cursor-pointer'>
-                                                            <label htmlFor={`${color}-${metalColor}`} className='pb-2'>
-                                                                Upload Images for {color} - {metalColor} <span className='text-red-500'>*</span>
-                                                            </label>
-                                                            <div className='w-full flex items-center flex-wrap'>
-                                                                <input
-                                                                    type="file"
-                                                                    className='hidden'
-                                                                    id={`${color}-${metalColor}`}
-                                                                    multiple
-                                                                    onChange={(e) => handleAddImage(e, index, metalColor)}
-                                                                />
-                                                                <label htmlFor={`${color}-${metalColor}`}>
-                                                                    <AiOutlinePlusCircle size={30} className='mt-3' color='#555' />
-                                                                </label>
+                                                    {/* Metal Color Tabs */}
+                                                    <div className="flex space-x-4">
+                                                        {metalColors.map((metalColor) => (
+                                                            <button
+                                                                key={metalColor}
+                                                                className={`px-4 py-2 rounded-md ${selectedMetalColor === metalColor ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                                                                    }`}
+                                                                onClick={() => handleSelectMetalColor(metalColor)}
+                                                            >
+                                                                {metalColor} Gold
+                                                            </button>
+                                                        ))}
+                                                    </div>
 
-                                                                {/* Display uploaded images */}
-                                                                {enamelColorImages[color] && enamelColorImages[color][metalColor] && enamelColorImages[color][metalColor].map((image, i) => (
+                                                    {/* Image Upload for Selected Metal Color */}
+                                                    <div className="mt-4">
+                                                        <input
+                                                            type="file"
+                                                            accept="image/*"
+                                                            multiple
+                                                            onChange={(e) => handleAddImage(e, index, selectedMetalColor)}
+                                                        />
+                                                    </div>
+
+                                                    {/* Display Uploaded Images */}
+                                                    <div className="mt-4">
+                                                        <h5 className="font-medium">{selectedMetalColor} Gold Images</h5>
+                                                        <div className="flex space-x-2 mt-2">
+                                                            {enamelColorImages[color.enamelColorName] &&
+                                                                enamelColorImages[color.enamelColorName][selectedMetalColor] &&
+                                                                enamelColorImages[color.enamelColorName][selectedMetalColor].map((image, imgIndex) => (
                                                                     <img
+                                                                        key={imgIndex}
                                                                         src={URL.createObjectURL(image)}
-                                                                        key={i}
-                                                                        className='h-[100px] w-[100px] object-cover m-2'
-                                                                        alt={`Uploaded for ${color} - ${metalColor}`}
+                                                                        alt={`${selectedMetalColor} ${color.enamelColorName}`}
+                                                                        className="w-16 h-16 object-cover rounded-md"
                                                                     />
                                                                 ))}
-                                                            </div>
+                                                            {!(enamelColorImages[color.enamelColorName] &&
+                                                                enamelColorImages[color.enamelColorName][selectedMetalColor]) && (
+                                                                    <p className="text-gray-500">No images uploaded.</p>
+                                                                )}
                                                         </div>
-                                                    ))}
+                                                    </div>
                                                 </div>
                                             </PopoverContent>
                                         </Popover>
@@ -1172,43 +1190,7 @@ function CreateProduct() {
                             </ul>
                         )}
                     </div>
-
-                    {/* Metal Color Selection */}
-                    <div className='mt-6'>
-                        <h3 className='font-medium leading-none mb-2'>Select Metal Color</h3>
-                        <div className='flex gap-4'>
-                            {metalColors.map((color) => (
-                                <button
-                                    key={color}
-                                    className={`px-4 py-2 rounded ${selectedMetalColor === color ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-                                    onClick={() => handleSelectMetalColor(color)}
-                                >
-                                    {color}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Display Images for Selected Metal and Enamel Color */}
-                    <div className='mt-6'>
-                        <h3 className='font-medium leading-none mb-2'>Selected Images</h3>
-                        {selectedMetalColor && selectedEnamelColor && enamelColorImages[selectedEnamelColor] && enamelColorImages[selectedEnamelColor][selectedMetalColor] ? (
-                            <div className='flex flex-wrap'>
-                                {enamelColorImages[selectedEnamelColor][selectedMetalColor].map((image, i) => (
-                                    <img
-                                        src={URL.createObjectURL(image)}
-                                        key={i}
-                                        className='h-[100px] w-[100px] object-cover m-2'
-                                        alt={`Selected for ${selectedEnamelColor} - ${selectedMetalColor}`}
-                                    />
-                                ))}
-                            </div>
-                        ) : (
-                            <p className='text-gray-500'>No images uploaded for the selected metal and enamel color combination.</p>
-                        )}
-                    </div>
                 </div>
-
 
 
 
