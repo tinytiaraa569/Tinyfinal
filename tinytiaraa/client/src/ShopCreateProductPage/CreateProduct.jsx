@@ -593,9 +593,9 @@ function CreateProduct() {
                                                                 onClick={() => handleDeleteWithChainImage(i)}
                                                             />
                                                             <img
-                                                                key={`withchain_image_${index}`}
+                                                                key={`withchain_image_${i}`}
                                                                 src={i}
-                                                                alt={`With Chain ${index}`}
+                                                                alt={`With Chain ${i}`}
                                                                 className='h-[70px] w-[70px] object-cover border-[#555] m-2'
                                                             />
                                                         </div>
@@ -664,11 +664,11 @@ function CreateProduct() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {withchainimages && withchainimages.map((val, i) => (
+                                    {withchainimages && withchainimages.map((i) => (
                                         <tr key={i} className='border-b'>
-                                            <td className='px-4 py-2'>{val.name}</td>
+                                            <td className='px-4 py-2'>{i.name}</td>
                                             <td className='px-4 py-2'>
-                                                <img className='h-[80px] w-[80px] object-cover' src={URL.createObjectURL(val)} alt="" />
+                                                <img className='h-[80px] w-[80px] object-cover' src={i} alt="" />
                                             </td>
                                         </tr>
                                     ))}
@@ -688,11 +688,11 @@ function CreateProduct() {
                                 </thead>
                                 <tbody>
 
-                                    {withchainoutimages && withchainoutimages.map((val, i) => (
+                                    {withchainoutimages && withchainoutimages.map((i) => (
                                         <tr key={i} className='border-b'>
-                                            <td className='px-4 py-2'>{val.name}</td>
+                                            <td className='px-4 py-2'>{i.name}</td>
                                             <td className='px-4 py-2'>
-                                                <img className='h-[80px] w-[80px] object-cover' src={URL.createObjectURL(val)} alt="" />
+                                                <img className='h-[80px] w-[80px] object-cover' src={i} alt="" />
                                             </td>
                                         </tr>
                                     ))}
