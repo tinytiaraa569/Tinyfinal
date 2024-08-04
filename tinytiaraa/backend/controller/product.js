@@ -184,10 +184,10 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
 
 
         const enamelColors = [];
-        if (req.body.enamelColorsList && Array.isArray(req.body.enamelColorsList)) {
-            console.log('Processing enamelColorsList:', req.body.enamelColorsList);
-            for (let i = 0; i < req.body.enamelColorsList.length; i++) {
-                const enamelColor = req.body.enamelColorsList[i];
+        if (req.body.enamelColorImages && Array.isArray(req.body.enamelColorImages)) {
+            console.log('Processing enamelColorImages:', req.body.enamelColorImages);
+            for (let i = 0; i < req.body.enamelColorImages.length; i++) {
+                const enamelColor = req.body.enamelColorImages[i];
                 const enamelColorName = enamelColor.enamelColorName;
 
                 const imagesByMetalColor = {
@@ -195,6 +195,7 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
                     RoseGoldclr: [],
                     WhiteGoldclr: []
                 };
+                
 
                 
                 if (typeof req.body.enamelColorImages === "string") {
