@@ -325,8 +325,16 @@ function CreateProduct() {
 
     // Handle adding a new enamel color
     const handleAddEnamelColor = () => {
-        if (enamelColor && !enamelColorsList.includes(enamelColor)) {
-            setEnamelColorsList([...enamelColorsList, enamelColor]);
+        if (enamelColor.trim()) {
+            setEnamelColorsList([
+                ...enamelColorsList,
+                {
+                    enamelColorName: enamelColor.trim(),
+                    YellowGoldclr: [], // Initialize with empty arrays
+                    RoseGoldclr: [],
+                    WhiteGoldclr: []
+                }
+            ]);
             setEnamelColor('');
         }
     };
@@ -334,19 +342,20 @@ function CreateProduct() {
     // Handle removing an enamel color
     const handleRemoveEnamelColor = (index) => {
         const updatedColors = [...enamelColorsList];
+        const removedColor = updatedColors[index].enamelColorName;
         updatedColors.splice(index, 1);
         setEnamelColorsList(updatedColors);
-
+    
         // Remove associated images
         const updatedImages = { ...enamelColorImages };
-        delete updatedImages[enamelColorsList[index]];
+        delete updatedImages[removedColor];
         setEnamelColorImages(updatedImages);
     };
 
     // Handle uploading images for an enamel color
     const handleAddImage = (event, enamelIndex, metalColor) => {
         const files = Array.from(event.target.files);
-        const enamelColorName = enamelColorsList[enamelIndex];
+        const enamelColorName = enamelColorsList[enamelIndex].enamelColorName;
 
         setEnamelColorImages((prevImages) => ({
             ...prevImages,
@@ -480,25 +489,10 @@ function CreateProduct() {
         })
 
         enamelColorsList.forEach((color, index) => {
-            const colorName = color.enamelColorName;
-    
-            // Append enamel color name
-            newForm.append(`enamelColors[${index}].enamelColorName`, colorName);
-    
-            // Append YellowGoldclr images for this color
-            (color.YellowGoldclr || []).forEach((image, imgIndex) => {
-                newForm.set(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image);
-            });
-    
-            // Append RoseGoldclr images for this color
-            (color.RoseGoldclr || []).forEach((image, imgIndex) => {
-                newForm.set(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image);
-            });
-    
-            // Append WhiteGoldclr images for this color
-            (color.WhiteGoldclr || []).forEach((image, imgIndex) => {
-                newForm.set(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image);
-            });
+            newForm.append(`enamelColors[${index}].enamelColorName`, color.enamelColorName);
+            color.YellowGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image));
+            color.RoseGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image));
+            color.WhiteGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image));
         });
 
 
