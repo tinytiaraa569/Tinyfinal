@@ -10,29 +10,13 @@ const { isSeller, isAuthenticated } = require("../middleware/auth");
 
 const fs = require('fs')
 const Order = require("../model/order")
+const cloudinary = require("cloudinary");
+
 
 //create Product
 
 
-router.post("/create-product", upload.fields([
-    { name: 'images' },
-    { name: 'withchainimages' },
-    { name: 'withchainoutimages' },
-    { name: 'YellowGoldclr' },
-    { name: 'RoseGoldclr' },
-    { name: 'WhiteGoldclr' },
-    { name: 'enamelColors[0].enamelColorImages' },
-    { name: 'enamelColors[0].enamelColorName' },
-    { name: 'enamelColors[1].enamelColorImages' },
-    { name: 'enamelColors[1].enamelColorName' },
-    { name: 'enamelColors[2].enamelColorImages' },
-    { name: 'enamelColors[2].enamelColorName' },
-    {name:'enamelColorImages'}
-
-
-
-
-]), catchAsyncErrors(async (req, res, next) => {
+router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
     try {
         const shopId = req.body.shopId;
         const shop = await Shop.findById(shopId);
@@ -41,16 +25,160 @@ router.post("/create-product", upload.fields([
             return next(new ErrorHandler("Shop ID is invalid", 400));
         }
 
-        const files = req.files;
-        const imageUrls = files.images.map((file) => file.filename);
+        let images = [];
+        let withchainimages = [];
+        let withchainoutimages = [];
 
-        const withChainFiles = files.withchainimages ? files.withchainimages.map((file) => file.filename) : [];
-        const withChainoutFiles = files.withchainoutimages ? files.withchainoutimages.map((file) => file.filename) : [];
+        // metal color 
+        let YellowGoldclr = [];
+        let RoseGoldclr = [];
+        let WhiteGoldclr = [];
 
 
-        const YellowGoldclrFiles = files.YellowGoldclr ? files.YellowGoldclr.map((file) => file.filename) : [];
-        const RoseGoldclrFiles = files.RoseGoldclr ? files.RoseGoldclr.map((file) => file.filename) : [];
-        const WhiteGoldclrFiles = files.WhiteGoldclr ? files.WhiteGoldclr.map((file) => file.filename) : [];
+
+        // images 
+        if (typeof req.body.images === "string") {
+            images.push(req.body.images);
+        } else {
+            images = req.body.images;
+        }
+        //withchain
+
+        if (typeof req.body.withchainimages === "string") {
+            withchainimages.push(req.body.withchainimages);
+        } else {
+            withchainimages = req.body.withchainimages;
+        }
+        //without chain
+        if (typeof req.body.withchainoutimages === "string") {
+            withchainoutimages.push(req.body.withchainoutimages);
+        } else {
+            withchainoutimages = req.body.withchainoutimages;
+        }
+
+
+        // Metal color
+        //yellow clr
+        if (typeof req.body.YellowGoldclr === "string") {
+            YellowGoldclr.push(req.body.YellowGoldclr);
+        } else {
+            YellowGoldclr = req.body.YellowGoldclr;
+        }
+
+        //RoseGoldclr 
+        if (typeof req.body.RoseGoldclr === "string") {
+            RoseGoldclr.push(req.body.RoseGoldclr);
+        } else {
+            RoseGoldclr = req.body.RoseGoldclr;
+        }
+
+        //WhiteGoldclr 
+        if (typeof req.body.WhiteGoldclr === "string") {
+            WhiteGoldclr.push(req.body.WhiteGoldclr);
+        } else {
+            WhiteGoldclr = req.body.WhiteGoldclr;
+        }
+
+
+
+
+
+
+
+        const imagesLinks = [];
+        const withchainimagesLinks = [];
+        const withchainoutimagesLinks = [];
+
+//meatl color links
+        const YellowGoldclrLinks = [];
+        const RoseGoldclrLinks = [];
+        const WhiteGoldclrLinks = [];
+
+
+
+
+        for (let i = 0; i < images.length; i++) {
+            const result = await cloudinary.v2.uploader.upload(images[i], {
+                folder: "products",
+            });
+
+            imagesLinks.push({
+                public_id: result.public_id,
+                url: result.secure_url,
+            });
+        }
+
+        //with chain
+        for (let i = 0; i < withchainimages.length; i++) {
+            const result = await cloudinary.v2.uploader.upload(withchainimages[i], {
+                folder: "products",
+            });
+
+            withchainimagesLinks.push({
+                public_id: result.public_id,
+                url: result.secure_url,
+            });
+        }
+        //wihtout chian
+        for (let i = 0; i < withchainoutimages.length; i++) {
+            const result = await cloudinary.v2.uploader.upload(withchainoutimages[i], {
+                folder: "products",
+            });
+
+            withchainoutimagesLinks.push({
+                public_id: result.public_id,
+                url: result.secure_url,
+            });
+        }
+
+
+        // yellow gold clr
+
+        for (let i = 0; i < YellowGoldclr.length; i++) {
+            const result = await cloudinary.v2.uploader.upload(YellowGoldclr[i], {
+                folder: "products",
+            });
+
+            YellowGoldclrLinks.push({
+                public_id: result.public_id,
+                url: result.secure_url,
+            });
+        }
+
+         // RoseGoldclr clr
+
+         for (let i = 0; i < RoseGoldclr.length; i++) {
+            const result = await cloudinary.v2.uploader.upload(RoseGoldclr[i], {
+                folder: "products",
+            });
+
+            RoseGoldclrLinks.push({
+                public_id: result.public_id,
+                url: result.secure_url,
+            });
+        }
+
+         // WhiteGoldclr clr
+
+         for (let i = 0; i < WhiteGoldclr.length; i++) {
+            const result = await cloudinary.v2.uploader.upload(WhiteGoldclr[i], {
+                folder: "products",
+            });
+
+            WhiteGoldclrLinks.push({
+                public_id: result.public_id,
+                url: result.secure_url,
+            });
+        }
+
+
+
+
+
+
+
+
+
 
         // Handle enamelColorImages
 
@@ -79,21 +207,21 @@ router.post("/create-product", upload.fields([
         //         // Optionally include enamelColorName if you have it on the frontend
         //     });
         // });
-       
+
 
 
 
         const productData = req.body;
-        productData.images = imageUrls;
-        productData.withchainimages = withChainFiles;
-        productData.withchainoutimages = withChainoutFiles;
+        productData.images = imagesLinks;
+        productData.withchainimages = withchainimagesLinks;
+        productData.withchainoutimages = withchainoutimagesLinks;
         productData.shop = shop;
         productData.MetalColor = {
-            YellowGoldclr: YellowGoldclrFiles,
-            RoseGoldclr: RoseGoldclrFiles,
-            WhiteGoldclr: WhiteGoldclrFiles,
+            YellowGoldclr: YellowGoldclrLinks,
+            RoseGoldclr: RoseGoldclrLinks,
+            WhiteGoldclr: WhiteGoldclrLinks,
         }
-        productData.enamelColors = {enamelColors}
+        productData.enamelColors = { enamelColors }
 
 
         const product = await Product.create(productData);
@@ -106,6 +234,100 @@ router.post("/create-product", upload.fields([
         return next(new ErrorHandler(error.message || "Internal Server Error", 400));
     }
 }));
+
+
+// router.post("/create-product", upload.fields([
+//     { name: 'images' },
+//     { name: 'withchainimages' },
+//     { name: 'withchainoutimages' },
+//     { name: 'YellowGoldclr' },
+//     { name: 'RoseGoldclr' },
+//     { name: 'WhiteGoldclr' },
+//     { name: 'enamelColors[0].enamelColorImages' },
+//     { name: 'enamelColors[0].enamelColorName' },
+//     { name: 'enamelColors[1].enamelColorImages' },
+//     { name: 'enamelColors[1].enamelColorName' },
+//     { name: 'enamelColors[2].enamelColorImages' },
+//     { name: 'enamelColors[2].enamelColorName' },
+//     {name:'enamelColorImages'}
+
+
+
+
+// ]), catchAsyncErrors(async (req, res, next) => {
+//     try {
+//         const shopId = req.body.shopId;
+//         const shop = await Shop.findById(shopId);
+
+//         if (!shop) {
+//             return next(new ErrorHandler("Shop ID is invalid", 400));
+//         }
+
+//         const files = req.files;
+//         const imageUrls = files.images.map((file) => file.filename);
+
+//         const withChainFiles = files.withchainimages ? files.withchainimages.map((file) => file.filename) : [];
+//         const withChainoutFiles = files.withchainoutimages ? files.withchainoutimages.map((file) => file.filename) : [];
+
+
+//         const YellowGoldclrFiles = files.YellowGoldclr ? files.YellowGoldclr.map((file) => file.filename) : [];
+//         const RoseGoldclrFiles = files.RoseGoldclr ? files.RoseGoldclr.map((file) => file.filename) : [];
+//         const WhiteGoldclrFiles = files.WhiteGoldclr ? files.WhiteGoldclr.map((file) => file.filename) : [];
+
+//         // Handle enamelColorImages
+
+
+//         const enamelColors = [];
+
+//         // Iterate through req.files.enamelColors
+//         if (req.body.enamelColors && Array.isArray(req.body.enamelColors)) {
+//             for (let i = 0; i < req.body.enamelColors.length; i++) {
+//                 const enamelColorName = req.body.enamelColors[i].enamelColorName;
+//                 const enamelColorImagesUrls = files[`enamelColors[${i}].enamelColorImages`]
+//                     ? files[`enamelColors[${i}].enamelColorImages`].map(file => file.filename)
+//                     : [];
+
+//                 enamelColors.push({
+//                     enamelColorName,
+//                     enamelColorImages: enamelColorImagesUrls,
+//                 });
+//             }
+//         }
+
+
+//         // files.forEach((file, index) => {
+//         //     enamelColors.push({
+//         //         enamelColorImages: [file.filename], // Assuming only one image per color in this example
+//         //         // Optionally include enamelColorName if you have it on the frontend
+//         //     });
+//         // });
+
+
+
+
+//         const productData = req.body;
+//         productData.images = imageUrls;
+//         productData.withchainimages = withChainFiles;
+//         productData.withchainoutimages = withChainoutFiles;
+//         productData.shop = shop;
+//         productData.MetalColor = {
+//             YellowGoldclr: YellowGoldclrFiles,
+//             RoseGoldclr: RoseGoldclrFiles,
+//             WhiteGoldclr: WhiteGoldclrFiles,
+//         }
+//         productData.enamelColors = {enamelColors}
+
+
+//         const product = await Product.create(productData);
+
+//         res.status(201).json({
+//             success: true,
+//             product
+//         });
+//     } catch (error) {
+//         return next(new ErrorHandler(error.message || "Internal Server Error", 400));
+//     }
+// }));
 
 
 //get all Products of a shop

@@ -39,20 +39,47 @@ const productSchema = new mongoose.Schema({
         required: [true, 'Please Enter Product Stocks']
     },
     images: [
+        // {
+        //     type: String,
+        // },
         {
-            type: String,
+            public_id: {
+                type: String,
+                // required: true,
+            },
+            url: {
+                type: String,
+                // required: true,
+            },
         },
     ],
     withchainimages: [
         {
-            type: String,
+            public_id: {
+                type: String
+
+            },
+            url: {
+                type: String
+
+            },
         },
     ],
 
 
     withchainoutimages: [
+        // {
+        //     type: String,
+        // },
         {
-            type: String,
+            public_id: {
+                type: String
+
+            },
+            url: {
+                type: String
+
+            },
         },
     ],
 
@@ -60,17 +87,38 @@ const productSchema = new mongoose.Schema({
     MetalColor: {
         YellowGoldclr: [
             {
-                type: String,
+                public_id: {
+                    type: String
+
+                },
+                url: {
+                    type: String
+
+                },
             },
         ],
         RoseGoldclr: [
             {
-                type: String,
+                public_id: {
+                    type: String
+
+                },
+                url: {
+                    type: String
+
+                },
             },
         ],
         WhiteGoldclr: [
             {
-                type: String,
+                public_id: {
+                    type: String
+
+                },
+                url: {
+                    type: String
+
+                },
             },
         ],
 

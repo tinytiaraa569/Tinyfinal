@@ -103,22 +103,56 @@ function CreateProduct() {
     const handleImageChange = (e) => {
         e.preventDefault()
 
-        let files = Array.from(e.target.files)
-        setImages((prevImages) => [...prevImages, ...files])
+        const files = Array.from(e.target.files);
+
+        setImages([]);
+
+        files.forEach((file) => {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setImages((old) => [...old, reader.result]);
+                }
+            };
+            reader.readAsDataURL(file);
+        });
     }
 
     const handlewithImageChange = (e) => {
         e.preventDefault()
 
-        let files = Array.from(e.target.files)
-        setwithchainImages((prevImages) => [...prevImages, ...files])
+        const files = Array.from(e.target.files);
+        setwithchainImages([]);
+        files.forEach((file) => {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setwithchainImages((old) => [...old, reader.result]);
+                }
+            };
+            reader.readAsDataURL(file);
+        });
     }
 
     const handlewithoutImageChange = (e) => {
         e.preventDefault()
 
-        let files = Array.from(e.target.files)
-        setwithchainoutImages((prevImages) => [...prevImages, ...files])
+        const files = Array.from(e.target.files);
+        setwithchainoutImages([]);
+        files.forEach((file) => {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setwithchainoutImages((old) => [...old, reader.result]);
+                }
+            };
+            reader.readAsDataURL(file);
+        });
+
+
     }
 
 
@@ -174,8 +208,18 @@ function CreateProduct() {
     const handlewithYellowclr = (e) => {
         e.preventDefault()
 
-        let files = Array.from(e.target.files)
-        setYellowGoldclr((prevImages) => [...prevImages, ...files])
+        const files = Array.from(e.target.files);
+        setYellowGoldclr([]);
+        files.forEach((file) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setYellowGoldclr((old) => [...old, reader.result]);
+                }
+            };
+            reader.readAsDataURL(file);
+        });
+
     }
 
 
@@ -194,8 +238,18 @@ function CreateProduct() {
     const handlewithRoseclr = (e) => {
         e.preventDefault()
 
-        let files = Array.from(e.target.files)
-        setRoseGoldclr((prevImages) => [...prevImages, ...files])
+        const files = Array.from(e.target.files);
+        setRoseGoldclr([]);
+        files.forEach((file) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setRoseGoldclr((old) => [...old, reader.result]);
+                }
+            };
+            reader.readAsDataURL(file);
+        });
+       
     }
 
     const handleToggleWithRoseclr = () => {
@@ -212,8 +266,18 @@ function CreateProduct() {
     const handlewithWhiteclr = (e) => {
         e.preventDefault()
 
-        let files = Array.from(e.target.files)
-        setWhiteGoldclr((prevImages) => [...prevImages, ...files])
+        const files = Array.from(e.target.files);
+        setWhiteGoldclr([]);
+        files.forEach((file) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setWhiteGoldclr((old) => [...old, reader.result]);
+                }
+            };
+            reader.readAsDataURL(file);
+        });
+
     }
 
     const handleToggleWithWhiteclr = () => {
@@ -320,15 +384,15 @@ function CreateProduct() {
         const newForm = new FormData()
 
         images.forEach((image) => {
-            newForm.append("images", image);
+            newForm.set("images", image);
         });
 
         withchainimages.forEach((image) => {
-            newForm.append("withchainimages", image)
+            newForm.set("withchainimages", image)
         })
 
         withchainoutimages.forEach((image) => {
-            newForm.append("withchainoutimages", image)
+            newForm.set("withchainoutimages", image)
         })
 
 
@@ -348,13 +412,13 @@ function CreateProduct() {
                 newForm.append(`enamelColors[${index}].enamelColorImages`, image);
             });
         });
-       
 
-    //    enamelColorImages.forEach((images, index) => {
-    //     images.forEach((image) => {
-    //         newForm.append(`enamelColorImages[${index}]`, image);
-    //     });
-    // });
+
+        //    enamelColorImages.forEach((images, index) => {
+        //     images.forEach((image) => {
+        //         newForm.append(`enamelColorImages[${index}]`, image);
+        //     });
+        // });
 
 
 
@@ -387,10 +451,10 @@ function CreateProduct() {
         // console.log(newForm)
 
 
-        
-        console.log(enamelColorsList,"list of color to add")
-        console.log(enamelColorImages,"list of  to add")
-        console.log(enamelColor,"list of color to add")
+
+        console.log(enamelColorsList, "list of color to add")
+        console.log(enamelColorImages, "list of  to add")
+        console.log(enamelColor, "list of color to add")
 
     }
 
@@ -987,7 +1051,7 @@ function CreateProduct() {
                                                                     <img
                                                                         src={URL.createObjectURL(image)}
                                                                         key={i}
-                                                                       
+
                                                                         className='h-[100px] w-[100px] object-cover m-2'
                                                                     />
                                                                 ))}
