@@ -585,16 +585,16 @@ function CreateProduct() {
                                                 </label>
                                                 <input type="file" id='withchains' className='hidden' multiple onChange={handlewithImageChange} />
                                                 <div className='flex flex-wrap justify-center gap-2'>
-                                                    {withchainimages && withchainimages.map((file, index) => (
-                                                        <div key={`withchain_${index}`} className='relative'>
+                                                    {withchainimages && withchainimages.map((i) => (
+                                                        <div key={`withchain_${i}`} className='relative'>
                                                             <AiOutlineCloseCircle
                                                                 size={22}
                                                                 className='absolute top-0 right-0 cursor-pointer text-red-500 bg-white rounded-full p-1'
-                                                                onClick={() => handleDeleteWithChainImage(index)}
+                                                                onClick={() => handleDeleteWithChainImage(i)}
                                                             />
                                                             <img
                                                                 key={`withchain_image_${index}`}
-                                                                src={URL.createObjectURL(file)}
+                                                                src={i}
                                                                 alt={`With Chain ${index}`}
                                                                 className='h-[70px] w-[70px] object-cover border-[#555] m-2'
                                                             />
@@ -1247,9 +1247,9 @@ function CreateProduct() {
                         </label>
 
                         {
-                            images && images.map((val, i) =>
+                            images && images.map((i) =>
                             (
-                                <img src={URL.createObjectURL(val)} key={i} alt="" className='h-[-120px] w-[120px] object-cover m-2' />
+                                <img src={i} key={i} alt="" className='h-[-120px] w-[120px] object-cover m-2' />
 
                             )
 
