@@ -746,7 +746,7 @@ function PaymentPage() {
 
                                             <div key={index} className='ordercardsec flex mb-5 shadow-sm'>
                                                 <div className="image-section">
-                                                    <img src={`${backend_url}${val?.images[0]}`} width="100%" height="100" />
+                                                    <img src={`${val?.images[0]?.url}`} width="100%" height="100" />
                                                 </div>
                                                 <div className="detail-section">
                                                     <h3 className='text-[#161618] text-[14px] mb-[5px]'>{val.name}</h3>

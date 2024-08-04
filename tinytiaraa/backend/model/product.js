@@ -135,16 +135,58 @@ const productSchema = new mongoose.Schema({
     //     ]
     // },
 
+    // enamelColors: [
+    //     {
+    //         enamelColorName: {
+    //             type: String,
+    //         },
+    //         enamelColorImages: [
+    //             {
+    //                 type: String,
+    //             },
+    //         ],
+    //     },
+    // ],
+
+
     enamelColors: [
         {
             enamelColorName: {
                 type: String,
+                required: true,
             },
-            enamelColorImages: [
-                {
-                    type: String,
-                },
-            ],
+            imagesByMetalColor: {
+                YellowGoldclr: [
+                    {
+                        public_id: {
+                            type: String,
+                        },
+                        url: {
+                            type: String,
+                        },
+                    },
+                ],
+                RoseGoldclr: [
+                    {
+                        public_id: {
+                            type: String,
+                        },
+                        url: {
+                            type: String,
+                        },
+                    },
+                ],
+                WhiteGoldclr: [
+                    {
+                        public_id: {
+                            type: String,
+                        },
+                        url: {
+                            type: String,
+                        },
+                    },
+                ],
+            },
         },
     ],
 

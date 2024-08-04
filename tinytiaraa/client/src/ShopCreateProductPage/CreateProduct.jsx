@@ -17,7 +17,7 @@ import EnamelColorsList from './EnamelColorsList'
 function CreateProduct() {
     const { seller } = useSelector((state) => state.seller)
 
-    console.log(seller ,"seller information")
+    console.log(seller, "seller information")
     const { success, error } = useSelector((state) => state.products)
 
 
@@ -314,69 +314,140 @@ function CreateProduct() {
 
     // enamel Color
 
+
     const [enamelColor, setEnamelColor] = useState('');
     const [enamelColorsList, setEnamelColorsList] = useState([]);
-    const [enamelColorImages, setEnamelColorImages] = useState([]);
+    const [enamelColorImages, setEnamelColorImages] = useState({});
+    const [selectedMetalColor, setSelectedMetalColor] = useState('');
+    const [selectedEnamelColor, setSelectedEnamelColor] = useState('');
 
+    const metalColors = ['Yellow', 'Rose', 'White']; // Example metal colors
 
+    // Handle adding a new enamel color
     const handleAddEnamelColor = () => {
-        if (enamelColor.trim() !== '') {
-            setEnamelColorsList([...enamelColorsList, enamelColor.trim()]);
-            setEnamelColor(''); // Clear input field after adding
-            setEnamelColorImages([...enamelColorImages, []]);
+        if (enamelColor && !enamelColorsList.includes(enamelColor)) {
+            setEnamelColorsList([...enamelColorsList, enamelColor]);
+            setEnamelColor('');
         }
     };
 
+    // Handle removing an enamel color
     const handleRemoveEnamelColor = (index) => {
-        const updatedEnamelColorsList = [...enamelColorsList];
-        updatedEnamelColorsList.splice(index, 1);
-        setEnamelColorsList(updatedEnamelColorsList);
+        const updatedColors = [...enamelColorsList];
+        updatedColors.splice(index, 1);
+        setEnamelColorsList(updatedColors);
 
-        // Remove corresponding images for the removed color
-        const updatedEnamelColorImages = [...enamelColorImages];
-        updatedEnamelColorImages.splice(index, 1);
-        setEnamelColorImages(updatedEnamelColorImages);
+        // Remove associated images
+        const updatedImages = { ...enamelColorImages };
+        delete updatedImages[enamelColorsList[index]];
+        setEnamelColorImages(updatedImages);
     };
 
-    console.log(enamelColorImages, "Enamel iamges ")
+    // Handle uploading images for an enamel color
+    const handleAddImage = (event, enamelIndex, metalColor) => {
+        const files = Array.from(event.target.files);
+        const enamelColorName = enamelColorsList[enamelIndex];
 
+        setEnamelColorImages((prevImages) => ({
+            ...prevImages,
+            [enamelColorName]: {
+                ...(prevImages[enamelColorName] || {}),
+                [metalColor]: files,
+            },
+        }));
+    };
+
+    // Handle selecting a metal color
+    const handleSelectMetalColor = (color) => {
+        setSelectedMetalColor(color);
+    };
+
+    // Handle selecting an enamel color
+    const handleSelectEnamelColor = (color) => {
+        setSelectedEnamelColor(color);
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // const [enamelColor, setEnamelColor] = useState('');
+    // const [enamelColorsList, setEnamelColorsList] = useState([]);
+    // const [enamelColorImages, setEnamelColorImages] = useState([]);
+
+
+    // const handleAddEnamelColor = () => {
+    //     if (enamelColor.trim() !== '') {
+    //         setEnamelColorsList([...enamelColorsList, enamelColor.trim()]);
+    //         setEnamelColor(''); // Clear input field after adding
+    //         setEnamelColorImages([...enamelColorImages, []]);
+    //     }
+    // };
+
+    // const handleRemoveEnamelColor = (index) => {
+    //     const updatedEnamelColorsList = [...enamelColorsList];
+    //     updatedEnamelColorsList.splice(index, 1);
+    //     setEnamelColorsList(updatedEnamelColorsList);
+
+    //     // Remove corresponding images for the removed color
+    //     const updatedEnamelColorImages = [...enamelColorImages];
+    //     updatedEnamelColorImages.splice(index, 1);
+    //     setEnamelColorImages(updatedEnamelColorImages);
+    // };
+
+    // console.log(enamelColorImages, "Enamel iamges ")
+
+
+
+    // // const handleAddImage = (e, colorIndex) => {
+
+
+    // //     const files = Array.from(e.target.files);
+
+    // //     // Update enamelColorImages state
+    // //     setEnamelColorImages((prevImages) => {
+    // //         const updatedImages = [...prevImages];
+    // //         updatedImages[colorIndex] = [...(updatedImages[colorIndex] || []), ...files];
+    // //         return updatedImages;
+    // //     });
+
+    // //     // let files = Array.from(e.target.files)
+    // //     // console.log(files , "from handle Image")
+    // //     // setEnamelColorImages((prevImages) => [...prevImages, ...files])
+
+
+
+    // //     // const updatedEnamelColorImages = [...enamelColorImages];
+    // //     // console.log(updatedEnamelColorImages)
+
+    // //     // // Replace images array at colorIndex with new files
+    // //     // updatedEnamelColorImages[colorIndex] = files;
+    // //     // setEnamelColorImages(updatedEnamelColorImages);
+    // // };
 
 
     // const handleAddImage = (e, colorIndex) => {
-
-
     //     const files = Array.from(e.target.files);
-
-    //     // Update enamelColorImages state
     //     setEnamelColorImages((prevImages) => {
     //         const updatedImages = [...prevImages];
-    //         updatedImages[colorIndex] = [...(updatedImages[colorIndex] || []), ...files];
+    //         updatedImages[colorIndex] = files; // Replace images array at colorIndex
     //         return updatedImages;
     //     });
-
-    //     // let files = Array.from(e.target.files)
-    //     // console.log(files , "from handle Image")
-    //     // setEnamelColorImages((prevImages) => [...prevImages, ...files])
-
-
-
-    //     // const updatedEnamelColorImages = [...enamelColorImages];
-    //     // console.log(updatedEnamelColorImages)
-
-    //     // // Replace images array at colorIndex with new files
-    //     // updatedEnamelColorImages[colorIndex] = files;
-    //     // setEnamelColorImages(updatedEnamelColorImages);
     // };
-
-
-    const handleAddImage = (e, colorIndex) => {
-        const files = Array.from(e.target.files);
-        setEnamelColorImages((prevImages) => {
-            const updatedImages = [...prevImages];
-            updatedImages[colorIndex] = files; // Replace images array at colorIndex
-            return updatedImages;
-        });
-    };
 
 
     const handleSubmit = (e) => {
@@ -458,7 +529,7 @@ function CreateProduct() {
             originalPrice,
             discountPrice,
             stock,
-            shopId:seller?._id,
+            shopId: seller?._id,
             images,
             withchainimages,
             withchainoutimages,
@@ -975,7 +1046,199 @@ function CreateProduct() {
                 {/* Enamelcolor */}
 
 
+
                 <div className='font-Poppins mt-6'>
+                    <h2 className='mb-2 p-2 border border-[#555]'>Add Enamel Color of the Product</h2>
+
+                    {/* Add Enamel Color Section */}
+                    <Popover>
+                        <PopoverTrigger>
+                            <div className='flex items-center cursor-pointer'>
+                                <IoIosAdd size={20} />
+                                <label className='ml-2'>Enamel Color <span className='text-red-500'>(Not Mandatory)</span></label>
+                            </div>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[380px] bg-white relative left-[65%] top-10">
+                            <div className="w-[100%] grid gap-4 bg-white p-4">
+                                <div className="space-y-2">
+                                    <h4 className="font-medium leading-none">Enamel Color</h4>
+                                    <p className="text-sm text-muted-foreground">
+                                        Add Enamel Color for the product.
+                                    </p>
+                                </div>
+
+                                <div className="gap-2 w-[100%]">
+                                    <div className='w-[100%] flex items-center'>
+                                        <input
+                                            type="text"
+                                            placeholder='Enter Enamel Color'
+                                            className='w-[70%] border border-[#555] px-2 py-1'
+                                            value={enamelColor}
+                                            onChange={(e) => setEnamelColor(e.target.value)}
+                                        />
+                                        <button className='ml-4 bg-slate-500 px-4 py-1 text-white rounded-[5px]' onClick={handleAddEnamelColor}>
+                                            Add
+                                        </button>
+                                    </div>
+
+                                    <div className='mt-4'>
+                                        {enamelColorsList.length > 0 && (
+                                            <ul className='list-disc list-inside'>
+                                                {enamelColorsList.map((color, index) => (
+                                                    <li key={index} className='flex justify-between'>
+                                                        <span>{color}</span>
+                                                        <IoMdClose
+                                                            className='ml-2 text-red-600 cursor-pointer'
+                                                            onClick={() => handleRemoveEnamelColor(index)}
+                                                        />
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </PopoverContent>
+                    </Popover>
+
+                    {/* Enamel Colors List with Image Upload */}
+                    <div className='mt-4'>
+                        {enamelColorsList.length > 0 && (
+                            <ul className='list-disc list-inside'>
+                                {enamelColorsList.map((color, index) => (
+                                    <div key={index}>
+                                        <Popover>
+                                            <PopoverTrigger>
+                                                <li className='flex justify-between mt-2 cursor-pointer'>
+                                                    <span>{color}</span>
+                                                    <IoMdClose
+                                                        className='ml-2 text-red-600 cursor-pointer'
+                                                        onClick={() => handleRemoveEnamelColor(index)}
+                                                    />
+                                                </li>
+                                            </PopoverTrigger>
+
+                                            <PopoverContent className="w-[380px] bg-white relative left-[65%] top-10">
+                                                <div className="space-y-2 p-4">
+                                                    <h4 className="font-medium leading-none">Enamel Color: <span className='capitalize'>{color}</span></h4>
+                                                    <p className="text-sm text-muted-foreground">
+                                                        Add images for the selected enamel color and metal color.
+                                                    </p>
+
+                                                    {metalColors.map((metalColor) => (
+                                                        <div key={metalColor} className='font-Poppins mt-4 cursor-pointer'>
+                                                            <label htmlFor={`${color}-${metalColor}`} className='pb-2'>
+                                                                Upload Images for {color} - {metalColor} <span className='text-red-500'>*</span>
+                                                            </label>
+                                                            <div className='w-full flex items-center flex-wrap'>
+                                                                <input
+                                                                    type="file"
+                                                                    className='hidden'
+                                                                    id={`${color}-${metalColor}`}
+                                                                    multiple
+                                                                    onChange={(e) => handleAddImage(e, index, metalColor)}
+                                                                />
+                                                                <label htmlFor={`${color}-${metalColor}`}>
+                                                                    <AiOutlinePlusCircle size={30} className='mt-3' color='#555' />
+                                                                </label>
+
+                                                                {/* Display uploaded images */}
+                                                                {enamelColorImages[color] && enamelColorImages[color][metalColor] && enamelColorImages[color][metalColor].map((image, i) => (
+                                                                    <img
+                                                                        src={URL.createObjectURL(image)}
+                                                                        key={i}
+                                                                        className='h-[100px] w-[100px] object-cover m-2'
+                                                                        alt={`Uploaded for ${color} - ${metalColor}`}
+                                                                    />
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </PopoverContent>
+                                        </Popover>
+                                    </div>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+
+                    {/* Metal Color Selection */}
+                    <div className='mt-6'>
+                        <h3 className='font-medium leading-none mb-2'>Select Metal Color</h3>
+                        <div className='flex gap-4'>
+                            {metalColors.map((color) => (
+                                <button
+                                    key={color}
+                                    className={`px-4 py-2 rounded ${selectedMetalColor === color ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+                                    onClick={() => handleSelectMetalColor(color)}
+                                >
+                                    {color}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Display Images for Selected Metal and Enamel Color */}
+                    <div className='mt-6'>
+                        <h3 className='font-medium leading-none mb-2'>Selected Images</h3>
+                        {selectedMetalColor && selectedEnamelColor && enamelColorImages[selectedEnamelColor] && enamelColorImages[selectedEnamelColor][selectedMetalColor] ? (
+                            <div className='flex flex-wrap'>
+                                {enamelColorImages[selectedEnamelColor][selectedMetalColor].map((image, i) => (
+                                    <img
+                                        src={URL.createObjectURL(image)}
+                                        key={i}
+                                        className='h-[100px] w-[100px] object-cover m-2'
+                                        alt={`Selected for ${selectedEnamelColor} - ${selectedMetalColor}`}
+                                    />
+                                ))}
+                            </div>
+                        ) : (
+                            <p className='text-gray-500'>No images uploaded for the selected metal and enamel color combination.</p>
+                        )}
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {/* <div className='font-Poppins mt-6'>
                     <h2 className='mb-2 p-2 border border-[#555]'>Add Enamel Color of the Product</h2>
 
                     <Popover className="">
@@ -1075,7 +1338,7 @@ function CreateProduct() {
                                                                 </label>
 
                                                                 {/* Display uploaded images */}
-                                                                {enamelColorImages[index] && enamelColorImages[index].map((image, i) => (
+                {/* {enamelColorImages[index] && enamelColorImages[index].map((image, i) => (
                                                                     <img
                                                                         src={URL.createObjectURL(image)}
                                                                         key={i}
@@ -1107,7 +1370,7 @@ function CreateProduct() {
 
 
 
-
+ */}
 
 
 

@@ -89,7 +89,7 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
         const withchainimagesLinks = [];
         const withchainoutimagesLinks = [];
 
-//meatl color links
+        //meatl color links
         const YellowGoldclrLinks = [];
         const RoseGoldclrLinks = [];
         const WhiteGoldclrLinks = [];
@@ -145,9 +145,9 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
             });
         }
 
-         // RoseGoldclr clr
+        // RoseGoldclr clr
 
-         for (let i = 0; i < RoseGoldclr.length; i++) {
+        for (let i = 0; i < RoseGoldclr.length; i++) {
             const result = await cloudinary.v2.uploader.upload(RoseGoldclr[i], {
                 folder: "products",
             });
@@ -158,9 +158,9 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
             });
         }
 
-         // WhiteGoldclr clr
+        // WhiteGoldclr clr
 
-         for (let i = 0; i < WhiteGoldclr.length; i++) {
+        for (let i = 0; i < WhiteGoldclr.length; i++) {
             const result = await cloudinary.v2.uploader.upload(WhiteGoldclr[i], {
                 folder: "products",
             });
@@ -185,20 +185,82 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
 
         const enamelColors = [];
 
-        // Iterate through req.files.enamelColors
+        // Iterate through enamelColors in the request body
         if (req.body.enamelColors && Array.isArray(req.body.enamelColors)) {
             for (let i = 0; i < req.body.enamelColors.length; i++) {
-                const enamelColorName = req.body.enamelColors[i].enamelColorName;
-                const enamelColorImagesUrls = files[`enamelColors[${i}].enamelColorImages`]
-                    ? files[`enamelColors[${i}].enamelColorImages`].map(file => file.filename)
-                    : [];
+                const enamelColor = req.body.enamelColors[i];
+                const enamelColorName = enamelColor.enamelColorName;
 
+                const imagesByMetalColor = {
+                    YellowGoldclr: [],
+                    RoseGoldclr: [],
+                    WhiteGoldclr: []
+                };
+
+                // Handle YellowGoldclr images
+                if (enamelColor.YellowGoldclr && Array.isArray(enamelColor.YellowGoldclr)) {
+                    for (let j = 0; j < enamelColor.YellowGoldclr.length; j++) {
+                        const result = await cloudinary.v2.uploader.upload(enamelColor.YellowGoldclr[j], {
+                            folder: `products/enamelColors/${enamelColorName}/YellowGoldclr`,
+                        });
+                        imagesByMetalColor.YellowGoldclr.push({
+                            public_id: result.public_id,
+                            url: result.secure_url,
+                        });
+                    }
+                }
+
+                // Handle RoseGoldclr images
+                if (enamelColor.RoseGoldclr && Array.isArray(enamelColor.RoseGoldclr)) {
+                    for (let j = 0; j < enamelColor.RoseGoldclr.length; j++) {
+                        const result = await cloudinary.v2.uploader.upload(enamelColor.RoseGoldclr[j], {
+                            folder: `products/enamelColors/${enamelColorName}/RoseGoldclr`,
+                        });
+                        imagesByMetalColor.RoseGoldclr.push({
+                            public_id: result.public_id,
+                            url: result.secure_url,
+                        });
+                    }
+                }
+
+                // Handle WhiteGoldclr images
+                if (enamelColor.WhiteGoldclr && Array.isArray(enamelColor.WhiteGoldclr)) {
+                    for (let j = 0; j < enamelColor.WhiteGoldclr.length; j++) {
+                        const result = await cloudinary.v2.uploader.upload(enamelColor.WhiteGoldclr[j], {
+                            folder: `products/enamelColors/${enamelColorName}/WhiteGoldclr`,
+                        });
+                        imagesByMetalColor.WhiteGoldclr.push({
+                            public_id: result.public_id,
+                            url: result.secure_url,
+                        });
+                    }
+                }
+
+                // Add the enamel color to the array
                 enamelColors.push({
                     enamelColorName,
-                    enamelColorImages: enamelColorImagesUrls,
+                    imagesByMetalColor,
                 });
             }
         }
+
+
+        // const enamelColors = [];
+
+        // // Iterate through req.files.enamelColors
+        // if (req.body.enamelColors && Array.isArray(req.body.enamelColors)) {
+        //     for (let i = 0; i < req.body.enamelColors.length; i++) {
+        //         const enamelColorName = req.body.enamelColors[i].enamelColorName;
+        //         const enamelColorImagesUrls = files[`enamelColors[${i}].enamelColorImages`]
+        //             ? files[`enamelColors[${i}].enamelColorImages`].map(file => file.filename)
+        //             : [];
+
+        //         enamelColors.push({
+        //             enamelColorName,
+        //             enamelColorImages: enamelColorImagesUrls,
+        //         });
+        //     }
+        // }
 
 
         // files.forEach((file, index) => {
@@ -221,7 +283,7 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
             RoseGoldclr: RoseGoldclrLinks,
             WhiteGoldclr: WhiteGoldclrLinks,
         }
-        productData.enamelColors = { enamelColors }
+        productData.enamelColors =  enamelColors
 
 
         const product = await Product.create(productData);
