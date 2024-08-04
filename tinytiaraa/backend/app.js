@@ -27,11 +27,8 @@ app.use("/test", (req, res) => {
 })
 
 app.use("/", express.static(path.join(__dirname, "./uploads")))
-<<<<<<< HEAD
 app.use(bodyParser.urlencoded({ extended: true, parameterLimit:100000,limit: "100mb" }));
-=======
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
->>>>>>> fb3391a496bdece3d606802d47da2be49071b5f4
 
 if (process.env.NODE_ENV !== "PRODUCTION") {
     require("dotenv").config({
