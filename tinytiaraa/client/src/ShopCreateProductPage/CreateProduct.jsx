@@ -249,7 +249,7 @@ function CreateProduct() {
             };
             reader.readAsDataURL(file);
         });
-       
+
     }
 
     const handleToggleWithRoseclr = () => {
@@ -585,21 +585,25 @@ function CreateProduct() {
                                                 </label>
                                                 <input type="file" id='withchains' className='hidden' multiple onChange={handlewithImageChange} />
                                                 <div className='flex flex-wrap justify-center gap-2'>
-                                                    {withchainimages && withchainimages.map((i) => (
-                                                        <div key={`withchain_${i}`} className='relative'>
-                                                            <AiOutlineCloseCircle
-                                                                size={22}
-                                                                className='absolute top-0 right-0 cursor-pointer text-red-500 bg-white rounded-full p-1'
-                                                                onClick={() => handleDeleteWithChainImage(i)}
-                                                            />
-                                                            <img
-                                                                key={`withchain_image_${i}`}
-                                                                src={i}
-                                                                alt={`With Chain ${i}`}
-                                                                className='h-[70px] w-[70px] object-cover border-[#555] m-2'
-                                                            />
-                                                        </div>
-                                                    ))}
+                                                    {withchainimages && withchainimages.map((i) => {
+                                                        console.log(i)
+                                                        return (
+                                                            <div key={`withchain_${i}`} className='relative'>
+                                                                <AiOutlineCloseCircle
+                                                                    size={22}
+                                                                    className='absolute top-0 right-0 cursor-pointer text-red-500 bg-white rounded-full p-1'
+                                                                    onClick={() => handleDeleteWithChainImage(i)}
+                                                                />
+                                                                <img
+                                                                    key={`withchain_image_${i}`}
+                                                                    src={i}
+                                                                    alt={`With Chain ${i}`}
+                                                                    className='h-[70px] w-[70px] object-cover border-[#555] m-2'
+                                                                />
+                                                            </div>
+                                                        )
+                                                    }
+                                                    )}
                                                 </div>
                                             </div>
                                         )}
@@ -618,17 +622,17 @@ function CreateProduct() {
                                                 </label>
                                                 <input type="file" id='withoutchains' className='hidden' multiple onChange={handlewithoutImageChange} />
                                                 <div className='flex flex-wrap justify-center gap-2'>
-                                                    {withchainoutimages && withchainoutimages.map((file, index) => (
-                                                        <div key={`withchainout_${index}`} className='relative'>
+                                                    {withchainoutimages && withchainoutimages.map((i) => (
+                                                        <div key={`withchainout_${i}`} className='relative'>
                                                             <AiOutlineCloseCircle
                                                                 size={22}
                                                                 className='absolute top-0 right-0 cursor-pointer text-red-500 bg-white rounded-full p-1'
-                                                                onClick={() => handleDeleteWithoutChainImage(index)}
+                                                                onClick={() => handleDeleteWithoutChainImage(i)}
                                                             />
                                                             <img
-                                                                key={`withchainout_image_${index}`}
-                                                                src={URL.createObjectURL(file)}
-                                                                alt={`Without Chain ${index}`}
+                                                                key={`withchainout_image_${i}`}
+                                                                src={i}
+                                                                alt={`Without Chain ${i}`}
                                                                 className='h-[70px] w-[70px] object-cover border-[#555] m-2'
                                                             />
                                                         </div>
@@ -750,17 +754,17 @@ function CreateProduct() {
                                                 </label>
                                                 <input type="file" id='yellowclr' className='hidden' multiple onChange={handlewithYellowclr} />
                                                 <div className='flex flex-wrap justify-center gap-2'>
-                                                    {YellowGoldclr && YellowGoldclr.map((file, index) => (
-                                                        <div key={`withchain_${index}`} className='relative'>
+                                                    {YellowGoldclr && YellowGoldclr.map((i) => (
+                                                        <div key={`withchain_${i}`} className='relative'>
                                                             <AiOutlineCloseCircle
                                                                 size={22}
                                                                 className='absolute top-0 right-0 cursor-pointer text-red-500 bg-white rounded-full p-1'
-                                                                onClick={() => handleDeleteWithYellowclrImage(index)}
+                                                                onClick={() => handleDeleteWithYellowclrImage(i)}
                                                             />
                                                             <img
-                                                                key={`withchain_image_${index}`}
-                                                                src={URL.createObjectURL(file)}
-                                                                alt={`With Chain ${index}`}
+                                                                key={`withchain_image_${i}`}
+                                                                src={i}
+                                                                alt={`With Chain ${i}`}
                                                                 className='h-[70px] w-[70px] object-cover border-[#555] m-2'
                                                             />
                                                         </div>
@@ -786,17 +790,17 @@ function CreateProduct() {
                                                 </label>
                                                 <input type="file" id='rosegoldclr' className='hidden' multiple onChange={handlewithRoseclr} />
                                                 <div className='flex flex-wrap justify-center gap-2'>
-                                                    {RoseGoldclr && RoseGoldclr.map((file, index) => (
-                                                        <div key={`withchain_${index}`} className='relative'>
+                                                    {RoseGoldclr && RoseGoldclr.map((i) => (
+                                                        <div key={`withchain_${i}`} className='relative'>
                                                             <AiOutlineCloseCircle
                                                                 size={22}
                                                                 className='absolute top-0 right-0 cursor-pointer text-red-500 bg-white rounded-full p-1'
-                                                                onClick={() => handleDeleteWithRoseclrImage(index)}
+                                                                onClick={() => handleDeleteWithRoseclrImage(i)}
                                                             />
                                                             <img
-                                                                key={`withchain_image_${index}`}
-                                                                src={URL.createObjectURL(file)}
-                                                                alt={`With Chain ${index}`}
+                                                                key={`withchain_image_${i}`}
+                                                                src={i}
+                                                                alt={`With Chain ${i}`}
                                                                 className='h-[70px] w-[70px] object-cover border-[#555] m-2'
                                                             />
                                                         </div>
@@ -823,17 +827,17 @@ function CreateProduct() {
                                                 </label>
                                                 <input type="file" id='whitegoldclr' className='hidden' multiple onChange={handlewithWhiteclr} />
                                                 <div className='flex flex-wrap justify-center gap-2'>
-                                                    {WhiteGoldclr && WhiteGoldclr.map((file, index) => (
-                                                        <div key={`withchain_${index}`} className='relative'>
+                                                    {WhiteGoldclr && WhiteGoldclr.map((i) => (
+                                                        <div key={`withchain_${i}`} className='relative'>
                                                             <AiOutlineCloseCircle
                                                                 size={22}
                                                                 className='absolute top-0 right-0 cursor-pointer text-red-500 bg-white rounded-full p-1'
-                                                                onClick={() => handleDeleteWithWhiteclrImage(index)}
+                                                                onClick={() => handleDeleteWithWhiteclrImage(i)}
                                                             />
                                                             <img
-                                                                key={`withchain_image_${index}`}
-                                                                src={URL.createObjectURL(file)}
-                                                                alt={`With Chain ${index}`}
+                                                                key={`withchain_image_${i}`}
+                                                                src={i}
+                                                                alt={`With Chain ${i}`}
                                                                 className='h-[70px] w-[70px] object-cover border-[#555] m-2'
                                                             />
                                                         </div>
@@ -871,11 +875,11 @@ function CreateProduct() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {YellowGoldclr && YellowGoldclr.map((val, i) => (
+                                    {YellowGoldclr && YellowGoldclr.map((i) => (
                                         <tr key={i} className='border-b'>
-                                            <td className='px-4 py-2'>{val.name}</td>
+                                            <td className='px-4 py-2'>{i.name}</td>
                                             <td className='px-4 py-2'>
-                                                <img className='h-[80px] w-[80px] object-cover' src={URL.createObjectURL(val)} alt="" />
+                                                <img className='h-[80px] w-[80px] object-cover' src={i} alt="" />
                                             </td>
                                         </tr>
                                     ))}
@@ -896,11 +900,11 @@ function CreateProduct() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {RoseGoldclr && RoseGoldclr.map((val, i) => (
+                                    {RoseGoldclr && RoseGoldclr.map((i) => (
                                         <tr key={i} className='border-b'>
-                                            <td className='px-4 py-2'>{val.name}</td>
+                                            <td className='px-4 py-2'>{i.name}</td>
                                             <td className='px-4 py-2'>
-                                                <img className='h-[80px] w-[80px] object-cover' src={URL.createObjectURL(val)} alt="" />
+                                                <img className='h-[80px] w-[80px] object-cover' src={i} alt="" />
                                             </td>
                                         </tr>
                                     ))}
@@ -921,11 +925,11 @@ function CreateProduct() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {WhiteGoldclr && WhiteGoldclr.map((val, i) => (
+                                    {WhiteGoldclr && WhiteGoldclr.map((i) => (
                                         <tr key={i} className='border-b'>
-                                            <td className='px-4 py-2'>{val.name}</td>
+                                            <td className='px-4 py-2'>{i.name}</td>
                                             <td className='px-4 py-2'>
-                                                <img className='h-[80px] w-[80px] object-cover' src={URL.createObjectURL(val)} alt="" />
+                                                <img className='h-[80px] w-[80px] object-cover' src={i} alt="" />
                                             </td>
                                         </tr>
                                     ))}
