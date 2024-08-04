@@ -492,9 +492,9 @@ function CreateProduct() {
 
         enamelColorsList.forEach((color, index) => {
             newForm.append(`enamelColors[${index}].enamelColorName`, color.enamelColorName);
-            color.YellowGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image));
-            color.RoseGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image));
-            color.WhiteGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image));
+            color.YellowGoldclr.forEach((image, imgIndex) => newForm.set(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image));
+            color.RoseGoldclr.forEach((image, imgIndex) => newForm.set(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image));
+            color.WhiteGoldclr.forEach((image, imgIndex) => newForm.set(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image));
         });
 
        
