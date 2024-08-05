@@ -436,7 +436,7 @@ function ProductDetails({ data }) {
                                             <div className='pt-3'>
                                                 <h3 className='text-[20px] font-[600] font-Poppins'>Enamel Color</h3>
                                                 <div className='radio-option text-[16px] font-Poppins py-1'>
-                                                    <select name="enamelColors" id="enamelColors">
+                                                    <select name="enamelColors border" id="enamelColors">
                                                         {data.enamelColors.map((color, index) => (
                                                             <option key={color._id} value={color.enamelColorName}>
                                                                 {color.enamelColorName}
