@@ -490,11 +490,26 @@ function CreateProduct() {
             newForm.set("WhiteGoldclr", image)
         })
 
-        enamelColorImages.forEach((color, index) => {
+        enamelColorsList.forEach((color, index) => {
             newForm.append(`enamelColors[${index}].enamelColorName`, color.enamelColorName);
-            color.YellowGoldclr.forEach((image, imgIndex) => newForm.set(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image));
-            color.RoseGoldclr.forEach((image, imgIndex) => newForm.set(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image));
-            color.WhiteGoldclr.forEach((image, imgIndex) => newForm.set(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image));
+            
+            color.YellowGoldclr.forEach((image, imgIndex) => {
+                if (image instanceof File) {
+                    newForm.set(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image);
+                }
+            });
+            
+            color.RoseGoldclr.forEach((image, imgIndex) => {
+                if (image instanceof File) {
+                    newForm.set(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image);
+                }
+            });
+            
+            color.WhiteGoldclr.forEach((image, imgIndex) => {
+                if (image instanceof File) {
+                    newForm.set(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image);
+                }
+            });
         });
 
        
@@ -553,7 +568,7 @@ function CreateProduct() {
             diamondWeight,
             height,
             width,
-            enamelColorImages
+            enamelColorsList
 
         }))
 
