@@ -380,74 +380,6 @@ function CreateProduct() {
 
 
 
-    const renderEnamelColorsList = () => (
-        <ul className='list-disc list-inside'>
-            {enamelColorsList.map((color, index) => (
-                <div key={index}>
-                    <Popover>
-                        <PopoverTrigger>
-                            <li className='flex justify-between mt-2 cursor-pointer'>
-                                <span>{color.enamelColorName}</span>
-                                <IoMdClose
-                                    className='ml-2 text-red-600 cursor-pointer'
-                                    onClick={() => handleRemoveEnamelColor(index)}
-                                />
-                            </li>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-[380px] bg-white relative left-[65%] top-10">
-                            <div className="w-[100%] grid gap-4 bg-white p-4">
-                                <div className="space-y-2">
-                                    <h4 className="font-medium leading-none">{color.enamelColorName} - Upload Images</h4>
-                                    <p className="text-sm text-muted-foreground">
-                                        Upload images for different metal colors.
-                                    </p>
-                                </div>
-                                <div className="flex space-x-4">
-                                    {metalColors.map((metalColor) => (
-                                        <button
-                                            key={metalColor}
-                                            className={`px-4 py-2 rounded-md ${selectedMetalColor === metalColor ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-                                            onClick={() => handleSelectMetalColor(metalColor)}
-                                        >
-                                            {metalColor} Gold
-                                        </button>
-                                    ))}
-                                </div>
-                                <div className="mt-4">
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        multiple
-                                        onChange={(e) => handleAddImage(e, index, selectedMetalColor)}
-                                    />
-                                </div>
-                                <div className="mt-4">
-                                    <h5 className="font-medium">{selectedMetalColor} Gold Images</h5>
-                                    <div className="flex space-x-2 mt-2">
-                                        {enamelColorImages[color.enamelColorName] &&
-                                            enamelColorImages[color.enamelColorName][selectedMetalColor] &&
-                                            enamelColorImages[color.enamelColorName][selectedMetalColor].map((image, imgIndex) => (
-                                                <img
-                                                    key={imgIndex}
-                                                    src={URL.createObjectURL(image)}
-                                                    alt={`${selectedMetalColor} ${color.enamelColorName}`}
-                                                    className="w-16 h-16 object-cover rounded-md"
-                                                />
-                                            ))}
-                                        {!(enamelColorImages[color.enamelColorName] &&
-                                            enamelColorImages[color.enamelColorName][selectedMetalColor]) && (
-                                                <p className="text-gray-500">No images uploaded.</p>
-                                            )}
-                                    </div>
-                                </div>
-                            </div>
-                        </PopoverContent>
-                    </Popover>
-                </div>
-            ))}
-        </ul>
-    );
-
 
 
 
@@ -560,14 +492,12 @@ function CreateProduct() {
 
         enamelColorsList.forEach((color, index) => {
             newForm.append(`enamelColors[${index}].enamelColorName`, color.enamelColorName);
-            ['YellowGoldclr', 'RoseGoldclr', 'WhiteGoldclr'].forEach((metalColor) => {
-                color[metalColor].forEach((image, imgIndex) => {
-                    newForm.append(`enamelColors[${index}].${metalColor}[${imgIndex}]`, image);
-                });
-            });
+            color.YellowGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image));
+            color.RoseGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image));
+            color.WhiteGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image));
         });
 
-
+       
 
 
         //    enamelColorImages.forEach((images, index) => {
@@ -631,9 +561,9 @@ function CreateProduct() {
 
 
 
-        console.log(enamelColorsList, "list of colorlsit to add")
+        console.log(enamelColorsList, "list of color to add")
         console.log(enamelColorImages, "list of enael images to add")
-        console.log(enamelColor, "list of enamel color to add")
+        console.log(enamelColor, "list of enamel  to add")
 
     }
 
@@ -1133,6 +1063,8 @@ function CreateProduct() {
 
                 <div className='font-Poppins mt-6'>
                     <h2 className='mb-2 p-2 border border-[#555]'>Add Enamel Color of the Product</h2>
+
+                    {/* Add Enamel Color Section */}
                     <Popover>
                         <PopoverTrigger>
                             <div className='flex items-center cursor-pointer'>
@@ -1144,8 +1076,11 @@ function CreateProduct() {
                             <div className="w-[100%] grid gap-4 bg-white p-4">
                                 <div className="space-y-2">
                                     <h4 className="font-medium leading-none">Enamel Color</h4>
-                                    <p className="text-sm text-muted-foreground">Add Enamel Color for the product.</p>
+                                    <p className="text-sm text-muted-foreground">
+                                        Add Enamel Color for the product.
+                                    </p>
                                 </div>
+
                                 <div className="gap-2 w-[100%]">
                                     <div className='w-[100%] flex items-center'>
                                         <input
@@ -1159,13 +1094,104 @@ function CreateProduct() {
                                             Add
                                         </button>
                                     </div>
+
                                     <div className='mt-4'>
-                                        {enamelColorsList.length > 0 && renderEnamelColorsList()}
+                                        {enamelColorsList.length > 0 && (
+                                            <ul className='list-disc list-inside'>
+                                                {enamelColorsList.map((color, index) => (
+                                                    <li key={index} className='flex justify-between'>
+                                                        <span>{color.enamelColorName}</span>
+                                                        <IoMdClose
+                                                            className='ml-2 text-red-600 cursor-pointer'
+                                                            onClick={() => handleRemoveEnamelColor(index)}
+                                                        />
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
                                     </div>
                                 </div>
                             </div>
                         </PopoverContent>
                     </Popover>
+
+                    {/* Enamel Colors List with Image Upload */}
+                    <div className='mt-4'>
+                        {enamelColorsList.length > 0 && (
+                            <ul className='list-disc list-inside'>
+                                {enamelColorsList.map((color, index) => (
+                                    <div key={index}>
+                                        <Popover>
+                                            <PopoverTrigger>
+                                                <li className='flex justify-between mt-2 cursor-pointer'>
+                                                    <span>{color.enamelColorName}</span>
+                                                    <IoMdClose
+                                                        className='ml-2 text-red-600 cursor-pointer'
+                                                        onClick={() => handleRemoveEnamelColor(index)}
+                                                    />
+                                                </li>
+                                            </PopoverTrigger>
+                                            <PopoverContent className="w-[380px] bg-white relative left-[65%] top-10">
+                                                <div className="w-[100%] grid gap-4 bg-white p-4">
+                                                    <div className="space-y-2">
+                                                        <h4 className="font-medium leading-none">{color.enamelColorName} - Upload Images</h4>
+                                                        <p className="text-sm text-muted-foreground">
+                                                            Upload images for different metal colors.
+                                                        </p>
+                                                    </div>
+
+                                                    {/* Metal Color Tabs */}
+                                                    <div className="flex space-x-4">
+                                                        {metalColors.map((metalColor) => (
+                                                            <button
+                                                                key={metalColor}
+                                                                className={`px-4 py-2 rounded-md ${selectedMetalColor === metalColor ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                                                                    }`}
+                                                                onClick={() => handleSelectMetalColor(metalColor)}
+                                                            >
+                                                                {metalColor} Gold
+                                                            </button>
+                                                        ))}
+                                                    </div>
+
+                                                    {/* Image Upload for Selected Metal Color */}
+                                                    <div className="mt-4">
+                                                        <input
+                                                            type="file"
+                                                            accept="image/*"
+                                                            multiple
+                                                            onChange={(e) => handleAddImage(e, index, selectedMetalColor)}
+                                                        />
+                                                    </div>
+
+                                                    {/* Display Uploaded Images */}
+                                                    <div className="mt-4">
+                                                        <h5 className="font-medium">{selectedMetalColor} Gold Images</h5>
+                                                        <div className="flex space-x-2 mt-2">
+                                                            {enamelColorImages[color.enamelColorName] &&
+                                                                enamelColorImages[color.enamelColorName][selectedMetalColor] &&
+                                                                enamelColorImages[color.enamelColorName][selectedMetalColor].map((image, imgIndex) => (
+                                                                    <img
+                                                                        key={imgIndex}
+                                                                        src={URL.createObjectURL(image)}
+                                                                        alt={`${selectedMetalColor} ${color.enamelColorName}`}
+                                                                        className="w-16 h-16 object-cover rounded-md"
+                                                                    />
+                                                                ))}
+                                                            {!(enamelColorImages[color.enamelColorName] &&
+                                                                enamelColorImages[color.enamelColorName][selectedMetalColor]) && (
+                                                                    <p className="text-gray-500">No images uploaded.</p>
+                                                                )}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </PopoverContent>
+                                        </Popover>
+                                    </div>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
                 </div>
 
 
