@@ -191,9 +191,9 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
                 const enamelColorName = enamelColor.enamelColorName;
 
                 const imagesByMetalColor = {
-                    YellowGoldclr: ["abc","def"],
-                    RoseGoldclr: ["ghi","abc"],
-                    WhiteGoldclr: ["abc"]
+                    YellowGoldclr: [],
+                    RoseGoldclr: [],
+                    WhiteGoldclr: []
                 };
                 
 
