@@ -126,6 +126,237 @@ const productSchema = new mongoose.Schema({
 
 
 
+
+    // enamel color 
+
+    enamelColors: {
+        Deep_Blue: {
+            YellowGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            RoseGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            WhiteGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+        },
+        Pink: {
+            YellowGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            RoseGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            WhiteGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+        },
+        Turquoise: {
+            YellowGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            RoseGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            WhiteGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+        },
+        Red: {
+            YellowGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            RoseGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            WhiteGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+        },
+        Black: {
+            YellowGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            RoseGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            WhiteGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+        },
+        Deep_Green: {
+            YellowGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            RoseGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            WhiteGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+        },
+        Lotus_Green: {
+            YellowGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            RoseGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+            WhiteGoldclr: [
+                {
+                    public_id: {
+                        type: String,
+                    },
+                    url: {
+                        type: String,
+                    },
+                },
+            ],
+        }
+    },
+
+
     // enamelColors: {
 
     //     enamelColorImages: [
@@ -149,46 +380,46 @@ const productSchema = new mongoose.Schema({
     // ],
 
 
-    enamelColors: [
-        {
-            enamelColorName: {
-                type: String,
+    // enamelColors: [
+    //     {
+    //         enamelColorName: {
+    //             type: String,
                 
-            },
-            imagesByMetalColor: {
-                YellowGoldclr: [
-                    {
-                        public_id: {
-                            type: String,
-                        },
-                        url: {
-                            type: String,
-                        },
-                    },
-                ],
-                RoseGoldclr: [
-                    {
-                        public_id: {
-                            type: String,
-                        },
-                        url: {
-                            type: String,
-                        },
-                    },
-                ],
-                WhiteGoldclr: [
-                    {
-                        public_id: {
-                            type: String,
-                        },
-                        url: {
-                            type: String,
-                        },
-                    },
-                ],
-            },
-        },
-    ],
+    //         },
+    //         imagesByMetalColor: {
+    //             YellowGoldclr: [
+    //                 {
+    //                     public_id: {
+    //                         type: String,
+    //                     },
+    //                     url: {
+    //                         type: String,
+    //                     },
+    //                 },
+    //             ],
+    //             RoseGoldclr: [
+    //                 {
+    //                     public_id: {
+    //                         type: String,
+    //                     },
+    //                     url: {
+    //                         type: String,
+    //                     },
+    //                 },
+    //             ],
+    //             WhiteGoldclr: [
+    //                 {
+    //                     public_id: {
+    //                         type: String,
+    //                     },
+    //                     url: {
+    //                         type: String,
+    //                     },
+    //                 },
+    //             ],
+    //         },
+    //     },
+    // ],
 
     shopId: {
         type: String,
