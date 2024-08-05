@@ -260,6 +260,10 @@ function ProductDetails({ data }) {
     const shouldShowChainOptions = data.withchainimages.length > 0 || data.withchainoutimages.length > 0;
 
 
+    const shouldShowEnamel = data.enamelColors.length > 0 || data.enamelColors.length > 0;
+
+
+
     // Gallery Navigation Handlers
     const handleNextImage = () => {
         setCurrentImageIndex((prevIndex) =>
@@ -424,6 +428,25 @@ function ProductDetails({ data }) {
                                             </div>
                                         )}
                                     </div>
+
+                                    {/* enamel option */}
+
+                                    {
+                                         shouldShowEnamel && (
+                                            <div className='pt-3'>
+                                                <h3 className='text-[20px] font-[600] font-Poppins'>Enamel Color</h3>
+                                                <div className='radio-option text-[16px] font-Poppins py-1'>
+                                                    <select name="enamelColors" id="enamelColors">
+                                                        {data.enamelColors.map((color, index) => (
+                                                            <option key={color._id} value={color.enamelColorName}>
+                                                                {color.enamelColorName}
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        )
+                                    }
 
 
                                     {/* chain options */}
