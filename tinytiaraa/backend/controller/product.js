@@ -184,10 +184,10 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
 
         console.log(req.body,"request")
         const enamelColors = [];
-        if (req.body.enamelColorImages && Array.isArray(req.body.enamelColorImages)) {
-            console.log('Processing enamelColorImages:', req.body.enamelColorImages);
-            for (let i = 0; i < req.body.enamelColorImages.length; i++) {
-                const enamelColor = req.body.enamelColorImages[i];
+        if (req.body.enamelColorsList && Array.isArray(req.body.enamelColorsList)) {
+            console.log('Processing enamelColorsList:', req.body.enamelColorsList);
+            for (let i = 0; i < req.body.enamelColorsList.length; i++) {
+                const enamelColor = req.body.enamelColorsList[i];
                 const enamelColorName = enamelColor.enamelColorName;
 
                 const imagesByMetalColor = {
