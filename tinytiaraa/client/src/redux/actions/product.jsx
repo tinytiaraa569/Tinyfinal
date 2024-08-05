@@ -27,7 +27,7 @@ export const createProduct = (
     height,
     width,
     enamelColors,
-    enamelColorImages
+    enamelColorImages,
 
 ) => async (dispatch) => {
     try {
@@ -61,7 +61,7 @@ export const createProduct = (
             height,
             width,
            enamelColors,
-    enamelColorImages,
+            enamelColorImages,
             config
         )
 
