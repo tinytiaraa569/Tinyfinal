@@ -314,6 +314,42 @@ function CreateProduct() {
 
     // enamel Color
 
+    const [enamelColors, setEnamelColors] = useState({
+        Deep_Blue: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Pink: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Turquoise: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Red: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Black: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Deep_Green: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Lotus_Green: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+    });
+
+    const [enamelColorImages, setEnamelColorImages] = useState({});
+    const [enamelColor, setEnamelColor] = useState({});
+    const handleFileChange = (color, goldType, e) => {
+        const files = Array.from(e.target.files);
+        setEnamelColors(prevState => {
+            const updatedColors = { ...prevState };
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    if (reader.readyState === 2) {
+                        updatedColors[color][goldType].push(reader.result);
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+            return updatedColors;
+        });
+    };
+
+    const handleDeleteImage = (color, goldType, index) => {
+        setEnamelColors(prevState => {
+            const updatedColors = { ...prevState };
+            updatedColors[color][goldType].splice(index, 1);
+            return updatedColors;
+        });
+    };
 
     // const [enamelColor, setEnamelColor] = useState('');
     // const [enamelColorsList, setEnamelColorsList] = useState([]);
@@ -379,44 +415,7 @@ function CreateProduct() {
     // };
 
 
-    // enamel Color
 
-    const [enamelColors, setEnamelColors] = useState({
-        Deep_Blue: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
-        Pink: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
-        Turquoise: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
-        Red: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
-        Black: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
-        Deep_Green: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
-        Lotus_Green: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
-    });
-
-    const [enamelColorImages, setEnamelColorImages] = useState({});
-    const [enamelColor, setEnamelColor] = useState({});
-    const handleFileChange = (color, goldType, e) => {
-        const files = Array.from(e.target.files);
-        setEnamelColors(prevState => {
-            const updatedColors = { ...prevState };
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    if (reader.readyState === 2) {
-                        updatedColors[color][goldType].push(reader.result);
-                    }
-                };
-                reader.readAsDataURL(file);
-            });
-            return updatedColors;
-        });
-    };
-
-    const handleDeleteImage = (color, goldType, index) => {
-        setEnamelColors(prevState => {
-            const updatedColors = { ...prevState };
-            updatedColors[color][goldType].splice(index, 1);
-            return updatedColors;
-        });
-    };
 
 
 
@@ -527,20 +526,16 @@ function CreateProduct() {
             newForm.set("WhiteGoldclr", image)
         })
 
-        // enamelColorsList.forEach((color, index) => {
-        //     newForm.append(`enamelColors[${index}].enamelColorName`, color.enamelColorName);
-        //     color.YellowGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image));
-        //     color.RoseGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image));
-        //     color.WhiteGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image));
-        // });
-
-       Object.keys(enamelColors).forEach((color) => {
+        Object.keys(enamelColors).forEach((color) => {
             Object.keys(enamelColors[color]).forEach((goldType) => {
                 enamelColors[color][goldType].forEach((image) => {
                     newForm.append(`enamelColorImages[${color}][${goldType}]`, image);
                 });
             });
         });
+
+       
+
 
 
         //    enamelColorImages.forEach((images, index) => {
@@ -598,15 +593,13 @@ function CreateProduct() {
             width,
             enamelColors,
             enamelColorImages
+
         }))
 
         // console.log(newForm)
 
 
 
-        console.log(enamelColorsList, "list of color to add")
-        console.log(enamelColorImages, "list of enael images to add")
-        console.log(enamelColor, "list of enamel  to add")
 
     }
 
@@ -1102,9 +1095,7 @@ function CreateProduct() {
 
                 {/* Enamelcolor */}
 
-
-
-                  <div className='font-Poppins mt-4'>
+                <div className='font-Poppins mt-4'>
                     <h2 className='mb-2 p-2 border border-[#555]'>Add Enamel Colors</h2>
                     <Popover>
                         <PopoverTrigger>
@@ -1166,13 +1157,12 @@ function CreateProduct() {
                 </div>
 
 
-{/* 
 
-                <div className='font-Poppins mt-6'>
+                {/* <div className='font-Poppins mt-6'>
                     <h2 className='mb-2 p-2 border border-[#555]'>Add Enamel Color of the Product</h2>
 
                     {/* Add Enamel Color Section */}
-                    <Popover>
+                {/* <Popover>
                         <PopoverTrigger>
                             <div className='flex items-center cursor-pointer'>
                                 <IoIosAdd size={20} />
@@ -1220,10 +1210,10 @@ function CreateProduct() {
                                 </div>
                             </div>
                         </PopoverContent>
-                    </Popover>
+                    </Popover> */}
 
-                    {/* Enamel Colors List with Image Upload */}
-                    <div className='mt-4'>
+                {/* Enamel Colors List with Image Upload */}
+                {/* <div className='mt-4'>
                         {enamelColorsList.length > 0 && (
                             <ul className='list-disc list-inside'>
                                 {enamelColorsList.map((color, index) => (
@@ -1248,7 +1238,7 @@ function CreateProduct() {
                                                     </div>
 
                                                     {/* Metal Color Tabs */}
-                                                    <div className="flex space-x-4">
+                {/* <div className="flex space-x-4">
                                                         {metalColors.map((metalColor) => (
                                                             <button
                                                                 key={metalColor}
@@ -1259,20 +1249,20 @@ function CreateProduct() {
                                                                 {metalColor} Gold
                                                             </button>
                                                         ))}
-                                                    </div>
+                                                    </div> */}
 
-                                                    {/* Image Upload for Selected Metal Color */}
-                                                    <div className="mt-4">
+                {/* Image Upload for Selected Metal Color */}
+                {/* <div className="mt-4">
                                                         <input
                                                             type="file"
                                                             accept="image/*"
                                                             multiple
                                                             onChange={(e) => handleAddImage(e, index, selectedMetalColor)}
                                                         />
-                                                    </div>
+                                                    </div> */}
 
-                                                    {/* Display Uploaded Images */}
-                                                    <div className="mt-4">
+                {/* Display Uploaded Images */}
+                {/* <div className="mt-4">
                                                         <h5 className="font-medium">{selectedMetalColor} Gold Images</h5>
                                                         <div className="flex space-x-2 mt-2">
                                                             {enamelColorImages[color.enamelColorName] &&
@@ -1299,10 +1289,10 @@ function CreateProduct() {
                             </ul>
                         )}
                     </div>
-                </div>
+                </div> */}
 
 
- */}
+
 
 
 
