@@ -315,71 +315,108 @@ function CreateProduct() {
     // enamel Color
 
 
-    const [enamelColor, setEnamelColor] = useState('');
-    const [enamelColorsList, setEnamelColorsList] = useState([]);
+    // const [enamelColor, setEnamelColor] = useState('');
+    // const [enamelColorsList, setEnamelColorsList] = useState([]);
+    // const [enamelColorImages, setEnamelColorImages] = useState({});
+    // const [selectedMetalColor, setSelectedMetalColor] = useState('');
+    // const [selectedEnamelColor, setSelectedEnamelColor] = useState('');
+
+    // const metalColors = ['Yellow', 'Rose', 'White']; // Example metal colors
+
+    // // Handle adding a new enamel color
+    // const handleAddEnamelColor = () => {
+    //     const trimmedEnamelColor = enamelColor.trim();
+
+    //     if (trimmedEnamelColor && !enamelColorsList.some(color => color.enamelColorName === trimmedEnamelColor)) {
+    //         setEnamelColorsList([
+    //             ...enamelColorsList,
+    //             {
+    //                 enamelColorName: trimmedEnamelColor,
+    //                 YellowGoldclr: [], // Initialize with empty arrays
+    //                 RoseGoldclr: [],
+    //                 WhiteGoldclr: []
+    //             }
+    //         ]);
+    //         setEnamelColor(''); // Clear the input field after adding
+    //     }
+    // };
+
+    // // Handle removing an enamel color
+    // const handleRemoveEnamelColor = (index) => {
+    //     const updatedColors = [...enamelColorsList];
+    //     const removedColor = updatedColors[index].enamelColorName;
+    //     updatedColors.splice(index, 1);
+    //     setEnamelColorsList(updatedColors);
+
+    //     // Remove associated images
+    //     const updatedImages = { ...enamelColorImages };
+    //     delete updatedImages[removedColor];
+    //     setEnamelColorImages(updatedImages);
+    // };
+
+    // // Handle uploading images for an enamel color
+    // const handleAddImage = (event, enamelIndex, metalColor) => {
+    //     const files = Array.from(event.target.files);
+    //     const enamelColorName = enamelColorsList[enamelIndex].enamelColorName;
+
+    //     setEnamelColorImages((prevImages) => ({
+    //         ...prevImages,
+    //         [enamelColorName]: {
+    //             ...(prevImages[enamelColorName] || {}),
+    //             [metalColor]: files,
+    //         },
+    //     }));
+    // };
+
+    // // Handle selecting a metal color
+    // const handleSelectMetalColor = (color) => {
+    //     setSelectedMetalColor(color);
+    // };
+
+    // // Handle selecting an enamel color
+    // const handleSelectEnamelColor = (color) => {
+    //     setSelectedEnamelColor(color);
+    // };
+
+
+    // enamel Color
+
+    const [enamelColors, setEnamelColors] = useState({
+        Deep_Blue: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Pink: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Turquoise: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Red: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Black: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Deep_Green: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+        Lotus_Green: { YellowGoldclr: [], RoseGoldclr: [], WhiteGoldclr: [] },
+    });
+
     const [enamelColorImages, setEnamelColorImages] = useState({});
-    const [selectedMetalColor, setSelectedMetalColor] = useState('');
-    const [selectedEnamelColor, setSelectedEnamelColor] = useState('');
-
-    const metalColors = ['Yellow', 'Rose', 'White']; // Example metal colors
-
-    // Handle adding a new enamel color
-    const handleAddEnamelColor = () => {
-        const trimmedEnamelColor = enamelColor.trim();
-
-        if (trimmedEnamelColor && !enamelColorsList.some(color => color.enamelColorName === trimmedEnamelColor)) {
-            setEnamelColorsList([
-                ...enamelColorsList,
-                {
-                    enamelColorName: trimmedEnamelColor,
-                    YellowGoldclr: [], // Initialize with empty arrays
-                    RoseGoldclr: [],
-                    WhiteGoldclr: []
-                }
-            ]);
-            setEnamelColor(''); // Clear the input field after adding
-        }
+    const [enamelColor, setEnamelColor] = useState({});
+    const handleFileChange = (color, goldType, e) => {
+        const files = Array.from(e.target.files);
+        setEnamelColors(prevState => {
+            const updatedColors = { ...prevState };
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    if (reader.readyState === 2) {
+                        updatedColors[color][goldType].push(reader.result);
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+            return updatedColors;
+        });
     };
 
-    // Handle removing an enamel color
-    const handleRemoveEnamelColor = (index) => {
-        const updatedColors = [...enamelColorsList];
-        const removedColor = updatedColors[index].enamelColorName;
-        updatedColors.splice(index, 1);
-        setEnamelColorsList(updatedColors);
-
-        // Remove associated images
-        const updatedImages = { ...enamelColorImages };
-        delete updatedImages[removedColor];
-        setEnamelColorImages(updatedImages);
+    const handleDeleteImage = (color, goldType, index) => {
+        setEnamelColors(prevState => {
+            const updatedColors = { ...prevState };
+            updatedColors[color][goldType].splice(index, 1);
+            return updatedColors;
+        });
     };
-
-    // Handle uploading images for an enamel color
-    const handleAddImage = (event, enamelIndex, metalColor) => {
-        const files = Array.from(event.target.files);
-        const enamelColorName = enamelColorsList[enamelIndex].enamelColorName;
-
-        setEnamelColorImages((prevImages) => ({
-            ...prevImages,
-            [enamelColorName]: {
-                ...(prevImages[enamelColorName] || {}),
-                [metalColor]: files,
-            },
-        }));
-    };
-
-    // Handle selecting a metal color
-    const handleSelectMetalColor = (color) => {
-        setSelectedMetalColor(color);
-    };
-
-    // Handle selecting an enamel color
-    const handleSelectEnamelColor = (color) => {
-        setSelectedEnamelColor(color);
-    };
-
-
-
 
 
 
@@ -490,14 +527,20 @@ function CreateProduct() {
             newForm.set("WhiteGoldclr", image)
         })
 
-        enamelColorsList.forEach((color, index) => {
-            newForm.append(`enamelColors[${index}].enamelColorName`, color.enamelColorName);
-            color.YellowGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image));
-            color.RoseGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image));
-            color.WhiteGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image));
-        });
+        // enamelColorsList.forEach((color, index) => {
+        //     newForm.append(`enamelColors[${index}].enamelColorName`, color.enamelColorName);
+        //     color.YellowGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].YellowGoldclr[${imgIndex}]`, image));
+        //     color.RoseGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].RoseGoldclr[${imgIndex}]`, image));
+        //     color.WhiteGoldclr.forEach((image, imgIndex) => newForm.append(`enamelColors[${index}].WhiteGoldclr[${imgIndex}]`, image));
+        // });
 
-       
+       Object.keys(enamelColors).forEach((color) => {
+            Object.keys(enamelColors[color]).forEach((goldType) => {
+                enamelColors[color][goldType].forEach((image) => {
+                    newForm.append(`enamelColorImages[${color}][${goldType}]`, image);
+                });
+            });
+        });
 
 
         //    enamelColorImages.forEach((images, index) => {
@@ -553,8 +596,8 @@ function CreateProduct() {
             diamondWeight,
             height,
             width,
-            enamelColorsList
-
+            enamelColors,
+            enamelColorImages
         }))
 
         // console.log(newForm)
@@ -1061,6 +1104,70 @@ function CreateProduct() {
 
 
 
+                  <div className='font-Poppins mt-4'>
+                    <h2 className='mb-2 p-2 border border-[#555]'>Add Enamel Colors</h2>
+                    <Popover>
+                        <PopoverTrigger>
+                            <div className='flex items-center'>
+                                <AiOutlinePlusCircle size={20} />
+                                <label>Enamel Colors</label>
+                            </div>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[300px] bg-white relative left-[65%] top-10">
+                            <div className="w-[100%] grid gap-4 bg-white">
+                                {Object.keys(enamelColors).map(color => (
+                                    <div key={color} className="space-y-2">
+                                        <h4 className="font-medium leading-none">{color}</h4>
+                                        {['YellowGoldclr', 'RoseGoldclr', 'WhiteGoldclr'].map(goldType => (
+                                            <div key={goldType} className="mb-3">
+                                                <div className='flex gap-2'>
+                                                    <input
+                                                        type="checkbox"
+                                                        id={`${color}_${goldType}`}
+                                                        onChange={() => { }}
+                                                    />
+                                                    <label htmlFor={`${color}_${goldType}`}>
+                                                        {goldType.replace(/([A-Z])/g, ' $1').trim()}
+                                                    </label>
+                                                </div>
+                                                <label htmlFor={`${color}_${goldType}_files`} className='w-[180px] border border-[#555] flex items-center p-2 gap-2 cursor-pointer'>
+                                                    <AiOutlinePlusCircle size={20} color='#555' /> Select Images
+                                                </label>
+                                                <input
+                                                    type="file"
+                                                    id={`${color}_${goldType}_files`}
+                                                    className='hidden'
+                                                    multiple
+                                                    onChange={(e) => handleFileChange(color, goldType, e)}
+                                                />
+                                                <div className='flex flex-wrap justify-center gap-2'>
+                                                    {enamelColors[color][goldType].map((image, index) => (
+                                                        <div key={index} className='relative'>
+                                                            <AiOutlineCloseCircle
+                                                                size={22}
+                                                                className='absolute top-0 right-0 cursor-pointer text-red-500 bg-white rounded-full p-1'
+                                                                onClick={() => handleDeleteImage(color, goldType, index)}
+                                                            />
+                                                            <img
+                                                                src={image}
+                                                                alt={`${color} ${goldType}`}
+                                                                className='h-[70px] w-[70px] object-cover border-[#555] m-2'
+                                                            />
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ))}
+                            </div>
+                        </PopoverContent>
+                    </Popover>
+                </div>
+
+
+{/* 
+
                 <div className='font-Poppins mt-6'>
                     <h2 className='mb-2 p-2 border border-[#555]'>Add Enamel Color of the Product</h2>
 
@@ -1195,7 +1302,7 @@ function CreateProduct() {
                 </div>
 
 
-
+ */}
 
 
 
