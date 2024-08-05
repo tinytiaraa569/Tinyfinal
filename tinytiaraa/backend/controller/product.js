@@ -182,7 +182,7 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
 
         // Handle enamelColorImages
 
-
+        console.log(req.body,"request")
         const enamelColors = [];
         if (req.body.enamelColorImages && Array.isArray(req.body.enamelColorImages)) {
             console.log('Processing enamelColorImages:', req.body.enamelColorImages);
