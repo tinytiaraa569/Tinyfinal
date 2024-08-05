@@ -174,6 +174,78 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
 
 
 
+ const enamelColorKeys = ['Deep_Blue', 'Pink', 'Turquoise', 'Red', 'Black', 'Deep_Green', 'Lotus_Green'];
+        const enamelColors = {};
+
+        enamelColorKeys.forEach(color => {
+            enamelColors[color] = {
+                YellowGoldclr: [],
+                RoseGoldclr: [],
+                WhiteGoldclr: []
+            };
+        });
+
+        enamelColorKeys.forEach(color => {
+            // Yellow Gold for enamel
+            if (typeof req.body[`${color}YellowGoldclr`] === "string") {
+                enamelColors[color].YellowGoldclr.push(req.body[`${color}YellowGoldclr`]);
+            } else {
+                enamelColors[color].YellowGoldclr = req.body[`${color}YellowGoldclr`] || [];
+            }
+
+            // Rose Gold for enamel
+            if (typeof req.body[`${color}RoseGoldclr`] === "string") {
+                enamelColors[color].RoseGoldclr.push(req.body[`${color}RoseGoldclr`]);
+            } else {
+                enamelColors[color].RoseGoldclr = req.body[`${color}RoseGoldclr`] || [];
+            }
+
+            // White Gold for enamel
+            if (typeof req.body[`${color}WhiteGoldclr`] === "string") {
+                enamelColors[color].WhiteGoldclr.push(req.body[`${color}WhiteGoldclr`]);
+            } else {
+                enamelColors[color].WhiteGoldclr = req.body[`${color}WhiteGoldclr`] || [];
+            }
+        });
+
+        // Upload enamel color images
+        for (const color of enamelColorKeys) {
+            // Upload Yellow Gold for each enamel color
+            for (let i = 0; i < enamelColors[color].YellowGoldclr.length; i++) {
+                const result = await cloudinary.v2.uploader.upload(enamelColors[color].YellowGoldclr[i], {
+                    folder: "products",
+                });
+
+                enamelColors[color].YellowGoldclr[i] = {
+                    public_id: result.public_id,
+                    url: result.secure_url,
+                };
+            }
+
+            // Upload Rose Gold for each enamel color
+            for (let i = 0; i < enamelColors[color].RoseGoldclr.length; i++) {
+                const result = await cloudinary.v2.uploader.upload(enamelColors[color].RoseGoldclr[i], {
+                    folder: "products",
+                });
+
+                enamelColors[color].RoseGoldclr[i] = {
+                    public_id: result.public_id,
+                    url: result.secure_url,
+                };
+            }
+
+            // Upload White Gold for each enamel color
+            for (let i = 0; i < enamelColors[color].WhiteGoldclr.length; i++) {
+                const result = await cloudinary.v2.uploader.upload(enamelColors[color].WhiteGoldclr[i], {
+                    folder: "products",
+                });
+
+                enamelColors[color].WhiteGoldclr[i] = {
+                    public_id: result.public_id,
+                    url: result.secure_url,
+                };
+            }
+        }
 
 
 
@@ -182,69 +254,69 @@ router.post("/create-product", catchAsyncErrors(async (req, res, next) => {
 
         // Handle enamelColorImages
 
-        console.log(req.body,"request")
-        const enamelColors = [];
-        if (req.body.enamelColorsList && Array.isArray(req.body.enamelColorsList)) {
-            console.log('Processing enamelColorsList:', req.body.enamelColorsList);
-            for (let i = 0; i < req.body.enamelColorsList.length; i++) {
-                const enamelColor = req.body.enamelColorsList[i];
-                const enamelColorName = enamelColor.enamelColorName;
+        // console.log(req.body,"request")
+        // const enamelColors = [];
+        // if (req.body.enamelColorsList && Array.isArray(req.body.enamelColorsList)) {
+        //     console.log('Processing enamelColorsList:', req.body.enamelColorsList);
+        //     for (let i = 0; i < req.body.enamelColorsList.length; i++) {
+        //         const enamelColor = req.body.enamelColorsList[i];
+        //         const enamelColorName = enamelColor.enamelColorName;
 
-                const imagesByMetalColor = {
-                    YellowGoldclr: [],
-                    RoseGoldclr: [],
-                    WhiteGoldclr: []
-                };
+        //         const imagesByMetalColor = {
+        //             YellowGoldclr: [],
+        //             RoseGoldclr: [],
+        //             WhiteGoldclr: []
+        //         };
                 
 
                 
-                if (enamelColor.YellowGoldclr && Array.isArray(enamelColor.YellowGoldclr)) {
-                    for (let j = 0; j < enamelColor.YellowGoldclr.length; j++) {
-                        console.log('Uploading YellowGoldclr image:', enamelColor.YellowGoldclr[j]);
-                        const result = await cloudinary.v2.uploader.upload(enamelColor.YellowGoldclr[j], {
-                            folder: `products/enamelColors/${enamelColorName}/YellowGoldclr`,
-                        });
-                        imagesByMetalColor.YellowGoldclr.push({
-                            public_id: result.public_id,
-                            url: result.secure_url,
-                        });
-                    }
-                }
+        //         if (enamelColor.YellowGoldclr && Array.isArray(enamelColor.YellowGoldclr)) {
+        //             for (let j = 0; j < enamelColor.YellowGoldclr.length; j++) {
+        //                 console.log('Uploading YellowGoldclr image:', enamelColor.YellowGoldclr[j]);
+        //                 const result = await cloudinary.v2.uploader.upload(enamelColor.YellowGoldclr[j], {
+        //                     folder: `products/enamelColors/${enamelColorName}/YellowGoldclr`,
+        //                 });
+        //                 imagesByMetalColor.YellowGoldclr.push({
+        //                     public_id: result.public_id,
+        //                     url: result.secure_url,
+        //                 });
+        //             }
+        //         }
 
-                if (enamelColor.RoseGoldclr && Array.isArray(enamelColor.RoseGoldclr)) {
-                    for (let j = 0; j < enamelColor.RoseGoldclr.length; j++) {
-                        console.log('Uploading RoseGoldclr image:', enamelColor.RoseGoldclr[j]);
-                        const result = await cloudinary.v2.uploader.upload(enamelColor.RoseGoldclr[j], {
-                            folder: `products/enamelColors/${enamelColorName}/RoseGoldclr`,
-                        });
-                        imagesByMetalColor.RoseGoldclr.push({
-                            public_id: result.public_id,
-                            url: result.secure_url,
-                        });
-                    }
-                }
+        //         if (enamelColor.RoseGoldclr && Array.isArray(enamelColor.RoseGoldclr)) {
+        //             for (let j = 0; j < enamelColor.RoseGoldclr.length; j++) {
+        //                 console.log('Uploading RoseGoldclr image:', enamelColor.RoseGoldclr[j]);
+        //                 const result = await cloudinary.v2.uploader.upload(enamelColor.RoseGoldclr[j], {
+        //                     folder: `products/enamelColors/${enamelColorName}/RoseGoldclr`,
+        //                 });
+        //                 imagesByMetalColor.RoseGoldclr.push({
+        //                     public_id: result.public_id,
+        //                     url: result.secure_url,
+        //                 });
+        //             }
+        //         }
 
-                if (enamelColor.WhiteGoldclr && Array.isArray(enamelColor.WhiteGoldclr)) {
-                    for (let j = 0; j < enamelColor.WhiteGoldclr.length; j++) {
-                        console.log('Uploading WhiteGoldclr image:', enamelColor.WhiteGoldclr[j]);
-                        const result = await cloudinary.v2.uploader.upload(enamelColor.WhiteGoldclr[j], {
-                            folder: `products/enamelColors/${enamelColorName}/WhiteGoldclr`,
-                        });
-                        imagesByMetalColor.WhiteGoldclr.push({
-                            public_id: result.public_id,
-                            url: result.secure_url,
-                        });
-                    }
-                }
+        //         if (enamelColor.WhiteGoldclr && Array.isArray(enamelColor.WhiteGoldclr)) {
+        //             for (let j = 0; j < enamelColor.WhiteGoldclr.length; j++) {
+        //                 console.log('Uploading WhiteGoldclr image:', enamelColor.WhiteGoldclr[j]);
+        //                 const result = await cloudinary.v2.uploader.upload(enamelColor.WhiteGoldclr[j], {
+        //                     folder: `products/enamelColors/${enamelColorName}/WhiteGoldclr`,
+        //                 });
+        //                 imagesByMetalColor.WhiteGoldclr.push({
+        //                     public_id: result.public_id,
+        //                     url: result.secure_url,
+        //                 });
+        //             }
+        //         }
 
-                enamelColors.push({
-                    enamelColorName,
-                    imagesByMetalColor,
-                });
+        //         enamelColors.push({
+        //             enamelColorName,
+        //             imagesByMetalColor,
+        //         });
 
-                console.log(enamelColors,"see the enamels color")
-            }
-        }
+        //         console.log(enamelColors,"see the enamels color")
+        //     }
+        // }
 
 
         // const enamelColors = [];
