@@ -19,8 +19,8 @@ app.use(cors({
 
 // app.use(express.json());
 app.use(cookieParser());
-app.use(bodyParser.json({ limit: '100mb' }));
 app.use(bodyParser.urlencoded({ limit: "100mb" , extended: false ,parameterLimit: 1000000}));
+app.use(bodyParser.json({ limit: '100mb' }));
 
 
 
